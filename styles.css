@@ -1,0 +1,12 @@
+* {
+    font-family: verdana;
+}
+
+h1 {
+    text-align: center;
+    margin: 50px;
+}
+
+form {
+    margin-bottom: 20px;
+}
