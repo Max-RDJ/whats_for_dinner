@@ -10,10 +10,10 @@
   <body>
     <h1>What's for Dinner?</h1>
 
-    <div>
+    <div id="inputSection">
     <form>
-        <label for="meals-number">Number of meals</label>
-        <select id="meals-number">
+        <select id="meals-number" placeholder="Number of meals">
+            <option disabled selected hidden>Number of meals</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -23,40 +23,26 @@
             <option>7</option>
         </select>
     </form>
+    <button id="generate-btn">Generate</button>
     </div>
 
 <div id="table">
-    <table>
-        <tr>
-            <td></td>
-            <td id="first-meal"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td id="second-meal"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td id="third-meal"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td id="fourth-meal"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td id="fifth-meal"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td id="sixth-meal"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td id="seventh-meal"></td>
-        </tr>
-    </table>
+    <div id="meals-table">
+        <div id=""></div>
+            <div id="first-meal"></div>
+            <div id="second-meal"></div>
+            <div id="third-meal"></div>
+            <div id="fourth-meal"></div>
+            <div id="fifth-meal"></div>
+            <div id="sixth-meal"></div>
+            <div id="seventh-meal"></div>
+        </div>
 </div>
+
+<footer id="newMeal">
+    <input id="mealInput" placeholder="Add a new meal"/>
+    <button id="add-btn">Add</button>
+</footer>
 
 	<script src="index.js"></script>
   </body>

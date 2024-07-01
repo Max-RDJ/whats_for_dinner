@@ -1,12 +1,52 @@
+html {
+    margin: 30px;
+}
+
 * {
     font-family: verdana;
+    background-color: #1c2e47;
+    color: #b2b3b5;
 }
 
 h1 {
     text-align: center;
-    margin: 50px;
+    margin: 30px;
+    margin-bottom: 50px;
 }
 
 form {
     margin-bottom: 20px;
+}
+
+#generate-btn {
+    width: 170px;
+    height: 40px;
+    margin: auto;
+}
+
+#inputSection {
+    display: flex;
+    align-content: center;
+}
+
+form {
+    margin: auto;
+}
+
+#meals-number {
+    width: 170px;
+    height: 40px;
+    text-align: center;
+    border: solid 1px #b2b3b5;
+    padding: 10px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 50px;
+}
+
+#mealInput {
+    margin: auto;
 }
