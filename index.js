@@ -4,27 +4,27 @@ const meals =  [
     mealName: "Thai Green Curry",
     ingredients: [
         "Thai green paste",
-        "Chickpeas",
-        "Coconut milk",
-        "Tenderstem broccoli",
-        "Rice"
+        "chickpeas",
+        "coconut milk",
+        "tenderstem broccoli",
+        "rice"
     ]
     },
     {
     mealName: "Chickpea Coconut Curry",
     ingredients: [
-        "Chickpeas",
-        "Coconut milk",
-        "Passata",
-        "Bell pepper"
+        "chickpeas",
+        "coconut milk",
+        "passata",
+        "bell pepper"
     ]
     },
     {
     mealName: "Spaghetti and Meatballs",
     ingredients: [
-        "Spaghetti",
-        "Bolognese sauce",
-        "Meatballs"
+        "spaghetti",
+        "bolognese sauce",
+        "meatballs"
     ]
     },
     {
@@ -115,6 +115,16 @@ const dailyMeals = [
     document.getElementById("seventh-meal")
 ];
 
+const mealIngredients = [
+    document.getElementById("first-ingredients"),
+    document.getElementById("second-ingredients"),
+    document.getElementById("third-ingredients"),
+    document.getElementById("fourth-ingredients"),
+    document.getElementById("fifth-ingredients"),
+    document.getElementById("sixth-ingredients"),
+    document.getElementById("seventh-ingredients")
+];
+
 // Select random number associated with meal in meals array
 function getRandomMeal(availableMeals) {
     let randomMeal = Math.floor(Math.random() * availableMeals.length);
@@ -130,6 +140,10 @@ function generateMeals() {
         mealElement.innerHTML = '';
     });
 
+    mealIngredients.forEach(ingrElement => {
+        ingrElement.innerHTML = '';
+    });
+
     // Iterate through number of meals selected from dropdown
     for (i = 0; i < numbersOfMeals; i++){
     if (i < dailyMeals.length) {
@@ -137,7 +151,9 @@ function generateMeals() {
             break;
         }
         let selectedMeal = getRandomMeal(availableMeals);
-        dailyMeals[i].innerHTML = selectedMeal.mealName; 
+        dailyMeals[i].innerHTML = selectedMeal.mealName;
+        mealIngredients[i].innerHTML = selectedMeal.ingredients.join(", ").toLowerCase();
+        // Need to insert non-breaking spaces into ingredient names
     }
     }
 }

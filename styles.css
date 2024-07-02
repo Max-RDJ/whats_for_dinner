@@ -52,7 +52,6 @@ footer {
     margin: auto;
 }
 
-.meals-output-list {
-    margin-top: 30px;
-
+td {
+    margin-bottom: 30px;
 }
