@@ -45,7 +45,7 @@ const meals =  [
 function paintUI() {
     let new_inner_html = "";
     for (let i = 0; i < meals.length; i++) {
-        const meal = meals[i];
+        const meal = meals[i].mealname;
         new_inner_html +=
         `
         <div class="mealItem">
@@ -66,9 +66,13 @@ paintUI();
 
 // Add new meal idea
 function addMeal() {
-    let current_meal = mealInput.value;
-    if (!current_meal) {return};
-    meals.push(current_meal);
+    let currentMealName = mealInput.value;
+    if (!currentMealName) {return};
+    let newMeal = {
+        mealName: currentMealName,
+        ingredients: []
+    }
+    meals.push(newMeal);
     mealInput.value = "";
     paintUI();
 }
@@ -78,18 +82,18 @@ document.getElementById("add-btn").addEventListener("click", addMeal);
 
 // Delete a meal idea
 function deleteMeal(index) {
-    let new_meals = meals.filter((current_value, current_index) => {
+    let newMeals = meals.filter((current_value, current_index) => {
         return current_index !== index;
     })
-    meals = new_meals;
+    meals = newMeals;
     paintUI()
 }
 
 
 // Edit a meal idea
 function editMeal(index) {
-    let current_meal = meals[index];
-    mealInput.value = current_meal;
+    let currentMeal = meals[index];
+    mealInput.value = currentMeal;
     deleteMeal(index)
 }
 
@@ -139,6 +143,3 @@ function generateMeals() {
 }
 
 const genBtn = document.getElementById("generate-btn").addEventListener("click", generateMeals);
-
-// Add meal name to output in HTML
-// Increase number each time in for loop in order to move on to next row of text
