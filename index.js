@@ -77,7 +77,7 @@ document.getElementById("add-btn").addEventListener("click", addMeal);
 
 
 // Delete a meal idea
-function deleteTodo(index) {
+function deleteMeal(index) {
     let new_meals = meals.filter((current_value, current_index) => {
         return current_index !== index;
     })
@@ -87,8 +87,8 @@ function deleteTodo(index) {
 
 
 // Edit a meal idea
-function editTodo(index) {
-    let current_meal = meal_list[index];
+function editMeal(index) {
+    let current_meal = meals[index];
     mealInput.value = current_meal;
     deleteMeal(index)
 }
