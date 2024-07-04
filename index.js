@@ -1,4 +1,5 @@
 // Create array of meals with subarrays of ingredients
+const charImage = '<img id="char" src="https://drive.google.com/thumbnail?id=1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">'
 const meals =  [
     {
     mealName: "Thai Green Curry",
@@ -11,7 +12,7 @@ const meals =  [
     ]
     },
     {
-    mealName: "Chickpea Coconut Curry",
+    mealName: `Chickpea Coconut Curry ${charImage}`,
     ingredients: [
         "chickpeas",
         "coconut milk",
@@ -63,6 +64,8 @@ function paintUI() {
 
 paintUI();
 
+
+// Create a separate page for managing meal items
 
 // Add new meal idea
 function addMeal() {
