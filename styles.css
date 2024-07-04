@@ -1,5 +1,6 @@
 :root {
     --main-color: #03060a;
+    --accent-color: rgba(254, 176, 32, 0.874);
 }
 
 html {
@@ -22,7 +23,7 @@ header {
 
 h1 {
     margin: auto;
-    color: orange;
+    color: var(--accent-color);
 }
  
 #inputSection {
@@ -63,7 +64,7 @@ footer {
 }
 
 legend {
-    color: orange;
+    color: var(--accent-color);
 }
 
 .numBtn {
@@ -72,15 +73,15 @@ legend {
     font-size: 14px;
     font-weight: bold;
     border-radius: 10px;
-    border: 1px solid orange;
+    border: 1px solid var(--accent-color);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 10px;
-    color: orange;
+    color: var(--accent-color);
 }
 
 .numBtn:active {
     color: var(--main-color);
-    background-color: orange;
+    background-color: var(--accent-color);
 }
 
 td {
@@ -98,7 +99,7 @@ td {
 }
 
 table {
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 /* The sidebar menu */
