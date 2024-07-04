@@ -15,65 +15,72 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <header>
+
     <h1>What's for Dinner?</h1>
+    
+    <div id="main">
+      <button class="openbtn" onclick="openNav()">&#9776;</button>
+    </div>
+
+  </header>
+
+<div class="container">
+  <div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="index.html">Start</a>
+  <a href="meal_manager.html">Manage Meals</a>
+  <a href="about.html">About</a>
+  </div>
     <div id="inputSection">
-    <form>
-        <select id="meals-number" placeholder="Number of meals">
-            <option disabled selected hidden>Number of meals</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-        </select>
-    </form>
-    <button id="generate-btn">Generate</button>
+      <div id="numberButtons">
+        <button class=numBtn id="btn-1">1</button>
+        <button class=numBtn id="btn-2">2</button>
+        <button class=numBtn id="btn-3">3</button>
+        <button class=numBtn id="btn-4">4</button>
+        <button class=numBtn id="btn-5">5</button>
+        <button class=numBtn id="btn-6">6</button>
+        <button class=numBtn id="btn-7">7</button>
+      </div>
+    
+       
     </div>
 
 <div id="table">
     <table id="meals-table">
         <tr></tr>
-          <td class="mealDisplay" id="first-meal"></td>
+          <td class="mealText" id="first-meal"></td>
         <tr></tr>
-           <td class="ingredients" id="first-ingredients"></td>
+           <td class="ingredientsText" id="first-ingredients"></td>
         <tr></tr>
-          <td class="mealDisplay" id="second-meal"></td>
+          <td class="mealText" id="second-meal"></td>
         <tr></tr>
-          <td class="ingredients" id="second-ingredients"></td>
+          <td class="ingredientsText" id="second-ingredients"></td>
         <tr></tr>
-          <td class="mealDisplay" id="third-meal"></td>
+          <td class="mealText" id="third-meal"></td>
         <tr></tr>
-          <td class="ingredients" id="third-ingredients"></td>
+          <td class="ingredientsText" id="third-ingredients"></td>
         <tr></tr>
-          <td class="mealDisplay" id="fourth-meal"></td>
+          <td class="mealText" id="fourth-meal"></td>
         <tr></tr>
-          <td class="ingredients" id="fourth-ingredients"></td>
+          <td class="ingredientsText" id="fourth-ingredients"></td>
         <tr></tr>
-          <td class="mealDisplay" id="fifth-meal"></td>
+          <td class="mealText" id="fifth-meal"></td>
         <tr></tr>
-          <td class="ingredients" id="fifth-ingredients"></td>
+          <td class="ingredientsText" id="fifth-ingredients"></td>
         <tr></tr>
-          <td class="mealDisplay" id="sixth-meal"></td>
+          <td class="mealText" id="sixth-meal"></td>
         <tr></tr>
-          <td class="ingredients" id="sixth-ingredients"></td>
+          <td class="ingredientsText" id="sixth-ingredients"></td>
         <tr></tr>
-            <td class="mealDisplay" 
+            <td class="mealText" 
             id="seventh-meal"></td>
         <tr></tr>
-            <td class="ingredients" id="seventh-ingredients"></td>
+            <td class="ingredientsText" id="seventh-ingredients"></td>
     </table>
 </div>
 
-<!-- <div>
-  <img id="char" src="https://drive.google.com/thumbnail?id=1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV">
-</div> -->
-
-<footer id="newMeal">
-    <input id="mealInput" placeholder="Add a new meal"/>
-    <button id="add-btn">Add</button>
-</footer>
+</div>
 
 	<script src="index.js"></script>
   </body>
