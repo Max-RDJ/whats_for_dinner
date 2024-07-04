@@ -145,5 +145,6 @@ function openNav() {
 /* TODO:
 - Add number buttons to replace dropdown
 - Add animation to appearing meals
-- Make navbar 100% height of 
+- Make sidebar 100% height of everything below header and position below header
+- Dim rest of page when sidebar active
 */
