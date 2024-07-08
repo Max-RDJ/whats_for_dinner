@@ -1,0 +1,6 @@
+TODO:
+- Add a plus button on Meal Manager that reveals a section that expands into meal and ingredients input + add btn
+- Add fade in animations to most things
+- Make sidebar 100% height of everything below header and position below header
+- Dim rest of page when sidebar active
+- Display ingredients on Meal Manager

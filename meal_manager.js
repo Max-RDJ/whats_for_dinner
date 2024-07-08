@@ -1,5 +1,6 @@
 // Create array of meals with subarrays of ingredients
-const charImage = '<img id="char" src="https://drive.google.com/thumbnail?id=1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">'
+const charImage = '<img id="char" src="https://drive.google.com/file/d/1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">';
+const addIcon = '<img id="addIcon" src="https://drive.google.com/file/d/1MhVSslQP13lEZEbCfZOwHvMId28UsHes" width="100px">';
 const meals =  [
     {
     mealName: "Thai Green Curry",
@@ -48,13 +49,15 @@ function paintUI() {
     let new_inner_html = "";
     for (let i = 0; i < meals.length; i++) {
         const meal = meals[i].mealName;
+        const ingredients = meals[i].ingredients.join(", ");
         new_inner_html +=
         `
         <div class="mealItem">
-        <p>${meal}</p>
+        <p id="meal-item-name">${meal}<br><br>${ingredients}</p>
         <div class="actionsContainer">
         <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
         <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
+        
         </div>
         </div>
         `
