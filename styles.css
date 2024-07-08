@@ -4,7 +4,7 @@
 }
 
 html {
-    margin: 20px 30px 30px 30px;
+    padding: 20px 30px 30px 30px;
 }
 
 * {
@@ -171,6 +171,48 @@ td {
     transition: margin-left .5s;
     padding: 20px;
   }
+
+
+/* Meal Manager */
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.mealItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.551);
+}
+
+.mealItem p {
+    flex: 1;
+    background: rgba(0, 0, 0, 0);
+}
+
+.actionsContainer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.actionsContainer button {
+    transition-duration: 200ms;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.actionsContainer button:hover {
+    opacity: 0.7;
+}
+
+
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

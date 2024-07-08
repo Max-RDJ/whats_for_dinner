@@ -47,7 +47,7 @@ const meals =  [
 function paintUI() {
     let new_inner_html = "";
     for (let i = 0; i < meals.length; i++) {
-        const meal = meals[i].mealname;
+        const meal = meals[i].mealName;
         new_inner_html +=
         `
         <div class="mealItem">
@@ -84,19 +84,16 @@ document.getElementById("add-btn").addEventListener("click", addMeal);
 
 // Delete a meal idea
 function deleteMeal(index) {
-    let newMeals = meals.filter((current_value, current_index) => {
-        return current_index !== index;
-    })
-    meals = newMeals;
-    paintUI()
+    meals.splice(index, 1);
+    paintUI();
 }
 
 
 // Edit a meal idea
 function editMeal(index) {
     let currentMeal = meals[index];
-    mealInput.value = currentMeal;
-    deleteMeal(index)
+    mealInput.value = currentMeal.mealName;
+    deleteMeal(index);
 }
 
 // Step 5: Persist all info
