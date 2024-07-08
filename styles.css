@@ -24,6 +24,12 @@ header {
 h1 {
     margin: auto;
     color: var(--accent-color);
+    letter-spacing: 0.15rem;
+}
+
+legend {
+    font-weight: bold;
+    letter-spacing: 0.1rem;
 }
  
 #inputSection {
@@ -31,6 +37,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 table {
@@ -84,22 +91,31 @@ legend {
     background-color: var(--accent-color);
 }
 
+#meals-table {
+    position: relative;
+   
+    margin-bottom: -30px;
+}
+
+
 td {
     vertical-align: top;
 }
 
 .ingredientsText {
     padding-bottom: 30px;
+    opacity: 0;
 }
 
 .mealText {
     color: orange;
     font-weight: 600;
     padding-bottom: 8px;
+    opacity: 0;
 }
 
-table {
-    /* border: 1px solid red; */
+#char {
+    margin-left: 10px;
 }
 
 /* The sidebar menu */

@@ -40,6 +40,7 @@ const meals =  [
 ]
 
 // Initialise
+    let mainContainer = document.querySelector("main");
     let mealInput = document.getElementById("mealInput");
     let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 
@@ -58,7 +59,7 @@ function paintUI() {
         </div>
         `
     }
-    // mainContainer.innerHTML = new_inner_html;
+    mainContainer.innerHTML = new_inner_html;
     saveData();
 }
 

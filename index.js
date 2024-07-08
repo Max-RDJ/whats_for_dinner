@@ -36,6 +36,24 @@ const meals =  [
         "noodles",
         "teryaki sauce"
     ]
+    },
+    {
+    mealName: "Test",
+    ingredients: [
+        "test"
+    ]
+    },
+    {
+    mealName: "Test2",
+    ingredients: [
+    "test2"
+    ]
+    },
+    {
+    mealName: "Test3",
+    ingredients: [
+    "test3"
+    ]
     }
 ]
 
@@ -71,6 +89,7 @@ document.querySelectorAll('#numberButtons button').forEach(button => {
     button.addEventListener('click', () => {
         const mealsNumber = parseInt(button.textContent);
         generateMeals(mealsNumber);
+        fadeInMeals();
     });
 });
 
@@ -101,6 +120,19 @@ function getRandomMeal(availableMeals) {
     return availableMeals.splice(randomMeal, 1)[0];
 }
 
+function capitaliseFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+function formatIngredients(ingredients) {
+    return ingredients.map((ingredient, index) => {
+        if (index === 0) {
+            return capitaliseFirstLetter(ingredient);
+        }
+        return ingredient.toLowerCase();
+    }).join(", ");
+}
+
 function generateMeals(mealsNumber) {
     let availableMeals = [...meals];
 
@@ -120,7 +152,7 @@ function generateMeals(mealsNumber) {
         }
         let selectedMeal = getRandomMeal(availableMeals);
         dailyMeals[i].innerHTML = selectedMeal.mealName;
-        mealIngredients[i].innerHTML = selectedMeal.ingredients.join(", ").toLowerCase();
+        mealIngredients[i].innerHTML = formatIngredients(selectedMeal.ingredients);
         // Need to insert non-breaking spaces into ingredient names
     }
     }
@@ -141,6 +173,29 @@ function openNav() {
     document.getElementById("main").style.marginLeft = "0";
   }
 
+
+
+function fadeIn(element) {
+    let opacity = 0;
+    element.style.opacity = opacity;
+    const intervalID = setInterval(() => {
+        if (opacity < 1) {
+            opacity += 0.1;
+            element.style.opacity = opacity;
+        } else {
+            clearInterval(intervalID);
+        }
+    }, 50);
+}
+
+function fadeInMeals() {
+    dailyMeals.forEach(mealElement => {
+        fadeIn(mealElement);
+    });
+    mealIngredients.forEach(ingrElement => {
+        fadeIn(ingrElement);
+    });
+}
 
 /* TODO:
 - Add number buttons to replace dropdown
