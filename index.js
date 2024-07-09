@@ -1,5 +1,6 @@
 // Create array of meals with subarrays of ingredients
 const charImage = '<img id="char" src="https://drive.google.com/thumbnail?id=1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">'
+
 const meals =  [
     {
     mealName: "Thai Green Curry",
@@ -60,28 +61,6 @@ const meals =  [
 // Initialise
     let mealInput = document.getElementById("mealInput");
     let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
-
-// function paintUI() {
-//     let new_inner_html = "";
-//     for (let i = 0; i < meals.length; i++) {
-//         const meal = meals[i].mealname;
-//         new_inner_html +=
-//         `
-//         <div class="mealItem">
-//         <p>${meal}</p>
-//         <div class="actionsContainer">
-//         <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
-//         <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
-//         </div>
-//         </div>
-//         `
-//     }
-//     // mainContainer.innerHTML = new_inner_html;
-//     saveData();
-// }
-
-// paintUI();
-
 
 
 // Event listeners for buttons
@@ -196,4 +175,3 @@ function fadeInMeals() {
         fadeIn(ingrElement);
     });
 }
-

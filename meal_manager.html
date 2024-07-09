@@ -41,10 +41,7 @@
 </div>
 
 <div id="inputContainer">
-  <div id="close-input">
-    <div id="close-line1"></div>
-    <div id="close-line2"></div>
-  </div>
+  <a href="javascript:void(0)" class="closebtn" id="cross-btn" onclick="closeInputPanel()">&times;</a>
   <div class="inputBtns">
     <input id="mealInput" placeholder="Add a new meal"/>
     <input id="ingredientsInput" placeholder="Add ingredients"/>
@@ -52,41 +49,7 @@
   <button id="add-btn">Add</button>
 </div>
 
-<div id="table">
-  <table id="meals-table">
-      <tr></tr>
-        <td class="mealText" id="first-meal"></td>
-      <tr></tr>
-         <td class="ingredientsText" id="first-ingredients"></td>
-      <tr></tr>
-        <td class="mealText" id="second-meal"></td>
-      <tr></tr>
-        <td class="ingredientsText" id="second-ingredients"></td>
-      <tr></tr>
-        <td class="mealText" id="third-meal"></td>
-      <tr></tr>
-        <td class="ingredientsText" id="third-ingredients"></td>
-      <tr></tr>
-        <td class="mealText" id="fourth-meal"></td>
-      <tr></tr>
-        <td class="ingredientsText" id="fourth-ingredients"></td>
-      <tr></tr>
-        <td class="mealText" id="fifth-meal"></td>
-      <tr></tr>
-        <td class="ingredientsText" id="fifth-ingredients"></td>
-      <tr></tr>
-        <td class="mealText" id="sixth-meal"></td>
-      <tr></tr>
-        <td class="ingredientsText" id="sixth-ingredients"></td>
-      <tr></tr>
-          <td class="mealText" 
-          id="seventh-meal"></td>
-      <tr></tr>
-          <td class="ingredientsText" id="seventh-ingredients"></td>
-  </table>
-</div>
-
-<div id="add-icon">
+<div id="add-icon" onclick="openInputPanel()">
   <div id="orange-circle">
     <div id="vertical-strip"></div>
     <div id="horizontal-strip"></div>

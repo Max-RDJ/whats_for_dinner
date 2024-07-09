@@ -29,19 +29,38 @@ const meals =  [
     ]
     },
     {
-    mealName: "Stir fry",
+    mealName: "Stir Fry",
     ingredients: [
-        "Fake chicken",
-        "Bell pepper",
-        "Noodles",
-        "Teryaki sauce"
+        "fake chicken",
+        "bell pepper",
+        "noodles",
+        "teryaki sauce"
     ]
-    }
+    },
+    {
+        mealName: "Test",
+        ingredients: [
+            "test"
+        ]
+        },
+        {
+        mealName: "Test2",
+        ingredients: [
+        "test2"
+        ]
+        },
+        {
+        mealName: "Test3",
+        ingredients: [
+        "test3"
+        ]
+        }
 ]
 
 // Initialise
     let mainContainer = document.querySelector("main");
     let mealInput = document.getElementById("mealInput");
+    let ingredientsInput = document.getElementById("ingredientsInput");
     let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 
 function paintUI() {
@@ -72,24 +91,23 @@ paintUI();
 function addMeal() {
     let currentMealName = mealInput.value;
     if (!currentMealName) {return};
+    let newMealIngredients = ingredientsInput.value.split(',').map(ingredient => ingredient.trim());
     let newMeal = {
         mealName: currentMealName,
-        ingredients: []
-    }
+        ingredients: newMealIngredients
+    };
     meals.push(newMeal);
     mealInput.value = "";
+    ingredientsInput.value = "";
     paintUI();
 }
-
 document.getElementById("add-btn").addEventListener("click", addMeal);
-
 
 // Delete a meal idea
 function deleteMeal(index) {
     meals.splice(index, 1);
     paintUI();
 }
-
 
 // Edit a meal idea
 function editMeal(index) {
@@ -99,10 +117,20 @@ function editMeal(index) {
     deleteMeal(index);
 }
 
-// Step 5: Persist all info
+// Persist new meals across reloads
 function saveData() {
-    localStorage.setItem("meals", JSON.stringify({meals}));
+    localStorage.setItem("meals", JSON.stringify(meals));
 }
+
+function loadData() {
+    let storedData = localStorage.getItem("meals");
+    if (storedData) {
+        meals = JSON.parse(storedData);
+        paintUI();
+    }
+}
+
+
 
 
 const mealsNumber = document.getElementById("meals-number");
@@ -127,17 +155,19 @@ const mealIngredients = [
     document.getElementById("seventh-ingredients")
 ];
 
+// Open input panel for user to enter new meals
 const addIcon = document.getElementById("add-icon");
 const inputContainer = document.getElementById("inputContainer");
-
-function revealInputContainer() {
+function openInputPanel() {
     addIcon.style.display = "none";
     inputContainer.style.display = "grid";
 }
+addIcon.addEventListener("click", openInputPanel)
 
-addIcon.addEventListener("click", revealInputContainer)
-
-
+function closeInputPanel() {
+    addIcon.style.display = "block";
+    inputContainer.style.display = "none";
+}
 
 
 
@@ -152,3 +182,5 @@ function openNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
+
+  loadData();
