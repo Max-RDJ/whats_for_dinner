@@ -1,6 +1,6 @@
 :root {
     --main-color: #03060a;
-    --accent-color: rgba(254, 176, 32, 0.874);
+    --accent-color: rgb(254, 176, 32);
 }
 
 html {
@@ -288,6 +288,7 @@ main {
     position: fixed;
     bottom: 50px;
     right: 50px;
+    background-color: #03060a00;
 }
 
 #add-icon:hover {

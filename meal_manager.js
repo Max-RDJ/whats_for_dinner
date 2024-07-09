@@ -1,6 +1,6 @@
 // Create array of meals with subarrays of ingredients
 const charImage = '<img id="char" src="https://drive.google.com/thumbnail?id=1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">';
-const meals =  [
+let meals =  [
     {
     mealName: "Thai Green Curry",
     ingredients: [
@@ -63,11 +63,14 @@ const meals =  [
     let ingredientsInput = document.getElementById("ingredientsInput");
     let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 
+// Load previously saved meals
+loadData();
+
 function paintUI() {
     let new_inner_html = "";
     for (let i = 0; i < meals.length; i++) {
-        const meal = meals[i].mealName;
-        const ingredients = meals[i].ingredients.join(", ");
+        let meal = meals[i].mealName;
+        let ingredients = meals[i].ingredients.join(", ");
         new_inner_html +=
         `
         <div class="mealItem">
@@ -120,22 +123,28 @@ function editMeal(index) {
 // Persist new meals across reloads
 function saveData() {
     localStorage.setItem("meals", JSON.stringify(meals));
+    console.log("Data saved:", meals);
 }
 
 function loadData() {
     let storedData = localStorage.getItem("meals");
     if (storedData) {
+        console.log("Found data")
         meals = JSON.parse(storedData);
+        console.log("Parsed meals data:", meals)
         paintUI();
+    }
+    else {
+        console.log("No data found in localStorage, using default meals.");
     }
 }
 
 
 
 
-const mealsNumber = document.getElementById("meals-number");
+let mealsNumber = document.getElementById("meals-number");
 
-const dailyMeals = [
+let dailyMeals = [
     document.getElementById("first-meal"),
     document.getElementById("second-meal"),
     document.getElementById("third-meal"),
@@ -145,7 +154,7 @@ const dailyMeals = [
     document.getElementById("seventh-meal")
 ];
 
-const mealIngredients = [
+let mealIngredients = [
     document.getElementById("first-ingredients"),
     document.getElementById("second-ingredients"),
     document.getElementById("third-ingredients"),
@@ -183,4 +192,3 @@ function openNav() {
     document.getElementById("main").style.marginLeft = "0";
   }
 
-  loadData();

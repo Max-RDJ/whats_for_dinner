@@ -3,4 +3,5 @@ TODO:
 - Make sidebar 100% height of everything below header and position below header
 - Dim rest of page when sidebar active
 - Display ingredients on Meal Manager
-- Initial capital on first ingredient only 
+- Initial capital on first ingredient only
+- Add meal close button needs to stay top right
