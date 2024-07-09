@@ -264,14 +264,43 @@ main {
     background-color: rgba(0, 0, 0, 0);
 }
 
-#addIcon {
+#add-icon {
     position: sticky;
     float: right;
-    top: 40px;
 }
 
-#addIcon:hover {
+#add-icon:hover {
     cursor: pointer;
+}
+
+#orange-circle {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    background-color: var(--accent-color);
+    z-index: 0;
+}
+
+#vertical-strip {
+    position: absolute;
+    height: 40px;
+    width: 5px;
+    margin-left: 22.5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: var(--main-color);
+
+}
+
+#horizontal-strip {
+    position: absolute;
+    height: 5px;
+    width: 40px;
+    margin-left: 5px;
+    margin-top: 22.5px;
+    border-radius: 5px;
+    background-color: var(--main-color);
 }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */

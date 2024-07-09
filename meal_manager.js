@@ -1,5 +1,5 @@
 // Create array of meals with subarrays of ingredients
-const charImage = '<img id="char" src="https://drive.google.com/file/d/1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">';
+const charImage = '<img id="char" src="https://drive.google.com/thumbnail?id=1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">';
 const addIcon = '<img id="addIcon" src="https://drive.google.com/file/d/1MhVSslQP13lEZEbCfZOwHvMId28UsHes" width="100px">';
 const meals =  [
     {
