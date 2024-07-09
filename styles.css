@@ -42,6 +42,8 @@ legend {
 
 table {
     margin: auto;
+    z-index: -1;
+    /* Prevents table lines interfering with other elements on page */
 }
 
 #meals-number {
@@ -217,18 +219,23 @@ main {
 }
 
 #inputContainer {
+    position: fixed;
+    bottom: 50px;
     display: grid;
+    display: none;
     justify-content: center;
-    padding: 30px;
+    
 }
 
 .inputBtns {
+    position: relative;
     display: grid;
     margin: 10px;
     padding: 10px;
 }
 
 .inputBtns > input {
+    position: relative;
     width: 50vw;
     max-height: 5px;
     padding: 20px;
@@ -238,6 +245,7 @@ main {
 }
 
 #add-btn {
+    position: relative;
     margin: 0 auto;
     height: 40px;
     width: 50vw;
@@ -265,12 +273,17 @@ main {
 }
 
 #add-icon {
-    position: sticky;
-    float: right;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
 }
 
 #add-icon:hover {
     cursor: pointer;
+}
+
+#add-icon:active {
+    scale: 1.1;
 }
 
 #orange-circle {
@@ -279,14 +292,14 @@ main {
     width: 50px;
     border-radius: 50px;
     background-color: var(--accent-color);
-    z-index: 0;
+    box-shadow: rgba(89, 89, 89, 0.071) 3px 3px 8px, rgba(89, 89, 89, 0.071) 3px 3px 8px;
 }
 
 #vertical-strip {
     position: absolute;
     height: 40px;
-    width: 5px;
-    margin-left: 22.5px;
+    width: 7px;
+    margin-left: 21.5px;
     margin-top: 5px;
     border-radius: 5px;
     background-color: var(--main-color);
@@ -295,10 +308,10 @@ main {
 
 #horizontal-strip {
     position: absolute;
-    height: 5px;
+    height: 7px;
     width: 40px;
     margin-left: 5px;
-    margin-top: 22.5px;
+    margin-top: 21.5px;
     border-radius: 5px;
     background-color: var(--main-color);
 }

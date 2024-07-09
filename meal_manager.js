@@ -1,6 +1,5 @@
 // Create array of meals with subarrays of ingredients
 const charImage = '<img id="char" src="https://drive.google.com/thumbnail?id=1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">';
-const addIcon = '<img id="addIcon" src="https://drive.google.com/file/d/1MhVSslQP13lEZEbCfZOwHvMId28UsHes" width="100px">';
 const meals =  [
     {
     mealName: "Thai Green Curry",
@@ -126,6 +125,19 @@ const mealIngredients = [
     document.getElementById("sixth-ingredients"),
     document.getElementById("seventh-ingredients")
 ];
+
+const addIcon = document.getElementById("add-icon");
+const inputContainer = document.getElementById("inputContainer");
+
+function revealInputContainer() {
+    addIcon.style.display = "none";
+    inputContainer.style.display = "grid";
+}
+
+addIcon.addEventListener("click", revealInputContainer)
+
+
+
 
 
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
