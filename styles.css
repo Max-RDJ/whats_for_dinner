@@ -221,6 +221,7 @@ main {
 #inputContainer {
     position: fixed;
     bottom: 50px;
+    width: 100vw;
     display: grid;
     display: none;
     justify-content: center;
@@ -270,6 +271,37 @@ main {
 
 .fa-solid {
     background-color: rgba(0, 0, 0, 0);
+}
+
+
+#close-input {
+    position: relative;
+    z-index: 1;
+}
+
+#close-input {
+    cursor: pointer;
+}
+
+#close-line1 {
+    position: absolute;
+    height: 30px;
+    width: 8px;
+    border-radius: 5px;
+    background-color: #4b4b4b;
+    transform: rotate(45deg);
+    right: -5px;
+}
+
+#close-line2 {
+    position: absolute;
+    height: 8px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: #4b4b4b;
+    transform: rotate(45deg);
+    right: -15px;
+    margin-top: 10px;
 }
 
 #add-icon {

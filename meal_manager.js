@@ -95,6 +95,7 @@ function deleteMeal(index) {
 function editMeal(index) {
     let currentMeal = meals[index];
     mealInput.value = currentMeal.mealName;
+    inputContainer.style.display = "grid";
     deleteMeal(index);
 }
 
