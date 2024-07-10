@@ -123,7 +123,7 @@ function generateMeals(mealsNumber) {
         ingrElement.innerHTML = '';
     });
 
-    // Iterate through number of meals selected from dropdown
+    // Iterate through number of meals selected
     for (i = 0; i < mealsNumber; i++){
     if (i < dailyMeals.length) {
         if (availableMeals.length === 0) {
@@ -132,13 +132,11 @@ function generateMeals(mealsNumber) {
         let selectedMeal = getRandomMeal(availableMeals);
         dailyMeals[i].innerHTML = selectedMeal.mealName;
         mealIngredients[i].innerHTML = formatIngredients(selectedMeal.ingredients);
-        // Need to insert non-breaking spaces into ingredient names
+        console.log(dailyMeals[i].innerHTML);
+        // Need to insert non-breaking spaces into ingredient names and automatically add to new meals
     }
     }
 }
-
-// const genBtn = document.getElementById("generate-btn").addEventListener("click", generateMeals);
-
 
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
 function openNav() {

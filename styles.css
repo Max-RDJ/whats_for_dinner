@@ -13,7 +13,6 @@ html {
     color: #b2b3b5;
 }
 
-
 header {
     display: flex;
     margin-bottom: 50px;
@@ -25,11 +24,12 @@ h1 {
     margin: auto;
     color: var(--accent-color);
     letter-spacing: 0.15rem;
+    text-align: center;
 }
 
 legend {
-    font-weight: bold;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.15rem;
+    text-align: center;
 }
  
 #inputSection {
@@ -95,8 +95,7 @@ legend {
 }
 
 #meals-table {
-    position: relative;
-   
+    /* position: relative; */
     margin-bottom: -30px;
 }
 
@@ -224,8 +223,7 @@ main {
     width: 100vw;
     display: grid;
     display: none;
-    justify-content: center;
-    
+    justify-content: center; 
 }
 
 .inputBtns {
