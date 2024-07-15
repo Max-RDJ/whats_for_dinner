@@ -41,12 +41,14 @@
 </div>
 
 <div id="inputContainer">
-  <a href="javascript:void(0)" class="closebtn" id="cross-btn" onclick="closeInputPanel()">&times;</a>
-  <div class="inputBtns">
+  <div class="textInput">
     <input id="mealInput" placeholder="Add a new meal"/>
     <input id="ingredientsInput" placeholder="Add ingredients"/>
   </div>
-  <button id="add-btn">Add</button>
+  <div id="new-meal-btns">
+    <button class="add-meal-btn" id="add-btn">Add</button>
+    <button class="add-meal-btn" id="cancel-btn" onclick="closeInputPanel()">Cancel</button>
+  </div>
 </div>
 
 <div id="add-icon" onclick="openInputPanel()">
