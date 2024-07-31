@@ -72,6 +72,7 @@ function paintUI() {
         let meal = meals[i].mealName;
         let ingredients = meals[i].ingredients.join(", ");
         new_inner_html +=
+        // Change <p> here to <input> so that meal name and ingredients can be edited in situ?
         `
         <div class="mealItem">
         <p id="meal-item-name">${meal}<br><br>${ingredients}</p>
@@ -103,6 +104,7 @@ function addMeal() {
     mealInput.value = "";
     ingredientsInput.value = "";
     paintUI();
+    closeInputPanel();
 }
 document.getElementById("add-btn").addEventListener("click", addMeal);
 
