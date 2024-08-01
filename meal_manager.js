@@ -223,14 +223,20 @@ function closeInputPanel() {
 
 
 
-/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+const mealManagerBody = document.querySelector("main");
+const mealManagerHeader = document.querySelector("header");
+const sidebar = document.getElementById("mySidebar");
+
 function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    // document.getElementById("main").style.paddingLeft = "250px";
+    sidebar.style.width = "250px";
+    mealManagerBody.style.opacity = "0.3";
+    mealManagerHeader.style.opacity = "0.3";
   }
   
-  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+
   function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+    sidebar.style.width = "0";
+    mealManagerBody.style.marginLeft = "0";
+    mealManagerBody.style.opacity = "1";
+    mealManagerHeader.style.opacity = "1";
   }
