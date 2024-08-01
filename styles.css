@@ -170,7 +170,7 @@ td {
     margin-left: 50px;
   }
   
-  .openbtn {
+  #openbtn {
     display: flex;
     font-size: 40px;
     cursor: pointer;
@@ -180,7 +180,6 @@ td {
     justify-content: right;
   }
   
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
   #main {
     transition: margin-left .5s;
     padding: 20px;
@@ -191,19 +190,21 @@ td {
 
 main {
     display: flex;
+    display: none;
     flex-direction: column;
     gap: 14px;
 }
 
 .mealItem {
     display: flex;
+    /* display: none; */
     align-items: center;
-    margin-inline: 50px;
+    margin-inline: 100px;
     gap: 14px;
     padding: 15px 30px 15px 30px;
     border-radius: 14px;
     background: rgba(0, 0, 0, 0.793);
-    opacity: 0;
+    /* opacity: 0; */
 }
 
 .mealItem p {
@@ -377,6 +378,6 @@ main {
 #numberButtons {width: 250px;}
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1600px) {
     .mealItem {margin-inline: 500px; }
     }

@@ -1,6 +1,7 @@
 TODO:
+- Make meal text editable in place on MM
 - Add fade in animations to most things
-- Display ingredients on Meal Manager
-- Initial capital on first ingredient only
 - Add meal close button needs to stay top right
 - Add re-arrange buttons in Meal Manager
+- Collapse meal item text into one column on smaller screens
+- Align h1s to real centre

@@ -158,6 +158,24 @@ function openNav() {
     homepageHeader.style.opacity = "1";
   }
 
+  $(document).ready(function() {
+    if (mySidebar.style.width !== "0")
+    {
+        $('body').click((event) =>
+        {
+            if (event.target.id !== 'mySidebar' && event.target.id !== 'openbtn')
+            {
+                closeNav();
+                console.log("outside")
+            }
+            else
+            {
+                console.log("inside");
+            }
+        });
+    }
+});
+
 
 function fadeIn(element) {
     let opacity = 0;

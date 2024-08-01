@@ -63,6 +63,11 @@ let meals =  [
     let ingredientsInput = document.getElementById("ingredientsInput");
     let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 
+    const mealManagerBody = document.querySelector("body");
+    const mealManagerMain = document.querySelector("main");
+    const mealManagerHeader = document.querySelector("header");
+    const sidebar = document.getElementById("mySidebar");
+
 // Load previously saved meals
 loadData();
 
@@ -83,18 +88,19 @@ function paintUI() {
         // Change <p> here to <input> so that meal name and ingredients can be edited in situ?
         `
         <div class="mealItem">
-        <p id="meal-item-name">${meal}</p>
+        <p id="meal-item-name" contenteditable="true">${meal}</p>
         <p id="meal-item-ingredients">${ingredients}</p>
         <div class="actionsContainer">
         <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
         <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
-        
         </div>
         </div>
-        `
+        `;
     }
     mainContainer.innerHTML = new_inner_html;
     saveData();
+    // mealManagerBody.style.opacity = "1";
+    // mealManagerHeader.style.opacity = "1";
 }
 
 paintUI();
@@ -105,6 +111,7 @@ function fadeIn(element, delay) {
     let opacity = 0;
     element.style.opacity = opacity;
     setTimeout(() => {
+    mealManagerMain.style.display = "flex";
     const intervalID = setInterval(() => {
         if (opacity < 1) {
             opacity += 0.03;
@@ -128,9 +135,6 @@ document.getElementById("body").onload = function fadeInMeals() {
 }
 
 
-
-
-
 // Add new meal idea
 function addMeal() {
     let currentMealName = mealInput.value;
@@ -145,13 +149,16 @@ function addMeal() {
     ingredientsInput.value = "";
     paintUI();
     closeInputPanel();
+    // location.reload();
 }
 document.getElementById("add-btn").addEventListener("click", addMeal);
 
 // Delete a meal idea
 function deleteMeal(index) {
     meals.splice(index, 1);
+    saveData();
     paintUI();
+    // location.reload();
 }
 
 // Edit a meal idea
@@ -207,9 +214,11 @@ let mealIngredients = [
     document.getElementById("seventh-ingredients")
 ];
 
+
 // Open input panel for user to enter new meals
 const addIcon = document.getElementById("add-icon");
 const inputContainer = document.getElementById("inputContainer");
+
 function openInputPanel() {
     addIcon.style.display = "none";
     inputContainer.style.display = "grid";
@@ -222,14 +231,10 @@ function closeInputPanel() {
 }
 
 
-
-const mealManagerBody = document.querySelector("main");
-const mealManagerHeader = document.querySelector("header");
-const sidebar = document.getElementById("mySidebar");
-
+// Open and close sidebar
 function openNav() {
     sidebar.style.width = "250px";
-    mealManagerBody.style.opacity = "0.3";
+    mealManagerMain.style.opacity = "0.3";
     mealManagerHeader.style.opacity = "0.3";
   }
   
@@ -237,6 +242,24 @@ function openNav() {
   function closeNav() {
     sidebar.style.width = "0";
     mealManagerBody.style.marginLeft = "0";
-    mealManagerBody.style.opacity = "1";
+    mealManagerMain.style.opacity = "1";
     mealManagerHeader.style.opacity = "1";
   }
+
+$(document).ready(function() {
+    if (mySidebar.style.width !== "0")
+    {
+        $('body').click((event) =>
+        {
+            if (event.target.id !== 'mySidebar' && event.target.id !== 'openbtn')
+            {
+                closeNav();
+                console.log("outside")
+            }
+            else
+            {
+                console.log("inside");
+            }
+        });
+    }
+});
