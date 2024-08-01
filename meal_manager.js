@@ -66,16 +66,25 @@ let meals =  [
 // Load previously saved meals
 loadData();
 
+
+// Format ingredients text
+function capitaliseFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+// Render saved meals and ingredients to page
 function paintUI() {
     let new_inner_html = "";
     for (let i = 0; i < meals.length; i++) {
         let meal = meals[i].mealName;
-        let ingredients = meals[i].ingredients.join(", ");
+        let ingredients = capitaliseFirstLetter(meals[i].ingredients.join(", "));
+        // let formattedIngredients = capitaliseFirstLetter(ingredients);
         new_inner_html +=
         // Change <p> here to <input> so that meal name and ingredients can be edited in situ?
         `
         <div class="mealItem">
-        <p id="meal-item-name">${meal}<br><br>${ingredients}</p>
+        <p id="meal-item-name">${meal}</p>
+        <p id="meal-item-ingredients">${ingredients}</p>
         <div class="actionsContainer">
         <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
         <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
@@ -89,6 +98,37 @@ function paintUI() {
 }
 
 paintUI();
+
+
+// Fade in elements on page
+function fadeIn(element, delay) {
+    let opacity = 0;
+    element.style.opacity = opacity;
+    setTimeout(() => {
+    const intervalID = setInterval(() => {
+        if (opacity < 1) {
+            opacity += 0.03;
+            element.style.opacity = opacity;
+        } else {
+            clearInterval(intervalID);
+        }
+    }, 20);
+}, delay);
+}
+
+document.getElementById("body").onload = function fadeInMeals() {
+    const mealItems = document.querySelectorAll(".mealItem");
+    if (mealItems.length > 0) {
+        mealItems.forEach((meal_item, index) => { 
+            fadeIn(meal_item, index * 100);            
+        });
+    } else {
+        console.error("No meal items found.");
+    }
+}
+
+
+
 
 
 // Add new meal idea
@@ -140,6 +180,7 @@ function loadData() {
         console.log("No data found in localStorage, using default meals.");
     }
 }
+
 
 
 

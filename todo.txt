@@ -5,3 +5,4 @@ TODO:
 - Display ingredients on Meal Manager
 - Initial capital on first ingredient only
 - Add meal close button needs to stay top right
+- Add re-arrange buttons in Meal Manager
