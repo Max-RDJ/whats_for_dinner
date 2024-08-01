@@ -139,17 +139,23 @@ function generateMeals(mealsNumber) {
 }
 
 
+// Open and close sidebar
+const homepageBody = document.querySelector(".container");
+const homepageHeader = document.querySelector("header");
+const sidebar = document.getElementById("mySidebar");
+
 function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    // document.getElementById("main").style.paddingLeft = "250px";
-    // document.getElementById("body").style.opacity = "0.5";
+    sidebar.style.width = "250px";
+    homepageBody.style.opacity = "0.3";
+    homepageHeader.style.opacity = "0.3";
   }
   
 
   function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
+    sidebar.style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
-    // document.getElementById("body").style.opacity = "1";
+    homepageBody.style.opacity = "1";
+    homepageHeader.style.opacity = "1";
   }
 
 
