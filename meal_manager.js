@@ -189,9 +189,6 @@ function loadData() {
 }
 
 
-
-
-
 let mealsNumber = document.getElementById("meals-number");
 
 let dailyMeals = [
@@ -219,16 +216,16 @@ let mealIngredients = [
 const addIcon = document.getElementById("add-icon");
 const inputContainer = document.getElementById("inputContainer");
 
-function openInputPanel() {
-    addIcon.style.display = "none";
-    inputContainer.style.display = "grid";
-}
-addIcon.addEventListener("click", openInputPanel)
+// function openInputPanel() {
+//     // addIcon.style.display = "none";
+//     inputContainer.style.display = "grid";
+// }
+// addIcon.addEventListener("click", openInputPanel)
 
-function closeInputPanel() {
-    addIcon.style.display = "block";
-    inputContainer.style.display = "none";
-}
+// function closeInputPanel() {
+//     addIcon.style.display = "block";
+//     inputContainer.style.display = "none";
+// }
 
 
 // Open and close sidebar
@@ -237,7 +234,6 @@ function openNav() {
     mealManagerMain.style.opacity = "0.3";
     mealManagerHeader.style.opacity = "0.3";
   }
-  
 
   function closeNav() {
     sidebar.style.width = "0";
@@ -245,6 +241,27 @@ function openNav() {
     mealManagerMain.style.opacity = "1";
     mealManagerHeader.style.opacity = "1";
   }
+
+let current_rotation = 0;
+const rotator = document.querySelector(".rotate")
+rotator.addEventListener("click", function()
+{
+    if (current_rotation == 0)
+    {
+        current_rotation += 135;
+        rotator.style.transform = 'rotate(' + current_rotation + 'deg)';
+        document.getElementById("orange-circle").style.backgroundColor = "gray";
+    }
+    else
+    {
+        current_rotation -= 135;
+        rotator.style.transform = 'rotate(' + current_rotation + 'deg)';
+        document.getElementById("orange-circle").style.backgroundColor = "orange";
+    }
+    
+});
+
+
 
 $(document).ready(function() {
     
@@ -263,6 +280,10 @@ $(document).ready(function() {
             }
         });
     }
+});
 
-    
+$(document).ready(function() {
+    $("#add-icon").click(function() {
+        $("#inputContainer").slideToggle(500);
+    })
 });

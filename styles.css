@@ -250,6 +250,7 @@ main {
     padding-top: 20px;
     padding-bottom: 30px;
     background-color: var(--menu);
+    /* transition: margin-top .5s; */
 }
 
 .textInput {
@@ -349,6 +350,12 @@ main {
     border-radius: 50px;
     background-color: var(--accent-color);
     box-shadow: rgba(89, 89, 89, 0.071) 3px 3px 8px, rgba(89, 89, 89, 0.071) 3px 3px 8px;
+
+    -webkit-transition: background-color 1000ms linear;
+    -moz-transition: background-color 1000ms linear;
+    -o-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
 }
 
 #vertical-strip {
@@ -371,7 +378,11 @@ main {
     border-radius: 5px;
     background-color: var(--main-color);
 }
-  
+
+.rotate {
+    transition: transform 0.3s ease-in;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
 .sidebar {padding-top: 15px;}
