@@ -20,23 +20,42 @@ html {
 
 body {
     margin: 0;
-    padding: 50px;
+    padding: 20px 50px 50px 50px;
     height: 100%;
 }
 
 header {
     display: flex;
+    position: relative;
+    justify-content: center;
     margin-bottom: 50px;
     border-bottom: 1px solid #b2b3b5;
-    padding-bottom: 25px;
 }
 
 h1 {
-    margin: auto;
+    height: 80px;
+    line-height: 80px;
     color: var(--accent-color);
     letter-spacing: 0.15rem;
     text-align: center;
 }
+
+#navbar {
+    position: absolute;
+    transition: margin-left .5s;
+    height: 100%;
+    right: 15px;
+    margin-right: 15px;
+    padding-top: 30px;
+    box-sizing: border-box;
+  }
+
+#openbtn {
+    font-size: 40px;
+    cursor: pointer;
+    color: #b2b3b5;
+    border: none;
+  }
 
 legend {
     letter-spacing: 0.15rem;
@@ -169,21 +188,6 @@ td {
     font-size: 36px;
     margin-left: 50px;
   }
-  
-  #openbtn {
-    display: flex;
-    font-size: 40px;
-    cursor: pointer;
-    color: #b2b3b5;
-    padding: 10px 15px;
-    border: none;
-    justify-content: right;
-  }
-  
-  #main {
-    transition: margin-left .5s;
-    padding: 20px;
-  }
 
 
 /* Meal Manager */
@@ -241,7 +245,7 @@ main {
     display: grid;
     display: none;
     justify-content: center;
-    border: solid white 1px;
+    border-radius: 15px;
     left: 0;
     padding-top: 20px;
     padding-bottom: 30px;

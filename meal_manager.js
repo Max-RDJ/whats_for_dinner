@@ -247,6 +247,7 @@ function openNav() {
   }
 
 $(document).ready(function() {
+    
     if (mySidebar.style.width !== "0")
     {
         $('body').click((event) =>
@@ -262,4 +263,6 @@ $(document).ready(function() {
             }
         });
     }
+
+    
 });

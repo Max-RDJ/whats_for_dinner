@@ -153,7 +153,7 @@ function openNav() {
 
   function closeNav() {
     sidebar.style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("navbar").style.marginLeft = "0";
     homepageBody.style.opacity = "1";
     homepageHeader.style.opacity = "1";
   }
