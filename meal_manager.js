@@ -85,11 +85,10 @@ function paintUI() {
         let ingredients = capitaliseFirstLetter(meals[i].ingredients.join(", "));
         // let formattedIngredients = capitaliseFirstLetter(ingredients);
         new_inner_html +=
-        // Change <p> here to <input> so that meal name and ingredients can be edited in situ?
         `
         <div class="mealItem">
         <p id="meal-item-name" contenteditable="true">${meal}</p>
-        <p id="meal-item-ingredients">${ingredients}</p>
+        <p id="meal-item-ingredients" contenteditable="true">${ingredients}</p>
         <div class="actionsContainer">
         <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
         <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
@@ -104,6 +103,33 @@ function paintUI() {
 }
 
 paintUI();
+
+// Allow user to save manually after changing meal name or ingredients
+
+// function manualSave(index) {
+//     console.log("Manual save initialised");
+//     let mealItemName = document.getElementById("meal-item-name");
+//     let mealItemIngredients = document.getElementById("meal-item-ingredients");
+
+//     let editedMealName = mealItemName.innerText;
+//     let editedMealIngredients = mealItemIngredients.innerText;
+
+//     let editedMeal = {
+//         mealName: editedMealName,
+//         ingredients: editedMealIngredients.split(",").map(ingredient => ingredient.trim())};
+
+//     console.log(editedMeal);
+
+//     meals.push(editedMeal);
+
+//     mealItemName.innerText = editedMealName;
+//     mealItemIngredients.innerText = editedMealIngredients;
+//     console.log("Added" + JSON.stringify(editedMeal) + "and removed");
+//     saveData();
+//     // paintUI();
+//     deleteMeal(index);
+// }
+
 
 
 // Fade in elements on page
@@ -148,7 +174,6 @@ function addMeal() {
     mealInput.value = "";
     ingredientsInput.value = "";
     paintUI();
-    closeInputPanel();
     // location.reload();
 }
 document.getElementById("add-btn").addEventListener("click", addMeal);
@@ -163,13 +188,15 @@ function deleteMeal(index) {
 
 // Edit a meal idea
 function editMeal(index) {
+    addIconSpin();
     let currentMeal = meals[index];
     mealInput.value = currentMeal.mealName;
+    ingredientsInput.value = currentMeal.ingredients;
     inputContainer.style.display = "grid";
     deleteMeal(index);
 }
 
-// Persist new meals across reloads
+// Persist new meals across visits to page
 function saveData() {
     localStorage.setItem("meals", JSON.stringify(meals));
     console.log("Data saved:", meals);
@@ -229,22 +256,43 @@ const inputContainer = document.getElementById("inputContainer");
 
 
 // Open and close sidebar
-function openNav() {
+
+function freezeClick(e) {
+    if (navOpened === true) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    else {
+      return;
+    }
+  };
+
+let navOpened = false;
+function openNav(e) {
+    navOpened = true;
+    freezeClick(e);
     sidebar.style.width = "250px";
     mealManagerMain.style.opacity = "0.3";
     mealManagerHeader.style.opacity = "0.3";
   }
 
-  function closeNav() {
+  function closeNav(e) {
+    navOpened = false;
+    freezeClick(e);
     sidebar.style.width = "0";
     mealManagerBody.style.marginLeft = "0";
     mealManagerMain.style.opacity = "1";
     mealManagerHeader.style.opacity = "1";
   }
 
+
+
+
+let rotator = document.querySelector(".rotate");
+rotator.addEventListener("click", addIconSpin);
 let current_rotation = 0;
-const rotator = document.querySelector(".rotate")
-rotator.addEventListener("click", function()
+
+function addIconSpin()
 {
     if (current_rotation == 0)
     {
@@ -258,25 +306,24 @@ rotator.addEventListener("click", function()
         rotator.style.transform = 'rotate(' + current_rotation + 'deg)';
         document.getElementById("orange-circle").style.backgroundColor = "orange";
     }
-    
-});
+};
+
 
 
 
 $(document).ready(function() {
     
-    if (mySidebar.style.width !== "0")
+    if ($("#mySidebar").style.width !== "0")
     {
-        $('body').click((event) =>
+        $('body').on("click", function(event)
         {
             if (event.target.id !== 'mySidebar' && event.target.id !== 'openbtn')
             {
-                closeNav();
-                console.log("outside")
+                closeNav(event);
             }
             else
             {
-                console.log("inside");
+                return;
             }
         });
     }

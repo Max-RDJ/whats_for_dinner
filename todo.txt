@@ -1,6 +1,8 @@
 TODO:
 - Make meal text editable in place on MM
+    - Manual save needs to work by index; first meal data is being saved in every case
 - Add fade in animations to most things
 - Add meal close button needs to stay top right
 - Add re-arrange buttons in Meal Manager
 - Collapse meal item text into one column on smaller screens
+- Reverse order of meals array so that most recently added or edited is displayed first
