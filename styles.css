@@ -215,6 +215,7 @@ main {
 .mealItem p {
     flex: 1;
     background: rgba(0, 0, 0, 0);
+
 }
 
 #meal-item-name {
@@ -397,8 +398,11 @@ main {
 
 @media screen and (max-width: 500px) {
     h1 {font-size: 20px;}
-    #openbtn {margin-right: -20px;}
-    .mealItem {margin-inline: 20px;}
+    #openbtn {margin-right: -50px;}
+    #openbtn {margin-top: -50px;}
+    .mealItem {margin-inline: 10px;}
+    .mealItem {display: block;}
+    .mealItem button {float: right}
 }
 
 @media screen and (min-width: 1600px) {
