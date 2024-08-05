@@ -3,6 +3,7 @@
     --accent-color: rgb(254, 176, 32);
     --offset: rgb(11, 13, 34);
     --menu: rgba(0, 0, 0, 0.626);
+    --transparent: rgba(0, 0, 0, 0);
 }
 
 * {
@@ -259,7 +260,7 @@ main {
     display: grid;
     margin: 10px;
     padding: 10px;
-    background-color: var(--menu);
+    background-color: var(--transparent);
 }
 
 .textInput > input {
@@ -274,7 +275,7 @@ main {
 }
 
 #new-meal-btns {
-    background-color: var(--menu);
+    background-color: var(--transparent);
     display: flex;
 }
 
@@ -387,12 +388,17 @@ main {
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-.sidebar {padding-top: 15px;}
-.sidebar a {font-size: 18px;}
+    .sidebar a {font-size: 18px;}
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar a {font-size: 18px;}
 }
 
 @media screen and (max-width: 500px) {
-#numberButtons {width: 250px;}
+    h1 {font-size: 20px;}
+    #openbtn {margin-right: -20px;}
+    .mealItem {margin-inline: 20px;}
 }
 
 @media screen and (min-width: 1600px) {
