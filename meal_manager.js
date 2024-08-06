@@ -257,28 +257,16 @@ const inputContainer = document.getElementById("inputContainer");
 
 // Open and close sidebar
 
-function freezeClick(e) {
-    if (navOpened === true) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
-    else {
-      return;
-    }
-  };
-
 let navOpened = false;
-function openNav(e) {
+function openNav() {
     navOpened = true;
-    freezeClick(e);
     sidebar.style.width = "250px";
     mealManagerMain.style.opacity = "0.3";
     mealManagerHeader.style.opacity = "0.3";
   }
 
-  function closeNav(e) {
+  function closeNav() {
     navOpened = false;
-    freezeClick(e);
     sidebar.style.width = "0";
     mealManagerBody.style.marginLeft = "0";
     mealManagerMain.style.opacity = "1";
@@ -313,7 +301,7 @@ function addIconSpin()
 
 $(document).ready(function() {
     
-    if ($("#mySidebar").style.width !== "0")
+    if (mySidebar.style.width !== "0")
     {
         $('body').on("click", function(event)
         {
