@@ -160,6 +160,22 @@ document.getElementById("body").onload = function fadeInMeals() {
     }
 }
 
+// Open and close sidebar
+let navOpened = false;
+function openNav() {
+    navOpened = true;
+    sidebar.style.width = "250px";
+    mealManagerMain.style.opacity = "0.3";
+    mealManagerHeader.style.opacity = "0.3";
+  };
+
+  function closeNav() {
+    navOpened = false;
+    sidebar.style.width = "0";
+    mealManagerBody.style.marginLeft = "0";
+    mealManagerMain.style.opacity = "1";
+    mealManagerHeader.style.opacity = "1";
+  };
 
 // Add new meal idea
 function addMeal() {
@@ -170,7 +186,7 @@ function addMeal() {
         mealName: currentMealName,
         ingredients: newMealIngredients
     };
-    meals.push(newMeal);
+    meals.unshift(newMeal);
     mealInput.value = "";
     ingredientsInput.value = "";
     paintUI();
@@ -180,21 +196,25 @@ document.getElementById("add-btn").addEventListener("click", addMeal);
 
 // Delete a meal idea
 function deleteMeal(index) {
+    if (navOpened == false) {
     meals.splice(index, 1);
     saveData();
     paintUI();
     // location.reload();
-}
+    }
+};
 
 // Edit a meal idea
 function editMeal(index) {
+    if (navOpened == false) {
     addIconSpin();
     let currentMeal = meals[index];
     mealInput.value = currentMeal.mealName;
     ingredientsInput.value = currentMeal.ingredients;
     inputContainer.style.display = "grid";
     deleteMeal(index);
-}
+    }
+};
 
 // Persist new meals across visits to page
 function saveData() {
@@ -255,27 +275,6 @@ const inputContainer = document.getElementById("inputContainer");
 // }
 
 
-// Open and close sidebar
-
-let navOpened = false;
-function openNav() {
-    navOpened = true;
-    sidebar.style.width = "250px";
-    mealManagerMain.style.opacity = "0.3";
-    mealManagerHeader.style.opacity = "0.3";
-  }
-
-  function closeNav() {
-    navOpened = false;
-    sidebar.style.width = "0";
-    mealManagerBody.style.marginLeft = "0";
-    mealManagerMain.style.opacity = "1";
-    mealManagerHeader.style.opacity = "1";
-  }
-
-
-
-
 let rotator = document.querySelector(".rotate");
 rotator.addEventListener("click", addIconSpin);
 let current_rotation = 0;
@@ -297,28 +296,38 @@ function addIconSpin()
 };
 
 
+// let freezeClicker = false;
+
+// document.getElementById("openbtn").addEventListener("click", freezeClick, true);
+
+// function freezeClick(e) {
+//   if (freezeClick)
+//     {
+//         if (navOpened) {
+//         e.stopPropagation();
+//         e.preventDefault();
+//         console.log("Clicking disabled")
+//     }
+// }
+// }
 
 
 $(document).ready(function() {
-    
-    if (mySidebar.style.width !== "0")
-    {
+    let mySidebar = document.getElementById("mySidebar"); 
+    if (mySidebar.style.width !== "0px") {
         $('body').on("click", function(event)
         {
             if (event.target.id !== 'mySidebar' && event.target.id !== 'openbtn')
             {
                 closeNav(event);
             }
-            else
-            {
-                return;
-            }
+            else { return; }
         });
     }
 });
 
-$(document).ready(function() {
+$(document).ready(function inputContainerToggle() {
     $("#add-icon").click(function() {
-        $("#inputContainer").slideToggle(500);
+        $("#inputContainer").slideToggle(300);
     })
 });
