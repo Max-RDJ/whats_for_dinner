@@ -86,12 +86,14 @@ function paintUI() {
         // let formattedIngredients = capitaliseFirstLetter(ingredients);
         new_inner_html +=
         `
-        <div class="mealItem" draggable="true" class="draggable">
+        <div class="draggables-container">
+        <div class="mealItem draggable" draggable="true">
         <p id="meal-item-name">${meal}</p>
         <p id="meal-item-ingredients">${ingredients}</p>
         <div class="actionsContainer">
         <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
         <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
+        </div>
         </div>
         </div>
         `;
@@ -219,7 +221,7 @@ function editMeal(index) {
     }
 };
 
-// Persist new meals across visits to page
+// Persist new meals across page visits
 function saveData() {
     localStorage.setItem("meals", JSON.stringify(meals));
     console.log("Data saved:", meals);
@@ -329,21 +331,51 @@ $(document).ready(function() {
     }
 });
 
-// $(document).ready(function() {
-//     if ($("#inputContainer").is(":visible")) {
-//         $('body').on("click", function(event)
-//         {
-//             if (event.target.id !== 'inputContainer' && event.target.id !== 'add-icon')
-//             {
-//                 $("#inputContainer").slideToggle(300);
-//             }
-//             else { return; }
-//         });
-//     }
-// });
-
 $(document).ready(function inputContainerToggle() {
     $("#add-icon").click(function() {
         $("#inputContainer").slideToggle(300);
     })
 });
+
+
+const draggables = document.querySelectorAll(".draggable");
+const containers = document.querySelectorAll(".draggables-container");
+
+draggables.forEach(draggable => {
+    draggable.addEventListener("dragstart", () => {
+        draggable.classList.add("dragging");
+    })
+
+    draggable.addEventListener("dragend", () => {
+        draggable.classList.remove("dragging");
+    })
+})
+
+containers.forEach(container => {
+    container.addEventListener("dragover", e => {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(container, e.clientY);
+        console.log(afterElement);
+        if (afterElement == null) {
+            container.appendChild(draggable);
+        }
+        else {
+            container.insertBefore(draggable,afterElement);
+        }
+    })
+})
+
+function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll(".draggable:not(.dragging)")];
+
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset <  0  && closest.offset) {
+            return {offset: offset, element: child};
+        }
+        else {
+            return closest;
+        }
+    }, {offset: Number.NEGATIVE_INFINITY}).element
+}

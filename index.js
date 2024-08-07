@@ -169,7 +169,7 @@ function generateMeals(mealsNumber) {
 
 
 // Open and close sidebar
-const homepageBody = document.querySelector(".container");
+const homepageBody = document.querySelector(".index-main-content");
 const homepageHeader = document.querySelector("header");
 const sidebar = document.getElementById("mySidebar");
 
