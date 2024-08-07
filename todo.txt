@@ -5,3 +5,5 @@ TODO:
 - Add re-arrange buttons in Meal Manager
 - Collapse meal item text into one column on smaller screens
 - Reverse order of meals array so that most recently added or edited is displayed first
+-Replace numbers on index with something more fun and visually appealing; wheel of fortune?
+- Apply sequential fade in to generated meals on index

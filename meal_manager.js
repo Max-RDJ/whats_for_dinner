@@ -86,9 +86,9 @@ function paintUI() {
         // let formattedIngredients = capitaliseFirstLetter(ingredients);
         new_inner_html +=
         `
-        <div class="mealItem">
-        <p id="meal-item-name" contenteditable="true">${meal}</p>
-        <p id="meal-item-ingredients" contenteditable="true">${ingredients}</p>
+        <div class="mealItem" draggable="true" class="draggable">
+        <p id="meal-item-name">${meal}</p>
+        <p id="meal-item-ingredients">${ingredients}</p>
         <div class="actionsContainer">
         <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
         <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
@@ -156,7 +156,7 @@ document.getElementById("body").onload = function fadeInMeals() {
             fadeIn(meal_item, index * 100);            
         });
     } else {
-        console.error("No meal items found.");
+        console.error("No elements to fade in found.");
     }
 }
 
@@ -167,6 +167,9 @@ function openNav() {
     sidebar.style.width = "250px";
     mealManagerMain.style.opacity = "0.3";
     mealManagerHeader.style.opacity = "0.3";
+    if ($("#inputContainer").is(":visible")) {
+    $("#inputContainer").slideToggle(300);
+    addIconSpin(); }
   };
 
   function closeNav() {
@@ -211,7 +214,7 @@ function editMeal(index) {
     let currentMeal = meals[index];
     mealInput.value = currentMeal.mealName;
     ingredientsInput.value = currentMeal.ingredients;
-    inputContainer.style.display = "grid";
+    $("#inputContainer").slideToggle(300);
     deleteMeal(index);
     }
 };
@@ -285,13 +288,13 @@ function addIconSpin()
     {
         current_rotation += 135;
         rotator.style.transform = 'rotate(' + current_rotation + 'deg)';
-        document.getElementById("orange-circle").style.backgroundColor = "gray";
+        document.getElementById("open-meal-adder").style.backgroundColor = "gray";
     }
     else
     {
         current_rotation -= 135;
         rotator.style.transform = 'rotate(' + current_rotation + 'deg)';
-        document.getElementById("orange-circle").style.backgroundColor = "orange";
+        document.getElementById("open-meal-adder").style.backgroundColor = "var(--accent-color)";
     }
 };
 
@@ -325,6 +328,19 @@ $(document).ready(function() {
         });
     }
 });
+
+// $(document).ready(function() {
+//     if ($("#inputContainer").is(":visible")) {
+//         $('body').on("click", function(event)
+//         {
+//             if (event.target.id !== 'inputContainer' && event.target.id !== 'add-icon')
+//             {
+//                 $("#inputContainer").slideToggle(300);
+//             }
+//             else { return; }
+//         });
+//     }
+// });
 
 $(document).ready(function inputContainerToggle() {
     $("#add-icon").click(function() {

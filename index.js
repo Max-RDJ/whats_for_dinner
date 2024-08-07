@@ -93,6 +93,35 @@ const mealIngredients = [
     document.getElementById("seventh-ingredients")
 ];
 
+
+// Fade in elements on page
+function fadeIn(element, delay) {
+    let opacity = 0;
+    element.style.opacity = opacity;
+    setTimeout(() => {
+    element.style.display = "block";
+    const intervalID = setInterval(() => {
+        if (opacity < 1) {
+            opacity += 0.03;
+            element.style.opacity = opacity;
+        } else {
+            clearInterval(intervalID);
+        }
+    }, 20);
+}, delay);
+}
+
+window.onload = function fadeInNumbers() {
+    const numBtns = document.querySelectorAll(".numBtn");
+    if (numBtns.length > 0) {
+        numBtns.forEach((num_btn, index) => { 
+            fadeIn(num_btn, index * 100);            
+        });
+    } else {
+        console.error("No elements to fade in found.");
+    }
+}
+
 // Select random number associated with meal in meals array
 function getRandomMeal(availableMeals) {
     let randomMeal = Math.floor(Math.random() * availableMeals.length);
