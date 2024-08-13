@@ -1,6 +1,6 @@
 :root {
     --main-color: #0f1724;
-    --accent-color: rgb(117, 198, 252);
+    --accent-color: #75c6fc;
     --offset: rgb(11, 13, 34);
     --menu: rgba(0, 0, 0, 0.778);
     --transparent: rgba(0, 0, 0, 0);
@@ -60,7 +60,17 @@ h1 {
     cursor: pointer;
     color: #b2b3b5;
     border: none;
-  }
+    background-color: #75c6fc00;
+}
+
+#dragHandle {
+    font-size: 15px;
+    cursor: pointer;
+    color: #b2b3b5b7;
+    border: none;
+    background-color: #75c6fc00;
+    margin-left: -10px;
+}
 
 legend {
     letter-spacing: 0.15rem;
@@ -201,13 +211,14 @@ main {
     display: flex;
     display: none;
     flex-direction: column;
-    gap: 14px;
+    /* gap: 14px; */
 }
 
 .mealItem {
     display: flex;
     align-items: center;
     margin-inline: 100px;
+    margin-bottom: 14px;
     gap: 14px;
     padding: 15px 30px 15px 30px;
     border-radius: 14px;
@@ -391,6 +402,14 @@ main {
 
 .draggable.dragging {
     opacity: .5;
+}
+
+.draggables-container {
+    gap: 14px; /* Ensure a 14px gap below each container */
+}
+
+.draggables-container:last-child {
+    margin-bottom: 0; /* Remove margin from the last item to avoid extra spacing */
 }
 
 .rotate {

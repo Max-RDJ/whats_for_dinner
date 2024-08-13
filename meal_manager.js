@@ -12,7 +12,7 @@ let meals =  [
     ]
     },
     {
-    mealName: `Chickpea Coconut Curry ${charImage}`,
+    mealName: `Chickpea Coconut Curry`,
     ingredients: [
         "chickpeas",
         "coconut milk",
@@ -57,7 +57,7 @@ let meals =  [
         }
 ]
 
-// Initialise
+// Initialise stuff
     let mainContainer = document.querySelector("main");
     let mealInput = document.getElementById("mealInput");
     let ingredientsInput = document.getElementById("ingredientsInput");
@@ -88,6 +88,7 @@ function paintUI() {
         `
         <div class="draggables-container">
         <div class="mealItem draggable" draggable="true">
+        <button id="dragHandle">&#9776;</button>
         <p id="meal-item-name">${meal}</p>
         <p id="meal-item-ingredients">${ingredients}</p>
         <div class="actionsContainer">
@@ -100,8 +101,7 @@ function paintUI() {
     }
     mainContainer.innerHTML = new_inner_html;
     saveData();
-    // mealManagerBody.style.opacity = "1";
-    // mealManagerHeader.style.opacity = "1";
+    attachDragAndDropHandlers()
 }
 
 paintUI();
@@ -337,7 +337,7 @@ $(document).ready(function inputContainerToggle() {
     })
 });
 
-
+function attachDragAndDropHandlers() {
 const draggables = document.querySelectorAll(".draggable");
 const containers = document.querySelectorAll(".draggables-container");
 
@@ -354,6 +354,7 @@ draggables.forEach(draggable => {
 containers.forEach(container => {
     container.addEventListener("dragover", e => {
         e.preventDefault();
+        const draggable = document.querySelector('.dragging');
         const afterElement = getDragAfterElement(container, e.clientY);
         console.log(afterElement);
         if (afterElement == null) {
@@ -378,4 +379,5 @@ function getDragAfterElement(container, y) {
             return closest;
         }
     }, {offset: Number.NEGATIVE_INFINITY}).element
+}
 }
