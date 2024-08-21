@@ -113,14 +113,23 @@ function fadeIn(element, delay) {
 
 window.onload = function fadeInNumbers() {
     const numBtns = document.querySelectorAll(".numBtn");
+    const pageTitle = document.getElementById("page-title");
+    const indexH2 = document.getElementById("indexH2");
+
+    fadeIn(pageTitle, 0);
+
+    setTimeout(() => fadeIn(indexH2, 0), 100);
+
+    const numBtnsDelay = 200;
     if (numBtns.length > 0) {
         numBtns.forEach((num_btn, index) => { 
-            fadeIn(num_btn, index * 100);            
+            setTimeout(() => fadeIn(num_btn, 0), numBtnsDelay + index * 100);            
         });
     } else {
         console.error("No elements to fade in found.");
     }
 }
+
 
 // Select random number associated with meal in meals array
 function getRandomMeal(availableMeals) {
