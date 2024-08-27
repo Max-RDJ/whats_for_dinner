@@ -268,18 +268,6 @@ let mealIngredients = [
 const addIcon = document.getElementById("add-icon");
 const inputContainer = document.getElementById("inputContainer");
 
-// function openInputPanel() {
-//     // addIcon.style.display = "none";
-//     inputContainer.style.display = "grid";
-// }
-// addIcon.addEventListener("click", openInputPanel)
-
-// function closeInputPanel() {
-//     addIcon.style.display = "block";
-//     inputContainer.style.display = "none";
-// }
-
-
 let rotator = document.querySelector(".rotate");
 rotator.addEventListener("click", addIconSpin);
 let current_rotation = 0;
@@ -337,6 +325,7 @@ $(document).ready(function inputContainerToggle() {
     })
 });
 
+
 function attachDragAndDropHandlers() {
 const draggables = document.querySelectorAll(".draggable");
 const containers = document.querySelectorAll(".draggables-container");
@@ -381,3 +370,4 @@ function getDragAfterElement(container, y) {
     }, {offset: Number.NEGATIVE_INFINITY}).element
 }
 }
+

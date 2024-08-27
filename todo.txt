@@ -1,4 +1,5 @@
 TODO:
+- Fade in shopping list title once numBtn is pressed
 - Make meal text editable in place on MM
     - Manual save needs to work by index; first meal data is being saved in every case
 - Use something to implement draggability in mealItems
