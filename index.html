@@ -23,7 +23,7 @@
       <a href="meal_manager.html">Manage Meals</a>
       <a href="about.html">About</a>
     </div>
-    </div>
+  </div>
 
   <header>
     <h1>What's for Dinner?</h1>
@@ -35,21 +35,11 @@
 
 <body id="body">
   
-<div class="index-main-content">
+<div id="index-main-content">
     <div id="inputSection">
-      <fieldset id="numberButtons">
-        <legend id="indexH2">Number of meals</legend>
-        <button class=numBtn id="btn-1">1</button>
-        <button class=numBtn id="btn-2">2</button>
-        <button class=numBtn id="btn-3">3</button>
-        <button class=numBtn id="btn-4">4</button>
-        <button class=numBtn id="btn-5">5</button>
-        <button class=numBtn id="btn-6">6</button>
-        <button class=numBtn id="btn-7">7</button>
-      </fieldset> 
+        <button class=numBtn id="gen-btn">+ New Week</button>
     </div>
 
-<div id="table">
     <table id="meals-table">
         <tr></tr>
           <td class="mealText" id="first-meal"></td>
@@ -80,8 +70,10 @@
             id="seventh-meal"></td>
         <tr></tr>
             <td class="ingredientsText" id="seventh-ingredients"></td>
+        <tr>
+          <td id="shoppingList">Shopping List: </td>
+        </tr>
     </table>
-</div>
 
 </div>
 

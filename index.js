@@ -64,13 +64,12 @@ let meals =  [
 
 
 // Event listeners for buttons
-document.querySelectorAll('#numberButtons button').forEach(button => {
-    button.addEventListener('click', () => {
-        const mealsNumber = parseInt(button.textContent);
-        generateMeals(mealsNumber);
-        fadeInMeals();
-    });
-});
+// document.querySelectorAll('#numberButtons button').forEach(button => {
+//     button.addEventListener('click', () => {
+//         const mealsNumber = parseInt(button.textContent);
+//         generateMeals(mealsNumber);
+//     });
+// });
 
 
 const dailyMeals = [
@@ -111,17 +110,6 @@ function fadeIn(element, delay) {
 }, delay);
 }
 
-window.onload = function fadeInNumbers() {
-    const numBtns = document.querySelectorAll(".numBtn");
-    if (numBtns.length > 0) {
-        numBtns.forEach((num_btn, index) => { 
-            fadeIn(num_btn, index * 100);            
-        });
-    } else {
-        console.error("No elements to fade in found.");
-    }
-}
-
 // Select random number associated with meal in meals array
 function getRandomMeal(availableMeals) {
     let randomMeal = Math.floor(Math.random() * availableMeals.length);
@@ -141,7 +129,14 @@ function formatIngredients(ingredients) {
     }).join(", ");
 }
 
-function generateMeals(mealsNumber) {
+// function fadeInIngredients() {
+//     mealIngredients.foreach(ingrElement)
+//     let allIngredientsString = mealIngredients[i];
+//     console.log(allIngredientsString);
+//     // document.getElementById("allIngredients").innerHTML = firstIngre;
+// }
+
+function generateMeals() {
     let availableMeals = [...meals];
 
     dailyMeals.forEach(mealElement => {
@@ -152,8 +147,7 @@ function generateMeals(mealsNumber) {
         ingrElement.innerHTML = '';
     });
 
-    // Iterate through number of meals selected
-    for (i = 0; i < mealsNumber; i++){
+    for (i = 0; i < 7; i++){
     if (i < dailyMeals.length) {
         if (availableMeals.length === 0) {
             break;
@@ -162,14 +156,18 @@ function generateMeals(mealsNumber) {
         dailyMeals[i].innerHTML = selectedMeal.mealName;
         mealIngredients[i].innerHTML = formatIngredients(selectedMeal.ingredients);
         console.log(dailyMeals[i].innerHTML);
-        // Need to insert non-breaking spaces into ingredient names and automatically add to new meals
+
+        document.getElementById('shoppingList').innerHTML += selectedMeal.ingredients;
     }
     }
+    fadeInMeals();
 }
+
+document.getElementById("gen-btn").addEventListener("click", generateMeals);
 
 
 // Open and close sidebar
-const homepageBody = document.querySelector(".index-main-content");
+const homepageBody = document.querySelector("#index-main-content");
 const homepageHeader = document.querySelector("header");
 const sidebar = document.getElementById("mySidebar");
 
@@ -195,11 +193,6 @@ function openNav() {
             if (event.target.id !== 'mySidebar' && event.target.id !== 'openbtn')
             {
                 closeNav();
-                console.log("outside")
-            }
-            else
-            {
-                console.log("inside");
             }
         });
     }
@@ -220,10 +213,14 @@ function fadeIn(element) {
 }
 
 function fadeInMeals() {
+    console.log("Fading in elements.")
     dailyMeals.forEach(mealElement => {
         fadeIn(mealElement);
     });
     mealIngredients.forEach(ingrElement => {
         fadeIn(ingrElement);
     });
+    fadeIn(document.getElementById("shoppingList"));
 }
+
+window.onload = fadeIn(document.getElementById('gen-btn'));
