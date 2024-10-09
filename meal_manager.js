@@ -291,23 +291,6 @@ function addIconSpin()
     }
 };
 
-
-// let freezeClicker = false;
-
-// document.getElementById("openbtn").addEventListener("click", freezeClick, true);
-
-// function freezeClick(e) {
-//   if (freezeClick)
-//     {
-//         if (navOpened) {
-//         e.stopPropagation();
-//         e.preventDefault();
-//         console.log("Clicking disabled")
-//     }
-// }
-// }
-
-
 $(document).ready(function() {
     let mySidebar = document.getElementById("mySidebar"); 
     if (mySidebar.style.width !== "0px") {

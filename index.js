@@ -61,6 +61,9 @@ let meals =  [
 // Initialise
     let mealInput = document.getElementById("mealInput");
     let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
+    const homepageBody = document.querySelector("#index-main-content");
+    const homepageHeader = document.querySelector("header");
+    const sidebar = document.getElementById("mySidebar");
 
 
 // Event listeners for buttons
@@ -165,14 +168,6 @@ function generateMeals(mealsNumber) {
             } 
 }
 
-document.getElementById("gen-btn").addEventListener("click", generateMeals);
-
-
-
-// Open and close sidebar
-const homepageBody = document.querySelector("#index-main-content");
-const homepageHeader = document.querySelector("header");
-const sidebar = document.getElementById("mySidebar");
 
 function openNav() {
     sidebar.style.width = "250px";
