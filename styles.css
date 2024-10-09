@@ -46,7 +46,7 @@ header {
 
 h1 {
     opacity: 0;
-    height: 80px;
+    height: 2em;
     line-height: 80px;
     font-size: 2.5em;
     color: var(--accent-color);
@@ -131,11 +131,22 @@ legend {
 }
 
 #meals-table {
+    display: grid;
+    grid-template-columns: 1fr;
     margin: auto;
     min-height: 30em;
-    min-width: 45em;
+    min-width: 50em;
     opacity: 1;
     margin-bottom: -30px;
+}
+
+#meals-table tr {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+td {
+    vertical-align: top;
 }
 
 #meals-number {
@@ -156,17 +167,15 @@ legend {
     color: var(--accent-color);
 }
 
-td {
-    vertical-align: top;
-}
 
 .dayOfWeek {
     font-size: 2em;
+    color: var(--accent-color);
     padding-right: 4em;
 }
 
 .mealText {
-    color: var(--accent-color);
+    color: var(--light-grey);
     font-weight: 600;
     padding-bottom: 8px;
     opacity: 0;
@@ -453,16 +462,23 @@ main {
     .sidebar a {font-size: 18px;}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
     h1 {font-size: 24px;}
-    #openbtn {margin-right: -50px;}
-    #openbtn {margin-top: -10px;}
+    /* h1 {height: 50px;} */
+    h1 {line-height: 50px;}
+
+    #openbtn {margin-left: -50px;}
+    #openbtn {margin-top: -14px;}
+    #openbtn {font-size: 36px;}
+
     #index-main-content {margin-inline: 10px;}
-    #openbtn {font-size: 30px;}
+    
     .mealItem {display: block;}
     .mealItem button {float: right;}
+
     #add-icon {right: 15px;}
     #add-icon {bottom: 15px;}
+
     .textInput > input {width: 75vw;}
 }
 
