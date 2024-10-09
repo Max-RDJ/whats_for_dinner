@@ -7,6 +7,7 @@ TODO:
 -Replace numbers on index with something more fun and visually appealing; wheel of fortune?
 - Apply sequential fade in to generated meals on index
 - Produce shopping list
+- Create a 'tutorial' if no content is displayed on page or if no saved data
 
 MAYBE:
 - Webscrape ingredients prices

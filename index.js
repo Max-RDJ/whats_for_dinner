@@ -116,7 +116,6 @@ function fadeIn(element, delay) {
 }, delay);
 }
 
-
 function getRandomMeal(availableMeals) {
     let randomMeal = Math.floor(Math.random() * availableMeals.length);
     return availableMeals.splice(randomMeal, 1)[0];
@@ -166,6 +165,8 @@ function generateMeals(mealsNumber) {
             } 
 }
 
+document.getElementById("gen-btn").addEventListener("click", generateMeals);
+
 
 
 // Open and close sidebar
@@ -193,11 +194,6 @@ function closeNav() {
             if (event.target.id !== 'sidebar' && event.target.id !== 'openbtn')
             {
                 closeNav();
-                console.log("outside")
-            }
-            else
-            {
-                console.log("inside");
             }
         });
     }

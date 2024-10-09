@@ -41,7 +41,7 @@ header {
     justify-content: center;
     padding-bottom: 10px;
     margin-bottom: 50px;
-    border-bottom: 1px solid #b2b3b5;
+    border-bottom: 2px solid #b2b3b5;
 }
 
 h1 {
@@ -127,17 +127,13 @@ legend {
 #inputSection {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
 }
 
 #meals-table {
     margin: auto;
     min-height: 30em;
     min-width: 45em;
-    /* z-index: -1; */
-    /* Prevents table lines interfering with other elements on page */
     opacity: 1;
     margin-bottom: -30px;
 }
@@ -154,14 +150,6 @@ footer {
     position: absolute;
     bottom: 0;
     margin-bottom: 50px;
-}
-
-#numberButtons {
-    margin: auto;
-    align-items: center;
-    font-size: 20px;
-    border: none;
-    padding: 25px;
 }
 
 legend {
@@ -190,6 +178,12 @@ td {
     padding-bottom: 30px;
     opacity: 0;
     font-size: 1.3em;
+}
+
+#shoppingList {
+    margin-top: 20px;
+    opacity: 0;
+    font-size: 20px;
 }
 
 #char {
@@ -245,10 +239,12 @@ main {
     /* gap: 14px; */
 }
 
+#index-main-content {
+    margin-inline: 100px;
+}
 .mealItem {
     display: flex;
     align-items: center;
-    margin-inline: 100px;
     margin-bottom: 14px;
     gap: 14px;
     padding: 15px 30px 15px 30px;
@@ -457,11 +453,12 @@ main {
     .sidebar a {font-size: 18px;}
 }
 
-@media screen and (max-width: 500px) {
-    h1 {font-size: 20px;}
+@media screen and (max-width: 600px) {
+    h1 {font-size: 24px;}
     #openbtn {margin-right: -50px;}
     #openbtn {margin-top: -10px;}
-    .mealItem {margin-inline: 10px;}
+    #index-main-content {margin-inline: 10px;}
+    #openbtn {font-size: 30px;}
     .mealItem {display: block;}
     .mealItem button {float: right;}
     #add-icon {right: 15px;}
