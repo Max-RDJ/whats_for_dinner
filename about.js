@@ -47,12 +47,15 @@ function fadeIn(element, delay) {
 }
 
 window.onload = function fadeInText() {
+    const aboutTitle = document.getElementById("about-title");
     const mainText = document.querySelectorAll(".main-text");
-    if (mainText.length > 0) {
-        mainText.forEach((textPar, index) => { 
-            fadeIn(textPar, index * 200);            
-        });
-    } else {
-        console.error("No elements to fade in found.");
-    }
+    fadeIn(aboutTitle);
+
+    if (mainText.length > 0) { 
+            mainText.forEach((textPar, index) => { 
+                fadeIn(textPar, index * 100);            
+            });
+        } else {
+            console.error("No elements to fade in found.");
+        };
 }

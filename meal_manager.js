@@ -67,6 +67,7 @@ let meals =  [
     const mealManagerMain = document.querySelector("main");
     const mealManagerHeader = document.querySelector("header");
     const sidebar = document.getElementById("mySidebar");
+    const mealManagerTitle = document.getElementById("meal-manager-title");
 
 // Load previously saved meals
 loadData();
@@ -150,6 +151,8 @@ function fadeIn(element, delay) {
     }, 20);
 }, delay);
 }
+
+window.onload = fadeIn(mealManagerTitle);
 
 document.getElementById("body").onload = function fadeInMeals() {
     const mealItems = document.querySelectorAll(".mealItem");

@@ -64,13 +64,19 @@ let meals =  [
 
 
 // Event listeners for buttons
-document.querySelectorAll('#numberButtons button').forEach(button => {
-    button.addEventListener('click', () => {
-        const mealsNumber = parseInt(button.textContent);
-        generateMeals(mealsNumber);
-        fadeInMeals();
+document.getElementById('index-page-title').addEventListener('click', () => {
+    dailyMeals.forEach(mealElement => {
+        mealElement.innerHTML = '';
+        mealElement.style.opacity = 0;
     });
+    mealIngredients.forEach(ingrElement => {
+        ingrElement.innerHTML = '';
+        ingrElement.style.opacity = 0;
+    });
+    generateMeals(7);
 });
+
+
 
 
 const dailyMeals = [
@@ -94,7 +100,6 @@ const mealIngredients = [
 ];
 
 
-// Fade in elements on page
 function fadeIn(element, delay) {
     let opacity = 0;
     element.style.opacity = opacity;
@@ -111,27 +116,7 @@ function fadeIn(element, delay) {
 }, delay);
 }
 
-window.onload = function fadeInNumbers() {
-    const numBtns = document.querySelectorAll(".numBtn");
-    const pageTitle = document.getElementById("page-title");
-    const indexH2 = document.getElementById("indexH2");
 
-    fadeIn(pageTitle, 0);
-
-    setTimeout(() => fadeIn(indexH2, 0), 100);
-
-    const numBtnsDelay = 200;
-    if (numBtns.length > 0) {
-        numBtns.forEach((num_btn, index) => { 
-            setTimeout(() => fadeIn(num_btn, 0), numBtnsDelay + index * 100);            
-        });
-    } else {
-        console.error("No elements to fade in found.");
-    }
-}
-
-
-// Select random number associated with meal in meals array
 function getRandomMeal(availableMeals) {
     let randomMeal = Math.floor(Math.random() * availableMeals.length);
     return availableMeals.splice(randomMeal, 1)[0];
@@ -150,35 +135,41 @@ function formatIngredients(ingredients) {
     }).join(", ");
 }
 
+
 function generateMeals(mealsNumber) {
     let availableMeals = [...meals];
+    let selectedMealsArr = []
 
-    dailyMeals.forEach(mealElement => {
-        mealElement.innerHTML = '';
-    });
+    for (let i = 0; i < mealsNumber; i++) {
+        if (i < dailyMeals.length) {
+            
+            if (availableMeals.length === 0) break;
+            let selectedMeal = getRandomMeal(availableMeals);
+            selectedMealsArr.push(selectedMeal);
 
-    mealIngredients.forEach(ingrElement => {
-        ingrElement.innerHTML = '';
-    });
+            dailyMeals[i].innerHTML = selectedMeal.mealName;
+            mealIngredients[i].innerHTML = formatIngredients(selectedMeal.ingredients);
 
-    // Iterate through number of meals selected
-    for (i = 0; i < mealsNumber; i++){
-    if (i < dailyMeals.length) {
-        if (availableMeals.length === 0) {
-            break;
+            console.log("Meal: ", selectedMeal.mealName);
         }
-        let selectedMeal = getRandomMeal(availableMeals);
-        dailyMeals[i].innerHTML = selectedMeal.mealName;
-        mealIngredients[i].innerHTML = formatIngredients(selectedMeal.ingredients);
-        console.log(dailyMeals[i].innerHTML);
-        // Need to insert non-breaking spaces into ingredient names and automatically add to new meals
     }
-    }
+
+    if (selectedMealsArr.length > 0) {
+                selectedMealsArr.forEach((selectedMeal, index) => { 
+                    setTimeout(() => {
+                        fadeIn(dailyMeals[index]);
+                        fadeIn(mealIngredients[index]);
+                    }, index * 100);             
+                });
+            } else {
+                console.error("No elements to fade in found.");
+            } 
 }
 
 
+
 // Open and close sidebar
-const homepageBody = document.querySelector(".index-main-content");
+const homepageBody = document.querySelector("#index-main-content");
 const homepageHeader = document.querySelector("header");
 const sidebar = document.getElementById("mySidebar");
 
@@ -187,21 +178,19 @@ function openNav() {
     homepageBody.style.opacity = "0.3";
     homepageHeader.style.opacity = "0.3";
   }
-  
 
-  function closeNav() {
-    sidebar.style.width = "0";
-    document.getElementById("navbar").style.marginLeft = "0";
+function closeNav() {
+    sidebar.style.width = "0px";
     homepageBody.style.opacity = "1";
     homepageHeader.style.opacity = "1";
   }
 
   $(document).ready(function() {
-    if (mySidebar.style.width !== "0")
+    if (sidebar.style.width !== "0")
     {
         $('body').click((event) =>
         {
-            if (event.target.id !== 'mySidebar' && event.target.id !== 'openbtn')
+            if (event.target.id !== 'sidebar' && event.target.id !== 'openbtn')
             {
                 closeNav();
                 console.log("outside")
@@ -228,11 +217,5 @@ function fadeIn(element) {
     }, 50);
 }
 
-function fadeInMeals() {
-    dailyMeals.forEach(mealElement => {
-        fadeIn(mealElement);
-    });
-    mealIngredients.forEach(ingrElement => {
-        fadeIn(ingrElement);
-    });
-}
+const indexPageTitle = document.getElementById("index-page-title");
+window.onload = fadeIn(indexPageTitle);

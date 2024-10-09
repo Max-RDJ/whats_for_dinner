@@ -1,8 +1,6 @@
 TODO:
-- Fade in shopping list title once numBtn is pressed
 - Make meal text editable in place on MM
     - Manual save needs to work by index; first meal data is being saved in every case
-- Add fade in animations to most things
 - Make page remember re-arranged order of meal items
 - Collapse meal item text into one column on smaller screens
 - Reverse order of meals array so that most recently added or edited is displayed first
@@ -12,3 +10,4 @@ TODO:
 
 MAYBE:
 - Webscrape ingredients prices
+- Save and date the week of meals generated for future ref
