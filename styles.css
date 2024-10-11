@@ -134,7 +134,7 @@ legend {
     display: block;
     margin: auto;
     min-height: 30em;
-    max-width: 60em;
+    width: 60%;
     opacity: 1;
     margin-bottom: -30px;
 }

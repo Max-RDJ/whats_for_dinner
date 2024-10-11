@@ -60,7 +60,7 @@ let meals =  [
 
 // Initialise
     let mealInput = document.getElementById("mealInput");
-    let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
+    let storedMeals = window.meal_list;
     const homepageBody = document.querySelector("#index-main-content");
     const homepageHeader = document.querySelector("header");
     const sidebar = document.getElementById("mySidebar");
@@ -137,14 +137,16 @@ function formatIngredients(ingredients) {
     }).join(", ");
 }
 
+function getAvailableMeals() {
+    return Array.isArray(storedMeals) && storedMeals.length > 0 ? storedMeals : meals; 
+}
 
 function generateMeals(mealsNumber) {
-    let availableMeals = [...meals];
+    let availableMeals = getAvailableMeals;
     let selectedMealsArr = []
 
     for (let i = 0; i < mealsNumber; i++) {
         if (i < dailyMeals.length) {
-            
             if (availableMeals.length === 0) break;
             let selectedMeal = getRandomMeal(availableMeals);
             selectedMealsArr.push(selectedMeal);
