@@ -131,18 +131,22 @@ legend {
 }
 
 #meals-table {
-    /* display: grid; */
-    /* grid-template-columns: 1fr; */
+    display: block;
     margin: auto;
     min-height: 30em;
-    width: 50em;
+    max-width: 60em;
     opacity: 1;
     margin-bottom: -30px;
 }
 
 td {
-    vertical-align: top;
-    border: solid white 1px;
+    display: block;
+    padding-bottom: 12px;
+}
+
+tr {
+    display: flex;
+    flex-direction: column;
 }
 
 #meals-number {
@@ -167,7 +171,7 @@ legend {
 .dayOfWeek {
     font-size: 2em;
     color: var(--accent-color);
-    padding-right: 4em;
+    padding-right: 2em;
 }
 
 .mealText {
@@ -485,10 +489,22 @@ main {
 
 @media screen and (min-width: 1600px) {
     .mealItem {margin-inline: 400px; }
-    }
+}
 
 @media screen and (min-width: 750px) {
     #meals-table {
-        grid-template-columns: 1fr;
+        display: table;
+        width: 40%;
+        margin: auto;
+    }
+
+    tr {
+        display: table-row;
+    }
+
+    td {
+        display: table-cell;
+        vertical-align: top;
+        /* border: 1px solid var(--light-grey); Optional: Add borders back for larger screens */
     }
 }
