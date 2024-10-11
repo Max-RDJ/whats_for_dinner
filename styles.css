@@ -131,22 +131,18 @@ legend {
 }
 
 #meals-table {
-    display: grid;
-    grid-template-columns: 1fr;
+    /* display: grid; */
+    /* grid-template-columns: 1fr; */
     margin: auto;
     min-height: 30em;
-    min-width: 50em;
+    width: 50em;
     opacity: 1;
     margin-bottom: -30px;
 }
 
-#meals-table tr {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
 td {
     vertical-align: top;
+    border: solid white 1px;
 }
 
 #meals-number {
@@ -463,25 +459,36 @@ main {
 }
 
 @media screen and (max-width: 750px) {
-    h1 {font-size: 24px;}
-    /* h1 {height: 50px;} */
-    h1 {line-height: 50px;}
+    h1 {
+        font-size: 24px;
+        line-height: 50px;
+    }
 
-    #openbtn {margin-left: -50px;}
-    #openbtn {margin-top: -14px;}
-    #openbtn {font-size: 36px;}
+    #openbtn {
+        margin-left: -50px;
+        margin-top: -14px;
+        font-size: 36px;
+    }
 
     #index-main-content {margin-inline: 10px;}
     
     .mealItem {display: block;}
     .mealItem button {float: right;}
 
-    #add-icon {right: 15px;}
-    #add-icon {bottom: 15px;}
+    #add-icon {
+        right: 15px;
+        bottom: 15px;
+    }
 
     .textInput > input {width: 75vw;}
 }
 
 @media screen and (min-width: 1600px) {
-    .mealItem {margin-inline: 500px; }
+    .mealItem {margin-inline: 400px; }
     }
+
+@media screen and (min-width: 750px) {
+    #meals-table {
+        grid-template-columns: 1fr;
+    }
+}
