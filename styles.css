@@ -466,8 +466,8 @@ main {
     h1 {
         font-size: 24px;
         height: auto;
-        line-height: 50px;
-
+        width: auto;
+        line-height: 35px;
     }
 
     #openbtn {
