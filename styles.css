@@ -46,7 +46,7 @@ header {
 
 h1 {
     opacity: 0;
-    height: 2em;
+    height: 80px;
     line-height: 80px;
     font-size: 2.5em;
     color: var(--accent-color);
@@ -134,7 +134,7 @@ legend {
     display: block;
     margin: auto;
     min-height: 30em;
-    width: 60%;
+    width: 90%;
     opacity: 1;
     margin-bottom: -30px;
 }
@@ -465,7 +465,9 @@ main {
 @media screen and (max-width: 750px) {
     h1 {
         font-size: 24px;
+        height: auto;
         line-height: 50px;
+
     }
 
     #openbtn {
@@ -480,8 +482,8 @@ main {
     .mealItem button {float: right;}
 
     #add-icon {
-        right: 15px;
-        bottom: 15px;
+        right: 50px;
+        bottom: 50px;
     }
 
     .textInput > input {width: 75vw;}
@@ -489,6 +491,23 @@ main {
 
 @media screen and (min-width: 1600px) {
     .mealItem {margin-inline: 400px; }
+}
+
+@media screen and (min-width: 1400px) {
+    #meals-table {
+        display: table;
+        width: 40%;
+        margin: auto;
+    }
+
+    tr {
+        display: table-row;
+    }
+
+    td {
+        display: table-cell;
+        vertical-align: top;
+    }
 }
 
 @media screen and (min-width: 750px) {
@@ -505,6 +524,5 @@ main {
     td {
         display: table-cell;
         vertical-align: top;
-        /* border: 1px solid var(--light-grey); Optional: Add borders back for larger screens */
     }
 }

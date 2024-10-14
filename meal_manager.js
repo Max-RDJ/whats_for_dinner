@@ -12,7 +12,7 @@ let meals =  [
     ]
     },
     {
-    mealName: "Chickpea Coconut Curry" + charImage,
+    mealName: `Chickpea Coconut Curry" + charImage`,
     ingredients: [
         "chickpeas",
         "coconut milk",
