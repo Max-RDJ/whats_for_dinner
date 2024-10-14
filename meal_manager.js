@@ -62,7 +62,6 @@ let meals =  [
     let mealInput = document.getElementById("mealInput");
     let ingredientsInput = document.getElementById("ingredientsInput");
     let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
-    window.meal_list = meal_list;
 
     const mealManagerBody = document.querySelector("body");
     const mealManagerMain = document.querySelector("main");
