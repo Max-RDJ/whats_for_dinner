@@ -58,21 +58,13 @@ let meals =  [
     }
 ]
 
-
-
 // Initialise
     let mealInput = document.getElementById("mealInput");
-    let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
+    let storedMeals = window.meal_list;
     const homepageBody = document.querySelector("#index-main-content");
     const homepageHeader = document.querySelector("header");
     const sidebar = document.getElementById("mySidebar");
-    let storedData = localStorage.getItem("meals");
 
-    if (storedData) {
-        console.log("Found data")
-        meals = JSON.parse(storedData);
-        console.log("Parsed meals data:", meals)
-    }
 
 
 
@@ -124,7 +116,7 @@ const mealIngredients = [
 
 function fadeIn(element, delay) {
     let opacity = 0;
-    // element.style.opacity = opacity;
+    element.style.opacity = opacity;
     setTimeout(() => {
     element.style.display = "block";
     const intervalID = setInterval(() => {
@@ -156,31 +148,29 @@ function formatIngredients(ingredients) {
     }).join(", ");
 }
 
+function getAvailableMeals() {
+    return Array.isArray(storedMeals) && storedMeals.length > 0 ? storedMeals : meals; 
+}
 
 function generateMeals(mealsNumber) {
-    let availableMeals = [...meals];
-    let selectedMealsArr = [];
-
-    console.log("Available meals:", availableMeals)
+    let availableMeals = getAvailableMeals;
+    let selectedMealsArr = []
 
     for (let i = 0; i < mealsNumber; i++) {
         if (i < dailyMeals.length) {
             if (availableMeals.length === 0) break;
             let selectedMeal = getRandomMeal(availableMeals);
+            selectedMealsArr.push(selectedMeal);
 
-            if (selectedMeal) {
-                selectedMealsArr.push(selectedMeal);
-                if (dailyMeals[i] && mealIngredients[i]) {
-                    dailyMeals[i].innerHTML = selectedMeal.mealName;
-                    mealIngredients[i].innerHTML = formatIngredients(selectedMeal.ingredients);
-                    console.log("Meal assigned:", selectedMeal.mealName);
-            }
+            dailyMeals[i].innerHTML = selectedMeal.mealName;
+            mealIngredients[i].innerHTML = formatIngredients(selectedMeal.ingredients);
+
+            console.log("Meal: ", selectedMeal.mealName);
         }
     }
 
     if (selectedMealsArr.length > 0) {
-        selectedMealsArr.forEach((selectedMeal, index) => {
-            console.log("Displaying meal: ", dailyMeals[index]);
+                selectedMealsArr.forEach((selectedMeal, index) => { 
                     setTimeout(() => {
                         // fadeIn((daysOfWeek[index]));
                         fadeIn(dailyMeals[index]);
@@ -190,8 +180,7 @@ function generateMeals(mealsNumber) {
             } else {
                 console.error("No elements to fade in found.");
             } 
-        }
-    }
+}
 
 
 function openNav() {
@@ -221,10 +210,6 @@ function closeNav() {
 
 
 function fadeIn(element) {
-    if (!element) {
-        console.error("fadeIn called on an undefined element");
-        return;
-    }
     let opacity = 0;
     element.style.opacity = opacity;
     const intervalID = setInterval(() => {
