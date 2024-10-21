@@ -171,6 +171,7 @@ legend {
 
 
 .dayOfWeek {
+    opacity: 1;
     font-size: 2em;
     color: var(--accent-color);
     padding-right: 2em;

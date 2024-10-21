@@ -75,6 +75,18 @@ let meals =  [
         console.log("Parsed meals data:", meals)
     }
 
+
+
+const daysOfWeek = [
+    document.getElementById("first-day"),
+    document.getElementById("second-day"),
+    document.getElementById("third-day"),
+    document.getElementById("fourth-day"),
+    document.getElementById("fifth-day"),
+    document.getElementById("sixth-day"),
+    document.getElementById("seventh-day")
+];
+
 // Event listeners for buttons
 document.getElementById('generateBtn').addEventListener('click', () => {
     dailyMeals.forEach(mealElement => {
@@ -87,8 +99,6 @@ document.getElementById('generateBtn').addEventListener('click', () => {
     });
     generateMeals(7);
 });
-
-
 
 
 const dailyMeals = [
@@ -110,6 +120,7 @@ const mealIngredients = [
     document.getElementById("sixth-ingredients"),
     document.getElementById("seventh-ingredients")
 ];
+
 
 
 function fadeIn(element, delay) {
@@ -172,6 +183,7 @@ function generateMeals(mealsNumber) {
         selectedMealsArr.forEach((selectedMeal, index) => {
             console.log("Displaying meal: ", dailyMeals[index]);
                     setTimeout(() => {
+                        // fadeIn((daysOfWeek[index]));
                         fadeIn(dailyMeals[index]);
                         fadeIn(mealIngredients[index]);
                     }, index * 100);             
