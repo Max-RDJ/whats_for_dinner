@@ -1,15 +1,11 @@
-FIX:
-- Sidebar click off area is wrong
-
-FEATURES:
+TODO:
 - Make meal text editable in place on MM
     - Manual save needs to work by index; first meal data is being saved in every case
-- Save re-arranged order after dragging mealItem
-- Fine-tune media query widths
+- Make page remember re-arranged order of meal items
 - Produce shopping list
 - Create a 'tutorial' if no content is displayed on page or if no saved data
-- Add export and import data options
-- Add error message for empty text input
+- Fade in days of week
 
 MAYBE:
 - Webscrape ingredients prices
+- Save and date the week of meals generated for future ref

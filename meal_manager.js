@@ -200,23 +200,15 @@ function addMeal() {
     paintUI();
     // location.reload();
 }
-
-document.getElementById("add-btn").addEventListener("click",() => {
-    addMeal();
-    addIconSpin();
-    $("#inputContainer").slideToggle(300);
-});
+document.getElementById("add-btn").addEventListener("click", addMeal);
 
 // Delete a meal idea
 function deleteMeal(index) {
-    var result = confirm("Are you sure?")
-    if (!navOpened) {
-        if (result) {
-            meals.splice(index, 1);
-            saveData();
-            paintUI();
-            // location.reload();
-        }         
+    if (navOpened == false) {
+    meals.splice(index, 1);
+    saveData();
+    paintUI();
+    // location.reload();
     }
 };
 
@@ -296,8 +288,6 @@ function addIconSpin()
         current_rotation -= 135;
         rotator.style.transform = 'rotate(' + current_rotation + 'deg)';
         document.getElementById("open-meal-adder").style.backgroundColor = "var(--accent-color)";
-        document.getElementById("mealInput").value = "";
-        document.getElementById("ingredientsInput").value = "";
     }
 };
 
@@ -306,7 +296,7 @@ $(document).ready(function() {
     if (mySidebar.style.width !== "0px") {
         $('body').on("click", function(event)
         {
-            if (event.target.id !== 'mySidebar' && event.target.id !== "hamburger")
+            if (event.target.id !== 'mySidebar' && event.target.id !== 'openbtn')
             {
                 closeNav(event);
             }
