@@ -7,13 +7,14 @@ function openNav() {
     sidebar.style.width = "250px";
     aboutBody.style.opacity = "0.3";
     aboutHeader.style.opacity = "0.3";
+    // generateBtnContainer.style.opacity = "0.3";
   }
 
-  function closeNav() {
-    sidebar.style.width = "0";
-    document.getElementById("navbar").style.marginLeft = "0";
+function closeNav() {
+    sidebar.style.width = "0px";
     aboutBody.style.opacity = "1";
     aboutHeader.style.opacity = "1";
+    // generateBtnContainer.style.opacity = "1";
   }
 
   $(document).ready(function() {

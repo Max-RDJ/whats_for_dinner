@@ -1,11 +1,23 @@
 .main-text {
-    margin-inline: 100px;
+    margin-inline: 500px;
     margin-bottom: 50px;
     line-height: 30px;
     font-size: 20px;
     text-align: justify;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1700px) {
+    .main-text {margin-inline: 300px; }
+}
+
+@media screen and (max-width: 1200px) {
+    .main-text {margin-inline: 100px; }
+}
+
+@media screen and (max-width: 600px) {
+    .main-text {margin-inline: 50px; }
+}
+
+@media screen and (max-width: 400px) {
     .main-text {margin-inline: 20px; }
 }
