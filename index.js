@@ -65,7 +65,6 @@ let meals =  [
     let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
     const homepageBody = document.querySelector("#index-main-content");
     const homepageHeader = document.querySelector("header");
-    const generateBtnContainer = document.getElementById("generateBtnContainer")
     const sidebar = document.getElementById("mySidebar");
     let storedData = localStorage.getItem("meals");
 
@@ -88,7 +87,7 @@ const daysOfWeek = [
 ];
 
 // Event listeners for buttons
-document.getElementById('generateBtn').addEventListener('click', () => {
+document.getElementById('index-page-title').addEventListener('click', () => {
     dailyMeals.forEach(mealElement => {
         mealElement.innerHTML = '';
         mealElement.style.opacity = 0;
@@ -199,14 +198,12 @@ function openNav() {
     sidebar.style.width = "250px";
     homepageBody.style.opacity = "0.3";
     homepageHeader.style.opacity = "0.3";
-    generateBtnContainer.style.opacity = "0.3";
   }
 
 function closeNav() {
     sidebar.style.width = "0px";
     homepageBody.style.opacity = "1";
     homepageHeader.style.opacity = "1";
-    generateBtnContainer.style.opacity = "1";
   }
 
   $(document).ready(function() {
@@ -214,7 +211,7 @@ function closeNav() {
     {
         $('body').click((event) =>
         {
-            if (event.target.id !== 'sidebar' && event.target.id !== "hamburger")
+            if (event.target.id !== 'sidebar' && event.target.id !== 'openbtn')
             {
                 closeNav();
             }
