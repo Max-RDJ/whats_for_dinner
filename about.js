@@ -21,7 +21,7 @@ function openNav() {
     {
         $('body').click((event) =>
         {
-            if (event.target.id !== 'mySidebar' && event.target.id !== 'openbtn')
+            if (event.target.id !== 'mySidebar' && event.target.id !== "hamburger")
             {
                 closeNav();
             }
