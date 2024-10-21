@@ -456,6 +456,18 @@ main {
 
 @media screen and (max-height: 450px) {
     .sidebar a {font-size: 18px;}
+
+    h1 {
+        font-size: 1.4em;
+        height: auto;
+        width: auto;
+        line-height: 20px;
+    }
+
+    #hamburger {
+        margin-left: -60px;
+        margin-top: -12px;
+    }
 }
 
 @media screen and (max-width: 750px) {
@@ -467,7 +479,7 @@ main {
         font-size: 1.8em;
         height: auto;
         width: auto;
-        line-height: 35px;
+        line-height: 25px;
     }
 
     #hamburger {
