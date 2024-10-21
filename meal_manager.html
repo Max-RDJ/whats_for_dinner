@@ -29,7 +29,7 @@
 <header>
   <h1 class="unselectable" id="meal-manager-title">Meal Manager</h1>
   <div id="navbar">
-  <button id="openbtn" onclick="openNav()">&#9776;</button>
+  <button id="hamburger" onclick="openNav()">&#9776;</button>
 </div>
 </header>
 
@@ -48,9 +48,16 @@
 
 <div id="inputContainer">
   <div class="textInput">
-    <input id="mealInput" placeholder="Add a new meal"/>
-    <input id="ingredientsInput" placeholder="Add ingredients"/>
+    <div id="meal-input-title">Meal name</div>
+    <input id="mealInput" placeholder="Beans on toast"/>
   </div>
+
+  <div class="textInput">
+    <div id="meal-input-ingredients">Ingredients</div>
+    <input id="ingredientsInput" placeholder="Beans, bread, butter"/>
+
+  </div>
+
   <div id="new-meal-btns">
     <button class="add-meal-btn" id="add-btn">Add</button>
   </div>

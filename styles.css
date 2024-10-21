@@ -31,7 +31,7 @@ html {
 
 body {
     margin: 0;
-    padding: 20px 50px 50px 50px;
+    padding: 0px 50px 50px 50px;
     min-height: 100%;
 }
 
@@ -39,35 +39,38 @@ header {
     display: flex;
     position: relative;
     justify-content: center;
-    padding-bottom: 10px;
-    margin-bottom: 50px;
+    /* padding-bottom: 10px; */
+    margin-bottom: 30px;
     border-bottom: 2px solid #b2b3b5;
+    height: 6rem;
 }
 
 h1 {
     opacity: 0;
-    height: 80px;
-    line-height: 80px;
-    font-size: 2.5em;
+    font-size: 2em;
     color: var(--accent-color);
-    letter-spacing: 0.15rem;
     text-align: center;
     font-family: "Outfit", Arial;
 }
 
-#index-page-title {
-    background-color: #171f2ca4;
+#generateBtn {
+    background-color: #253042;
+    font-size: 1.2em;
+    color: var(--accent-color);
+    margin: auto 0;
     border: solid var(--accent-color) 2px;
     padding-inline: 25px;
     border-radius: 10px;
+    line-height: 40px;
+    height: auto;
     opacity: 1;
 }
 
-#index-page-title:hover {
+#generateBtn:hover {
     cursor: pointer;
 }
 
-#index-page-title:active {
+#generateBtn:active {
     color: var(--light-grey);
     background-color: var(--accent-color);
 }
@@ -87,12 +90,13 @@ h1 {
     box-sizing: border-box;
   }
 
-#openbtn {
-    font-size: 3em;
+#hamburger {
+    font-size: 2em;
+    margin-top: -10px;
     cursor: pointer;
     color: #b2b3b5;
     border: none;
-    background-color: #75c6fc00;
+    background-color: var(--transparent);
 }
 
 #index-main-content {
@@ -102,18 +106,16 @@ h1 {
     align-items: center;
 }
 
-#generate-btn {
-    height: 3em;
-    width: 15em;
-    margin-bottom: 2em;
-    font-size: 1em;
-    border-radius: 10px;
+#generateBtnContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 #dragHandle {
     font-size: 15px;
     cursor: pointer;
-    color: #b2b3b5b7;
+    color: #b2b3b5;
     border: none;
     background-color: #75c6fc00;
     margin-left: -10px;
@@ -177,17 +179,17 @@ legend {
 
 .mealText {
     color: var(--light-grey);
-    font-weight: 600;
+    font-weight: 700;
     padding-bottom: 8px;
     opacity: 0;
-    font-size: 2em;
+    font-size: 1.5em;
     letter-spacing: 2.5px;
 }
 
 .ingredientsText {
     padding-bottom: 30px;
     opacity: 0;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 #shoppingList {
@@ -228,7 +230,7 @@ legend {
   }
 
   #mySidebar a:hover {
-    color: #7e8d9b;
+    color: #B2B3B5;
   }
   
   #mySidebar .closebtn {
@@ -265,18 +267,18 @@ main {
 .mealItem p {
     flex: 1;
     background: rgba(0, 0, 0, 0);
-
+    font-size: 1.1em;
 }
 
 #meal-item-name {
-    font-size: 20px;
+    font-weight: 700;
 }
 
 .actionsContainer {
     display: flex;
     align-items: center;
     gap: 14px;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--transparent);
 }
 
 .actionsContainer button {
@@ -284,10 +286,6 @@ main {
     border: none;
     background: transparent;
     cursor: pointer;
-}
-
-.actionsContainer button:hover {
-    opacity: 0.7;
 }
 
 #inputContainer {
@@ -303,14 +301,19 @@ main {
     padding-top: 10px;
     padding-bottom: 30px;
     background-color: var(--menu);
-    /* transition: margin-top .5s; */
+}
+
+#meal-input-title, #meal-input-ingredients {
+    background-color: var(--transparent);
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 10px 0 15px 0;
 }
 
 .textInput {
     position: relative;
     display: grid;
-    margin: 10px;
-    padding: 10px;
+    justify-content: center;
     background-color: var(--transparent);
 }
 
@@ -322,7 +325,8 @@ main {
     padding: 20px;
     border-radius: 10px;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    border: 2px solid var(--accent-color)
 }
 
 #new-meal-btns {
@@ -332,13 +336,14 @@ main {
 
 #add-btn {
     margin: 0 auto;
+    margin-top: 10px;
     height: 40px;
     width: 30%;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 700;
     border-radius: 10px;
     border: 1px solid var(--accent-color);
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Outfit', 'Arial';
     color: var(--main-color);
     background-color: var(--accent-color);
 }
@@ -348,27 +353,19 @@ main {
     background-color: var(--main-color);
 }
 
-#cancel-btn {
-    margin: 0 auto;
-    height: 40px;
-    width: 30%;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 10px;
-    border: 1px solid var(--accent-color);
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: var(--accent-color);
-    background-color: var(--main-color);
-}
-
-#cancel-btn:active {
-    color: var(--main-color);
-    background-color: var(--accent-color);
-}
-
 
 .fa-solid {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--transparent);
+    color: var(--light-grey);
+    font-size: 1.1em;
+}
+
+.fa-pen-to-square:hover {
+    color: var(--accent-color);
+}
+
+.fa-trash:hover {
+    color: rgb(216, 53, 53);
 }
 
 #cross-btn {
@@ -386,7 +383,7 @@ main {
     position: fixed;
     bottom: 50px;
     right: 50px;
-    background-color: #03060a00;
+    background-color: var(--transparent);
 }
 
 #add-icon:hover {
@@ -420,7 +417,6 @@ main {
     margin-top: 5px;
     border-radius: 5px;
     background-color: var(--main-color);
-
 }
 
 #horizontal-strip {
@@ -438,15 +434,15 @@ main {
 }
 
 .draggable.dragging {
-    opacity: .5;
+    opacity: 1;
 }
 
 .draggables-container {
-    gap: 14px; /* Ensure a 14px gap below each container */
+    gap: 14px;
 }
 
 .draggables-container:last-child {
-    margin-bottom: 0; /* Remove margin from the last item to avoid extra spacing */
+    margin-bottom: 0;
 }
 
 .rotate {
@@ -464,17 +460,20 @@ main {
 }
 
 @media screen and (max-width: 750px) {
+    header {
+        height: 5rem;
+    }
+    
     h1 {
-        font-size: 24px;
+        font-size: 1.8em;
         height: auto;
         width: auto;
         line-height: 35px;
     }
 
-    #openbtn {
+    #hamburger {
         margin-left: -50px;
         margin-top: -14px;
-        font-size: 36px;
     }
 
     #index-main-content {margin-inline: 10px;}
@@ -486,6 +485,8 @@ main {
         right: 50px;
         bottom: 50px;
     }
+
+    #mealInput, #ingredientsInput {width: 20em;}
 
     .textInput > input {width: 75vw;}
 }
@@ -514,7 +515,7 @@ main {
 @media screen and (min-width: 750px) {
     #meals-table {
         display: table;
-        width: 40%;
+        width: 60%;
         margin: auto;
     }
 
