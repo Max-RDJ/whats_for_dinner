@@ -68,6 +68,7 @@ let meals =  [
     const generateBtnContainer = document.getElementById("generateBtnContainer")
     const sidebar = document.getElementById("mySidebar");
     let storedData = localStorage.getItem("meals");
+    const sidebarLinks = document.getElementById("sidebar-links")
 
     if (storedData) {
         console.log("Found data")
@@ -202,7 +203,7 @@ function closeNav() {
     {
         $('body').click((event) =>
         {
-            if (event.target.id !== 'sidebar' && event.target.id !== "hamburger")
+            if (!event.target.closest("#mySidebar") && event.target.id !== "hamburger")
             {
                 closeNav();
             }

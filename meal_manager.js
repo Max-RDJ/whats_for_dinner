@@ -302,15 +302,14 @@ function addIconSpin()
 };
 
 $(document).ready(function() {
-    let mySidebar = document.getElementById("mySidebar"); 
-    if (mySidebar.style.width !== "0px") {
-        $('body').on("click", function(event)
+    if (sidebar.style.width !== "0")
+    {
+        $('body').click((event) =>
         {
-            if (event.target.id !== 'mySidebar' && event.target.id !== "hamburger")
+            if (!event.target.closest("#mySidebar") && event.target.id !== "hamburger")
             {
-                closeNav(event);
+                closeNav();
             }
-            else { return; }
         });
     }
 });

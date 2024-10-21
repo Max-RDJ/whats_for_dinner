@@ -17,11 +17,11 @@ function openNav() {
   }
 
   $(document).ready(function() {
-    if (mySidebar.style.width !== "0")
+    if (sidebar.style.width !== "0")
     {
         $('body').click((event) =>
         {
-            if (event.target.id !== 'mySidebar' && event.target.id !== "hamburger")
+            if (!event.target.closest("#mySidebar") && event.target.id !== "hamburger")
             {
                 closeNav();
             }
