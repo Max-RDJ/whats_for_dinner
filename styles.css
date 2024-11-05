@@ -104,6 +104,7 @@ h1 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-inline: 100px;
 }
 
 #generateBtnContainer {
@@ -136,7 +137,7 @@ legend {
     display: block;
     margin: auto;
     min-height: 30em;
-    width: 40%;
+    width: 70%;
     opacity: 1;
     margin-bottom: -30px;
 }
@@ -250,9 +251,6 @@ main {
     /* gap: 14px; */
 }
 
-#index-main-content {
-    margin-inline: 100px;
-}
 .mealItem {
     display: flex;
     align-items: center;
@@ -307,6 +305,7 @@ main {
     font-weight: 700;
     color: var(--accent-color);
     margin: 10px 0 15px 0;
+    font-size: 1.5em;
 }
 
 .textInput {
@@ -507,23 +506,10 @@ main {
 }
 
 @media screen and (min-width: 1400px) {
-    #meals-table {
-        display: table;
-        /* width: 30%; */
-        margin: auto;
+    #index-main-content {
+        margin-inline: 5px;
     }
-
-    tr {
-        display: table-row;
-    }
-
-    td {
-        display: table-cell;
-        vertical-align: top;
-    }
-}
-
-@media screen and (min-width: 1400px) {
+    
     #meals-table {
         display: table;
         margin: auto;

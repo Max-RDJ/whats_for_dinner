@@ -12,7 +12,7 @@ let meals =  [
     ]
     },
     {
-    mealName: `Chickpea Coconut Curry" + charImage`,
+    mealName: "Chickpea Coconut Curry",
     ingredients: [
         "chickpeas",
         "coconut milk",
@@ -38,23 +38,34 @@ let meals =  [
     ]
     },
     {
-        mealName: "Test",
-        ingredients: [
-            "test"
-        ]
-        },
-        {
-        mealName: "Test2",
-        ingredients: [
-        "test2"
-        ]
-        },
-        {
-        mealName: "Test3",
-        ingredients: [
-        "test3"
-        ]
-        }
+    mealName: "Spanish Chickpeas and Potato",
+    ingredients: [
+        "potato",
+        "bell pepper",
+        "chickpeas",
+        "tinned tomato",
+        "carrot",
+        "olive oil"
+    ]
+    },
+    {
+    mealName: "Sausage & Mash",
+    ingredients: [
+        "sausage",
+        "potato",
+        "peas",
+        "butter",
+        "milk"
+    ]
+    },
+    {
+    mealName: "Beans on Toast",
+    ingredients: [
+        "baked beans",
+        "bread",
+        "butter"
+    ]
+    }
 ]
 
 // Initialise stuff
@@ -177,7 +188,7 @@ function openNav() {
     addIconSpin(); }
   };
 
-  function closeNav() {
+function closeNav() {
     navOpened = false;
     sidebar.style.width = "0";
     mealManagerBody.style.marginLeft = "0";
@@ -209,7 +220,7 @@ document.getElementById("add-btn").addEventListener("click",() => {
 
 // Delete a meal idea
 function deleteMeal(index) {
-    var result = confirm("Are you sure?")
+    var result = confirm("Are you sure you want to delete this meal idea?")
     if (!navOpened) {
         if (result) {
             meals.splice(index, 1);

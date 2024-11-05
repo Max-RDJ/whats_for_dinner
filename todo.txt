@@ -4,6 +4,7 @@ TODO:
 - Make page remember re-arranged order of meal items
 - Produce shopping list
 - Create a 'tutorial' if no content is displayed on page or if no saved data
+- Add 'click off' function to close meal input container
 
 MAYBE:
 - Webscrape ingredients prices
