@@ -68,19 +68,17 @@ let meals =  [
     }
 ]
 
-// Initialise stuff
-    let mainContainer = document.querySelector("main");
-    let mealInput = document.getElementById("mealInput");
-    let ingredientsInput = document.getElementById("ingredientsInput");
-    let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
+let mainContainer = document.querySelector("main");
+let mealInput = document.getElementById("mealInput");
+let ingredientsInput = document.getElementById("ingredientsInput");
+let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 
-    const mealManagerBody = document.querySelector("body");
-    const mealManagerMain = document.querySelector("main");
-    const mealManagerHeader = document.querySelector("header");
-    const sidebar = document.getElementById("mySidebar");
-    const mealManagerTitle = document.getElementById("meal-manager-title");
+const mealManagerBody = document.querySelector("body");
+const mealManagerMain = document.querySelector("main");
+const mealManagerHeader = document.querySelector("header");
+const sidebar = document.getElementById("mySidebar");
+const mealManagerTitle = document.getElementById("meal-manager-title");
 
-// Load previously saved meals
 loadData();
 
 
@@ -89,20 +87,22 @@ function capitaliseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
-// Render saved meals and ingredients to page
 function paintUI() {
     let new_inner_html = "";
     for (let i = 0; i < meals.length; i++) {
         let meal = meals[i].mealName;
-        let ingredients = capitaliseFirstLetter(meals[i].ingredients.join(", "));
-        // let formattedIngredients = capitaliseFirstLetter(ingredients);
+        let ingredients = meals[i].ingredients ? capitaliseFirstLetter(meals[i].ingredients.join(", ")) : "No ingredients";
         new_inner_html +=
         `
         <div class="draggables-container">
         <div class="mealItem draggable" draggable="true">
         <button id="dragHandle">&#9776;</button>
-        <p id="meal-item-name">${meal}</p>
-        <p id="meal-item-ingredients">${ingredients}</p>
+        <form>
+            <input id="meal-item-name-${i}" type="submit" value="${meal}">
+        </form
+        <form>
+            <input id="meal-item-ingredients-${i}" type="submit" value="${ingredients}">
+        </form>
         <div class="actionsContainer">
         <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
         <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
@@ -118,32 +118,14 @@ function paintUI() {
 
 paintUI();
 
-// Allow user to save manually after changing meal name or ingredients
 
-// function manualSave(index) {
-//     console.log("Manual save initialised");
-//     let mealItemName = document.getElementById("meal-item-name");
-//     let mealItemIngredients = document.getElementById("meal-item-ingredients");
-
-//     let editedMealName = mealItemName.innerText;
-//     let editedMealIngredients = mealItemIngredients.innerText;
-
-//     let editedMeal = {
-//         mealName: editedMealName,
-//         ingredients: editedMealIngredients.split(",").map(ingredient => ingredient.trim())};
-
-//     console.log(editedMeal);
-
-//     meals.push(editedMeal);
-
-//     mealItemName.innerText = editedMealName;
-//     mealItemIngredients.innerText = editedMealIngredients;
-//     console.log("Added" + JSON.stringify(editedMeal) + "and removed");
-//     saveData();
-//     // paintUI();
-//     deleteMeal(index);
-// }
-
+const f = document.querySelector('form');
+f.addEventListener('submit', (ev) => {
+  let but = f.querySelector('input');
+  but.type = (but.type === 'search') ? 'submit' : 'search';
+  ev.preventDefault();
+  saveData();
+});
 
 
 // Fade in elements on page
@@ -239,14 +221,23 @@ function editMeal(index) {
     mealInput.value = currentMeal.mealName;
     ingredientsInput.value = currentMeal.ingredients;
     $("#inputContainer").slideToggle(300);
-    deleteMeal(index);
+    // deleteMeal(index);
     }
 };
 
 // Persist new meals across page visits
 function saveData() {
+    meals.forEach((meal, index) => {
+        let mealNameField = document.getElementById(`meal-item-name-${index}`);
+        let ingredientsField = document.getElementById(`meal-item-ingredients-${index}`);
+
+        if (mealNameField && ingredientsField) {
+            meal.mealName = mealNameField.value; 
+            meal.ingredients = ingredientsField.value.split(",").map(ingredient => ingredient.trim());
+        }
+    });
     localStorage.setItem("meals", JSON.stringify(meals));
-    console.log("Data saved:", meals);
+    console.log("Data saved: ", meals);
 }
 
 function loadData() {
