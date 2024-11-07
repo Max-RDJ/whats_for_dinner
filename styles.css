@@ -261,7 +261,7 @@ main {
     background: rgba(0, 0, 0, 0.793);
 }
 
-.mealItem p {
+.meal-item-text {
     flex: 1;
     background: rgba(0, 0, 0, 0);
     font-size: 1.1em;

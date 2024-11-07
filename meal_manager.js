@@ -98,10 +98,10 @@ function paintUI() {
         <div class="mealItem draggable" draggable="true">
         <button id="dragHandle">&#9776;</button>
         <form>
-            <input id="meal-item-name-${i}" type="submit" value="${meal}">
+            <input class="meal-item-text" id="meal-item-name-${i}" type="submit" value="${meal}">
         </form
         <form>
-            <input id="meal-item-ingredients-${i}" type="submit" value="${ingredients}">
+            <input class="meal-item-text" id="meal-item-ingredients-${i}" type="submit" value="${ingredients}">
         </form>
         <div class="actionsContainer">
         <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
