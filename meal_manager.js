@@ -1,5 +1,3 @@
-// Create array of meals with subarrays of ingredients
-const charImage = '<img id="char" src="https://drive.google.com/thumbnail?id=1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">';
 let meals =  [
     {
     mealName: "Thai Green Curry",
@@ -69,14 +67,14 @@ let meals =  [
 ]
 
 let mainContainer = document.querySelector("main");
-let mealInput = document.getElementById("mealInput");
-let ingredientsInput = document.getElementById("ingredientsInput");
-let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
+let mealInput = document.getElementById("meal-input");
+let ingredientsInput = document.getElementById("ingredients-input");
+let mealList = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 
 const mealManagerBody = document.querySelector("body");
 const mealManagerMain = document.querySelector("main");
 const mealManagerHeader = document.querySelector("header");
-const sidebar = document.getElementById("mySidebar");
+const sidebar = document.querySelector(".sidebar");
 const mealManagerTitle = document.getElementById("meal-manager-title");
 
 loadData();
@@ -93,11 +91,11 @@ function paintUI() {
         new_inner_html +=
         `
         <div class="draggables-container">
-            <table class="mealItem draggable" draggable="true">
+            <table class="meal-item draggable" draggable="true">
                 <tbody>
                     <tr>
                         <td>
-                            <button id="dragHandle">&#9776;</button>
+                            <button id="drag-handle">&#9776;</button>
                         </td>
                         <td>
                             <form>
@@ -154,7 +152,7 @@ function fadeIn(element, delay) {
 window.onload = fadeIn(mealManagerTitle);
 
 document.getElementById("body").onload = function fadeInMeals() {
-    const mealItems = document.querySelectorAll(".mealItem");
+    const mealItems = document.querySelectorAll(".meal-item");
     if (mealItems.length > 0) {
         mealItems.forEach((meal_item, index) => { 
             fadeIn(meal_item, index * 100);            
@@ -223,7 +221,7 @@ function editMeal(index) {
     mealInput.value = currentMeal.mealName;
     ingredientsInput.value = currentMeal.ingredients;
     $("#inputContainer").slideToggle(300);
-    // deleteMeal(index);
+    deleteMeal(index);
     }
 };
 
@@ -280,7 +278,7 @@ let mealIngredients = [
 
 // Open input panel for user to enter new meals
 const addIcon = document.getElementById("add-icon");
-const inputContainer = document.getElementById("inputContainer");
+const inputContainer = document.querySelector("input-container");
 
 let rotator = document.querySelector(".rotate");
 rotator.addEventListener("click", addIconSpin);
@@ -299,8 +297,8 @@ function addIconSpin()
         current_rotation -= 135;
         rotator.style.transform = 'rotate(' + current_rotation + 'deg)';
         document.getElementById("open-meal-adder").style.backgroundColor = "var(--accent-color)";
-        document.getElementById("mealInput").value = "";
-        document.getElementById("ingredientsInput").value = "";
+        mealInput.value = "";
+        ingredientsInput.value = "";
     }
 };
 
@@ -309,7 +307,7 @@ $(document).ready(function() {
     {
         $('body').click((event) =>
         {
-            if (!event.target.closest("#mySidebar") && event.target.id !== "hamburger")
+            if (!event.target.closest(".sidebar") && !event.target.closest('.hamburger'))
             {
                 closeNav();
             }
@@ -319,7 +317,7 @@ $(document).ready(function() {
 
 $(document).ready(function inputContainerToggle() {
     $("#add-icon").click(function() {
-        $("#inputContainer").slideToggle(300);
+        $("#input-container").slideToggle(300);
     })
 });
 
