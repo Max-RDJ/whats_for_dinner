@@ -5,6 +5,7 @@ TODO:
 - Produce shopping list
 - Create a 'tutorial' if no content is displayed on page or if no saved data
 - Add 'click off' function to close meal input container
+- Order meals in Meal Manager alphabetically
 
 MAYBE:
 - Webscrape ingredients prices

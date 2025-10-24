@@ -81,8 +81,6 @@ const mealManagerTitle = document.getElementById("meal-manager-title");
 
 loadData();
 
-
-// Format ingredients text
 function capitaliseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
@@ -95,19 +93,29 @@ function paintUI() {
         new_inner_html +=
         `
         <div class="draggables-container">
-        <div class="mealItem draggable" draggable="true">
-        <button id="dragHandle">&#9776;</button>
-        <form>
-            <input class="meal-item-text" id="meal-item-name-${i}" type="submit" value="${meal}">
-        </form
-        <form>
-            <input class="meal-item-text" id="meal-item-ingredients-${i}" type="submit" value="${ingredients}">
-        </form>
-        <div class="actionsContainer">
-        <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
-        </div>
-        </div>
+            <table class="mealItem draggable" draggable="true">
+                <tbody>
+                    <tr>
+                        <td>
+                            <button id="dragHandle">&#9776;</button>
+                        </td>
+                        <td>
+                            <form>
+                                <input class="meal-item-text" id="meal-item-name-${i}" type="submit" value="${meal}">
+                            </form>
+                        </td>
+                        <td>
+                            <form>
+                                <input class="meal-item-text" id="meal-item-ingredients-${i}" type="submit" value="${ingredients}">
+                            </form>
+                        </td>
+                        <td class="actionsContainer">
+                            <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         `;
     }
@@ -127,8 +135,6 @@ f.addEventListener('submit', (ev) => {
   saveData();
 });
 
-
-// Fade in elements on page
 function fadeIn(element, delay) {
     let opacity = 0;
     element.style.opacity = opacity;
@@ -158,7 +164,6 @@ document.getElementById("body").onload = function fadeInMeals() {
     }
 }
 
-// Open and close sidebar
 let navOpened = false;
 function openNav() {
     navOpened = true;
@@ -178,7 +183,6 @@ function closeNav() {
     mealManagerHeader.style.opacity = "1";
   };
 
-// Add new meal idea
 function addMeal() {
     let currentMealName = mealInput.value;
     if (!currentMealName) {return};
@@ -200,7 +204,6 @@ document.getElementById("add-btn").addEventListener("click",() => {
     $("#inputContainer").slideToggle(300);
 });
 
-// Delete a meal idea
 function deleteMeal(index) {
     var result = confirm("Are you sure you want to delete this meal idea?")
     if (!navOpened) {
@@ -213,7 +216,6 @@ function deleteMeal(index) {
     }
 };
 
-// Edit a meal idea
 function editMeal(index) {
     if (navOpened == false) {
     addIconSpin();
@@ -225,7 +227,6 @@ function editMeal(index) {
     }
 };
 
-// Persist new meals across page visits
 function saveData() {
     meals.forEach((meal, index) => {
         let mealNameField = document.getElementById(`meal-item-name-${index}`);

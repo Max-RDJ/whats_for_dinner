@@ -8,13 +8,11 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="styles.css">
     <script src = "https://releases.jquery.com/git/jquery-git.min.js"></script>
   </head>
 
-  <div id="mySidebar">
+  <div class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div id="sidebar-links">
       <a href="index.html">Start</a>
@@ -23,23 +21,20 @@
     </div>
   </div>
 
+  <div class="button-tray">
+      <button class="button-neutral" id="generate-button">Generate new meal plan</button>
+  </div>
+
   <header>
     <h1 class="unselectable" id="index-page-title">What's for Dinner?</h1>
     <div id="navbar">
-      <button id="hamburger" onclick="openNav()">&#9776;</button>
+      <button class="hamburger" onclick="openNav()">&#9776;</button>
     </div>
   </header>
 
 
 <body id="body">
-
-  <div id="generateBtnContainer">
-  <button id="generateBtn">Generate my meal plan</button>
-</div>
-
-<div id="index-main-content">
-  
-
+  <div id="index-main-content">
     <table id="meals-table">
       <tr>
         <td class="dayOfWeek">Mon</td>
@@ -91,12 +86,11 @@
         </td>
       </tr>
     </table>
+    </div>
+    <div class="button-section">
+    </div>
 
-  <!-- <div id="shopping-list">
-    <h2 id="shopping-list-title">Shopping List</h2>
-  </div> -->
-
-</div>
 	<script src="index.js"></script>
   </body>
+
 </html>

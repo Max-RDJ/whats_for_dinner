@@ -1,6 +1,3 @@
-// Create array of meals with subarrays of ingredients
-const charImage = '<img id="char" src="https://drive.google.com/thumbnail?id=1CbV--Oogrro5joi_tY3XMg_7r5GLoLJV" width="18px">'
-
 let meals =  [
     {
     mealName: "Thai Green Curry",
@@ -58,26 +55,23 @@ let meals =  [
     }
 ]
 
+let mealInput = document.getElementById("mealInput");
+let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
+const homepageBody = document.querySelector("#index-main-content");
+const homepageHeader = document.querySelector("header");
+const buttonSection = document.querySelector(".button-section")
+const sidebar = document.querySelector(".sidebar");
+let storedData = localStorage.getItem("meals");
+const sidebarLinks = document.getElementById("sidebar-links")
 
-
-// Initialise
-    let mealInput = document.getElementById("mealInput");
-    let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
-    const homepageBody = document.querySelector("#index-main-content");
-    const homepageHeader = document.querySelector("header");
-    const generateBtnContainer = document.getElementById("generateBtnContainer")
-    const sidebar = document.getElementById("mySidebar");
-    let storedData = localStorage.getItem("meals");
-    const sidebarLinks = document.getElementById("sidebar-links")
-
-    if (storedData) {
-        console.log("Found data")
-        meals = JSON.parse(storedData);
-        console.log("Parsed meals data:", meals)
-    }
+if (storedData) {
+    console.log("Found data")
+    meals = JSON.parse(storedData);
+    console.log("Parsed meals data:", meals)
+}
 
 // Event listeners for buttons
-document.getElementById('generateBtn').addEventListener('click', () => {
+document.getElementById('generate-button').addEventListener('click', () => {
     dailyMeals.forEach(mealElement => {
         mealElement.innerHTML = '';
         mealElement.style.opacity = 0;
@@ -88,9 +82,6 @@ document.getElementById('generateBtn').addEventListener('click', () => {
     });
     generateMeals(7);
 });
-
-
-
 
 const dailyMeals = [
     document.getElementById("first-meal"),
@@ -117,16 +108,16 @@ function fadeIn(element, delay) {
     let opacity = 0;
     // element.style.opacity = opacity;
     setTimeout(() => {
-    element.style.display = "block";
-    const intervalID = setInterval(() => {
-        if (opacity < 1) {
-            opacity += 0.03;
-            element.style.opacity = opacity;
-        } else {
-            clearInterval(intervalID);
-        }
-    }, 20);
-}, delay);
+        element.style.display = "block";
+        const intervalID = setInterval(() => {
+            if (opacity < 1) {
+                opacity += 0.03;
+                element.style.opacity = opacity;
+            } else {
+                clearInterval(intervalID);
+            }
+        }, 20);
+    }, delay);
 }
 
 function getRandomMeal(availableMeals) {
@@ -188,14 +179,14 @@ function openNav() {
     sidebar.style.width = "250px";
     homepageBody.style.opacity = "0.3";
     homepageHeader.style.opacity = "0.3";
-    generateBtnContainer.style.opacity = "0.3";
+    buttonSection.style.opacity = "0.3";
   }
 
 function closeNav() {
     sidebar.style.width = "0px";
     homepageBody.style.opacity = "1";
     homepageHeader.style.opacity = "1";
-    generateBtnContainer.style.opacity = "1";
+    buttonSection.style.opacity = "1";
   }
 
   $(document).ready(function() {
@@ -203,7 +194,7 @@ function closeNav() {
     {
         $('body').click((event) =>
         {
-            if (!event.target.closest("#mySidebar") && event.target.id !== "hamburger")
+            if (!event.target.closest(".sidebar") && !event.target.closest('.hamburger'))
             {
                 closeNav();
             }
