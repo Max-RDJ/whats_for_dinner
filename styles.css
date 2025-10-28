@@ -38,6 +38,7 @@ html {
 body {
     margin: 0;
     padding: 50px;
+    padding-bottom: 10rem;
     min-height: 100%;
 }
 
@@ -97,7 +98,6 @@ h1 {
 
 .hamburger {
     font-size: 2em;
-    margin-top: -10px;
     cursor: pointer;
     color: var(--accent-color);
     border: none;
@@ -109,7 +109,7 @@ h1 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-inline: 100px;
+    margin-inline: 2rem;
 }
 
 .button-tray {
@@ -119,7 +119,7 @@ h1 {
     justify-content: center;
     background: var(--accent-translucent);
     border-color: 2px solid var(--accent-color);
-    padding: 4em 0;
+    padding: 2.5rem 0;
     width: 100vw;
     left: 0;
     right: 0;
@@ -148,12 +148,11 @@ legend {
 }
 
 #meals-table {
-    display: block;
-    margin: auto;
-    min-height: 30em;
-    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 1;
-    margin-bottom: -30px;
+    width: 30%;
 }
 
 td {
@@ -189,6 +188,7 @@ legend {
     font-size: 2em;
     color: var(--accent-color);
     padding-right: 2em;
+    text-align: center;
 }
 
 .mealText {
@@ -470,4 +470,8 @@ main {
     opacity: 0;
 }
 
-
+@media (width <= 1280px) {
+  #meals-table {
+    width: 70%;
+}
+}
