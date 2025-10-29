@@ -118,14 +118,28 @@ h1 {
     align-items: center;
     justify-content: center;
     background: var(--accent-translucent);
-    border-color: 2px solid var(--accent-color);
+    border-top: 2px solid var(--accent-color);
     padding: 2.5rem 0;
     width: 100vw;
     left: 0;
     right: 0;
     bottom: 0;
     backdrop-filter: blur(4px);
+
+   
 }
+
+.tray-toggle {
+  width: 60px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
 
 #dragHandle {
     font-size: 15px;
