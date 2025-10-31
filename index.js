@@ -1,3 +1,5 @@
+import './utils/toggleTray.js';
+
 let meals =  [
     {
     mealName: "Thai Green Curry",
@@ -59,7 +61,6 @@ let mealInput = document.getElementById("mealInput");
 let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 const homepageBody = document.querySelector("#index-main-content");
 const homepageHeader = document.querySelector("header");
-const buttonSection = document.querySelector(".button-section")
 const sidebar = document.querySelector(".sidebar");
 let storedData = localStorage.getItem("meals");
 const sidebarLinks = document.getElementById("sidebar-links")
@@ -106,7 +107,6 @@ const mealIngredients = [
 
 function fadeIn(element, delay) {
     let opacity = 0;
-    // element.style.opacity = opacity;
     setTimeout(() => {
         element.style.display = "block";
         const intervalID = setInterval(() => {
@@ -179,14 +179,12 @@ function openNav() {
     sidebar.style.width = "250px";
     homepageBody.style.opacity = "0.3";
     homepageHeader.style.opacity = "0.3";
-    buttonSection.style.opacity = "0.3";
   }
 
 function closeNav() {
     sidebar.style.width = "0px";
     homepageBody.style.opacity = "1";
     homepageHeader.style.opacity = "1";
-    buttonSection.style.opacity = "1";
   }
 
   $(document).ready(function() {
@@ -202,7 +200,7 @@ function closeNav() {
     }
 });
 
-
+/* 
 function fadeIn(element) {
     if (!element) {
         console.error("fadeIn called on an undefined element");
@@ -219,6 +217,6 @@ function fadeIn(element) {
         }
     }, 50);
 }
-
+ */
 const indexPageTitle = document.getElementById("index-page-title");
 window.onload = fadeIn(indexPageTitle);

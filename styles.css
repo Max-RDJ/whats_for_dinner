@@ -118,28 +118,43 @@ h1 {
     align-items: center;
     justify-content: center;
     background: var(--accent-translucent);
-    border-top: 2px solid var(--accent-color);
     padding: 2.5rem 0;
     width: 100vw;
     left: 0;
     right: 0;
     bottom: 0;
     backdrop-filter: blur(4px);
+    transition: transform 0.3s ease;
+}
 
-   
+.tray-hidden {
+    transform: translateY(158px);
+    transition: transform 0.3s ease;
+}
+
+#toggle-chevron {
+  transition: transform 0.3s ease;
+}
+
+#toggle-chevron.rotated {
+  transform: rotate(180deg);
 }
 
 .tray-toggle {
-  width: 60px;
-  height: 8px;
-  background-color: var(--accent-color);
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    position: absolute;
+    top: -25px;
+    right: 20px;
+    width: 100px;
+    height: 25px;
+    background-color: var(--accent-translucent);
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-
 
 #dragHandle {
     font-size: 15px;
