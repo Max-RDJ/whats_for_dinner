@@ -179,13 +179,18 @@ function openNav() {
     sidebar.style.width = "250px";
     homepageBody.style.opacity = "0.3";
     homepageHeader.style.opacity = "0.3";
-  }
+}
 
 function closeNav() {
     sidebar.style.width = "0px";
     homepageBody.style.opacity = "1";
     homepageHeader.style.opacity = "1";
-  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".hamburger")?.addEventListener("click", openNav);
+  document.querySelector(".closebtn")?.addEventListener("click", closeNav);
+});
 
   $(document).ready(function() {
     if (sidebar.style.width !== "0")
@@ -199,6 +204,9 @@ function closeNav() {
         });
     }
 });
+
+
+
 
 /* 
 function fadeIn(element) {
