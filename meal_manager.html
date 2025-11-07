@@ -10,7 +10,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src = "https://releases.jquery.com/git/jquery-git.min.js"></script>
   </head>
@@ -26,17 +25,15 @@
     </div>
 
 <header>
+  <button class="sidebar-hamburger" onclick="openNav()">&#9776;</button>
   <h1 class="unselectable" id="meal-manager-title">Meal Manager</h1>
-  <div id="navbar">
-  <button id="hamburger" onclick="openNav()">&#9776;</button>
-</div>
 </header>
 
 <body id="body">
 
 <main>
   <div class="draggables-container">
-    <div class="mealItem"></div>
+    <div class="meal-item"></div>
       <p>Example Meal</p>
       <div class="actionsContainer">
         <button id="editIcon"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -45,22 +42,17 @@
   </div>
 </main>
 
-<div id="inputContainer">
-  <div class="textInput">
-    <div id="meal-input-title">Meal name</div>
-    <input id="mealInput" placeholder="Beans on toast"/>
+<!-- <div id="input-container">
+  <div class="text-input">
+    <div id="input__meal-title">Meal name</div>
+    <input placeholder="Beans on toast"/>
   </div>
 
-  <div class="textInput">
-    <div id="meal-input-ingredients">Ingredients</div>
+  <div class="text-input">
+    <div id="input__meal-ingredients">Ingredients</div>
     <input id="ingredientsInput" placeholder="Beans, bread, butter"/>
-
   </div>
-
-  <div id="new-meal-btns">
-    <button class="add-meal-btn" id="add-btn">Add</button>
-  </div>
-</div>
+</div> -->
 
 <div
   id="add-icon"

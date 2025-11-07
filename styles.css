@@ -13,6 +13,7 @@
     --primary-text-color: #2e2e2e;
     --secondary-text-color: #5a7d7c;
     --button-active: #3b5554;
+    --transparent: #00000000;
 }
 
 .unselectable {
@@ -59,6 +60,11 @@ h1 {
     font-size: 2em;
     color: var(--accent-color);
     text-align: center;
+}
+
+.day-item {
+    display: flex;
+    flex-direction: column;
 }
 
 .button-neutral {
@@ -150,13 +156,12 @@ h1 {
     align-items: center;
 }
 
-#dragHandle {
-    font-size: 15px;
+.drag-handle {
+    font-size: 1.5em;
     cursor: pointer;
-    color: #b2b3b5;
+    color: var(--accent-color);
+    background: var(--transparent);
     border: none;
-    background-color: #75c6fc00;
-    margin-left: -10px;
 }
 
 legend {
@@ -178,21 +183,10 @@ legend {
     width: 30%;
 }
 
-td {
-    display: block;
-    padding-bottom: 12px;
-}
-
-tr {
-    display: flex;
-    flex-direction: column;
-}
-
 #meals-number {
     width: 170px;
     height: 40px;
     text-align: center;
-    border: solid 1px #b2b3b5;
     padding: 10px;
 }
 
@@ -248,7 +242,7 @@ legend {
     bottom: 0;
     left: 0;
     background-color: var(--primary-color);
-    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-x: hidden;
     transition: 0.3s;
     text-wrap: nowrap;
     padding-top: 70px;
@@ -292,7 +286,7 @@ main {
     display: none;
 }
 
-.mealItem {
+.meal-item {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -300,39 +294,42 @@ main {
     gap: 14px;
     padding: 15px 30px 15px 30px;
     border-radius: 14px;
-    background: rgba(0, 0, 0, 0.793);
+    background: var(--accent-translucent);
 
     td {
         max-width: 30rem;
+        padding-inline: 1rem;
+        vertical-align: middle;
     }
 }
 
-.meal-item-text {
-    flex: 1;
-    background: rgba(0, 0, 0, 0);
-    font-size: 1.1em;
-    text-wrap: wrap;
+.meal-item td {
+    vertical-align: middle;
 }
 
 #meal-item-name {
     font-weight: 700;
 }
 
-.actionsContainer {
+.actions-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 14px;
+    height: 100%;
+    color: var(--primary-text-color);
     background-color: var(--transparent);
 }
 
-.actionsContainer button {
+.actions-container button {
     transition-duration: 200ms;
     border: none;
     background: transparent;
     cursor: pointer;
 }
 
-#inputContainer {
+#input-container {
     position: fixed;
     margin: auto;
     left: 0;
@@ -347,12 +344,17 @@ main {
     background-color: var(--menu);
 }
 
-#meal-input-title, #meal-input-ingredients {
+.input__meal-title, .input__meal-ingredients {
+    border: none;
+    text-align: left;
     background-color: var(--transparent);
     font-weight: 700;
-    color: var(--accent-color);
+    color: var(--secondary-text-color);
     margin: 10px 0 15px 0;
     font-size: 1.5em;
+    flex: 1;
+    font-size: 1.1em;
+    text-wrap: wrap;
 }
 
 .textInput {
@@ -362,7 +364,7 @@ main {
     background-color: var(--transparent);
 }
 
-.textInput > input {
+.text-input > input {
     position: relative;
     margin: 0 auto;
     width: 50vw;
@@ -389,7 +391,7 @@ main {
     border-radius: 10px;
     border: 1px solid var(--accent-color);
     font-family:'Outfit', 'Arial';
-    color: var(--primary-color);
+    color: var(--primary-text-color);
     background-color: var(--accent-color);
 }
 
@@ -397,7 +399,6 @@ main {
     color: var(--accent-color);
     background-color: var(--primary-color);
 }
-
 
 .fa-solid {
     background-color: var(--transparent);
@@ -494,13 +495,12 @@ main {
     transition: transform 0.3s ease-in;
 }
 
-
 #about-title {
     opacity: 0;
 }
 
 @media (width <= 1280px) {
-  #meals-table {
-    width: 70%;
-}
+    #meals-table {
+        width: 70%;
+    }
 }

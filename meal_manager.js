@@ -95,21 +95,21 @@ function paintUI() {
                 <tbody>
                     <tr>
                         <td>
-                            <button id="drag-handle">&#9776;</button>
+                            <button class="drag-handle">&#9776;</button>
                         </td>
                         <td>
                             <form>
-                                <input class="meal-item-text" id="meal-item-name-${i}" type="submit" value="${meal}">
+                                <input class="input__meal-title" id="meal-item-name-${i}" type="submit" value="${meal}">
+                            </form>
+                            <form>
+                                <input class="input__meal-ingredients" id="meal-item-ingredients-${i}" type="submit" value="${ingredients}">
                             </form>
                         </td>
                         <td>
-                            <form>
-                                <input class="meal-item-text" id="meal-item-ingredients-${i}" type="submit" value="${ingredients}">
-                            </form>
-                        </td>
-                        <td class="actionsContainer">
-                            <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
+                            <div class="actions-container">
+                                <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -168,8 +168,8 @@ function openNav() {
     sidebar.style.width = "250px";
     mealManagerMain.style.opacity = "0.3";
     mealManagerHeader.style.opacity = "0.3";
-    if ($("#inputContainer").is(":visible")) {
-    $("#inputContainer").slideToggle(300);
+    if ($("#input-container").is(":visible")) {
+    $("#input-container").slideToggle(300);
     addIconSpin(); }
   };
 
@@ -199,7 +199,7 @@ function addMeal() {
 document.getElementById("add-btn").addEventListener("click",() => {
     addMeal();
     addIconSpin();
-    $("#inputContainer").slideToggle(300);
+    $("#input-container").slideToggle(300);
 });
 
 function deleteMeal(index) {
@@ -220,7 +220,7 @@ function editMeal(index) {
     let currentMeal = meals[index];
     mealInput.value = currentMeal.mealName;
     ingredientsInput.value = currentMeal.ingredients;
-    $("#inputContainer").slideToggle(300);
+    $("#input-container").slideToggle(300);
     deleteMeal(index);
     }
 };
@@ -278,7 +278,6 @@ let mealIngredients = [
 
 // Open input panel for user to enter new meals
 const addIcon = document.getElementById("add-icon");
-const inputContainer = document.querySelector("input-container");
 
 let rotator = document.querySelector(".rotate");
 rotator.addEventListener("click", addIconSpin);
