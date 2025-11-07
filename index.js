@@ -108,7 +108,7 @@ const mealIngredients = [
 function fadeIn(element, delay) {
     let opacity = 0;
     setTimeout(() => {
-        element.style.display = "block";
+        element.style.display = "flex";
         const intervalID = setInterval(() => {
             if (opacity < 1) {
                 opacity += 0.03;
@@ -144,6 +144,10 @@ function generateMeals(mealsNumber) {
     let selectedMealsArr = [];
 
     console.log("Available meals:", availableMeals)
+
+    document.querySelectorAll(".dayOfWeek").forEach(el => {
+        el.style.display = "block";
+    });
 
     for (let i = 0; i < mealsNumber; i++) {
         if (i < dailyMeals.length) {

@@ -145,7 +145,7 @@ h1 {
 .tray-toggle {
     position: absolute;
     top: -25px;
-    right: 20px;
+    right: 10px;
     width: 100px;
     height: 25px;
     background-color: var(--accent-translucent);
@@ -218,11 +218,13 @@ legend {
 .dayOfWeek {
     font-size: 2em;
     color: var(--accent-color);
-    padding-right: 2em;
     text-align: center;
 }
 
-.mealText {
+.meal-text {
+    align-items: center;
+    justify-content: center;
+    text-wrap: nowrap;
     color: var(--light-grey);
     font-weight: 700;
     padding-bottom: 8px;
@@ -231,7 +233,9 @@ legend {
     letter-spacing: 2.5px;
 }
 
-.ingredientsText {
+.ingredients-text {
+    align-items: center;
+    text-align: center;
     padding-bottom: 30px;
     opacity: 0;
     font-size: 1.5em;
@@ -290,7 +294,10 @@ main {
     display: flex;
     display: none;
     flex-direction: column;
-    /* gap: 14px; */
+}
+
+.dayOfWeek {
+    display: none;
 }
 
 .mealItem {
