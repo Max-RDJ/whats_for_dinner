@@ -97,7 +97,7 @@ function paintUI() {
                         <td>
                             <button class="drag-handle">&#9776;</button>
                         </td>
-                        <td>
+                        <td class="meal-details">
                             <form>
                                 <input class="input__meal-title" id="meal-item-name-${i}" type="submit" value="${meal}">
                             </form>
@@ -196,7 +196,7 @@ function addMeal() {
     // location.reload();
 }
 
-document.getElementById("add-btn").addEventListener("click",() => {
+document.getElementById("add-icon").addEventListener("click",() => {
     addMeal();
     addIconSpin();
     $("#input-container").slideToggle(300);
@@ -306,7 +306,7 @@ $(document).ready(function() {
     {
         $('body').click((event) =>
         {
-            if (!event.target.closest(".sidebar") && !event.target.closest('.hamburger'))
+            if (!event.target.closest(".sidebar") && !event.target.closest('.sidebar-hamburger'))
             {
                 closeNav();
             }

@@ -157,8 +157,13 @@ h1 {
 }
 
 .drag-handle {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: 0;
+    margin-left: 0;
     font-size: 1.5em;
-    cursor: pointer;
+    cursor: grab;
     color: var(--accent-color);
     background: var(--transparent);
     border: none;
@@ -287,38 +292,37 @@ main {
 }
 
 .meal-item {
-    display: flex;
-    flex-direction: row;
+    display: table;
     align-items: center;
-    margin-bottom: 14px;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto 14px auto;
     gap: 14px;
     padding: 15px 30px 15px 30px;
     border-radius: 14px;
     background: var(--accent-translucent);
-
+    width: 75%;
     td {
-        max-width: 30rem;
+        max-width: 40rem;
         padding-inline: 1rem;
         vertical-align: middle;
+        text-align: left;
     }
 }
 
-.meal-item td {
-    vertical-align: middle;
-}
-
-#meal-item-name {
-    font-weight: 700;
+.meal-details {
+    width: 100%;
 }
 
 .actions-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     gap: 14px;
+    width: 100%;
     height: 100%;
-    color: var(--primary-text-color);
+    color: var(--secondary-text-color);
     background-color: var(--transparent);
 }
 
@@ -344,11 +348,11 @@ main {
     background-color: var(--menu);
 }
 
-.input__meal-title, .input__meal-ingredients {
+.input__meal-title,
+.input__meal-ingredients {
     border: none;
     text-align: left;
     background-color: var(--transparent);
-    font-weight: 700;
     color: var(--secondary-text-color);
     margin: 10px 0 15px 0;
     font-size: 1.5em;
@@ -357,11 +361,8 @@ main {
     text-wrap: wrap;
 }
 
-.textInput {
-    position: relative;
-    display: grid;
-    justify-content: center;
-    background-color: var(--transparent);
+.input__meal-title {
+    font-weight: 700;
 }
 
 .text-input > input {
@@ -475,10 +476,6 @@ main {
     background-color: var(--primary-color);
 }
 
-#dragHandle {
-    cursor: pointer;
-}
-
 .draggable.dragging {
     opacity: 1;
 }
@@ -502,5 +499,9 @@ main {
 @media (width <= 1280px) {
     #meals-table {
         width: 70%;
+    }
+
+    .meal-item {
+        width: 100%;
     }
 }

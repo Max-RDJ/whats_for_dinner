@@ -10,3 +10,4 @@ TODO:
 MAYBE:
 - Webscrape ingredients prices
 - Save and date the week of meals generated for future ref
+- Dark mode
