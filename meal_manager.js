@@ -97,16 +97,21 @@ function paintUI() {
                         </td>
                         <td class="meal-details">
                             <form>
-                                <input class="input__meal-title meal-input" id="meal-item-name-${i}" type="submit" value="${meal}">
+                                <input class="input__meal-title meal-input" id="meal-item-name-${i}" type="text" value="${meal}" readonly>
+                                <button type="button" onclick="makeMealEditable(${i}, 'mealName')" class="action-icon">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
                             </form>
                             <form>
-                                <input class="input__meal-ingredients" id="meal-item-ingredients-${i}" type="submit" value="${ingredients}">
+                                <input class="input__meal-ingredients" id="meal-item-ingredients-${i}" type="text" value="${ingredients}" readonly>
+                                <button type="button" onclick="makeMealEditable(${i}, 'ingredients')" class="action-icon">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
                             </form>
                         </td>
                         <td>
                             <div class="actions-container">
-                                <button onclick="editMeal(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button onclick="deleteMeal(${i})"><i class="fa-solid fa-trash"></i></button>
+                                <button onclick="deleteMeal(${i})" class="action-icon"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -202,19 +207,23 @@ let ingredientsInput = document.getElementById("ingredients-input");
 let currentRotation = 0;
 let isMenuOpen = false;
 
-addIcon.addEventListener("click", () => {
+function toggleMealTray(clearInputs = false) {
     currentRotation = currentRotation === 0 ? 135 : 0;
     rotator.style.transform = `rotate(${currentRotation}deg)`;
 
     document.getElementById("open-meal-adder").style.backgroundColor =
         currentRotation === 0 ? "var(--accent-color)" : "gray";
 
-    if (currentRotation === 0) {
+    if (clearInputs) {
         mealInput.value = "";
         ingredientsInput.value = "";
     }
 
     mealManagerButtonTray.slideToggle(300);
+}
+
+addIcon.addEventListener("click", () => {
+    toggleMealTray(true);
 });
 
 function deleteMeal(index) {
@@ -225,20 +234,34 @@ function deleteMeal(index) {
             saveData();
             paintUI();
             // location.reload();
-        }         
+        }
     }
 };
 
-function editMeal(index) {
-    if (navOpened == false) {
-    addIconSpin();
-    let currentMeal = meals[index];
-    mealInput.value = currentMeal.mealName;
-    ingredientsInput.value = currentMeal.ingredients;
-    $("#meal-manager__button-tray").slideToggle(300);
-    deleteMeal(index);
-    }
-};
+function makeMealEditable(index, type) {
+    const mealNameInput = document.getElementById(`meal-item-name-${index}`);
+    const ingredientsInput = document.getElementById(`meal-item-ingredients-${index}`);
+
+    let inputToEdit;
+    if (type === "mealName") inputToEdit = mealNameInput;
+    else inputToEdit = ingredientsInput;
+
+    inputToEdit.removeAttribute("readonly");
+    inputToEdit.focus();
+
+    inputToEdit.select();
+
+    inputToEdit.addEventListener("keydown", function handler(e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            if (type === "mealName") meals[index].mealName = inputToEdit.value;
+            else meals[index].ingredients = inputToEdit.value.split(",").map(i => i.trim());
+            saveData();
+            inputToEdit.setAttribute("readonly", true);
+            inputToEdit.removeEventListener("keydown", handler);
+        }
+    });
+}
 
 function saveData() {
     meals.forEach((meal, index) => {
