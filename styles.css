@@ -127,6 +127,10 @@ h1 {
     transition: transform 0.3s ease;
 }
 
+#meal-manager__button-tray {
+    display: none;
+}
+
 .tray-hidden {
     transform: translateY(158px);
     transition: transform 0.3s ease;
@@ -230,12 +234,6 @@ legend {
     padding-bottom: 30px;
     opacity: 0;
     font-size: 1.5em;
-}
-
-#shoppingList {
-    margin-top: 20px;
-    opacity: 0;
-    font-size: 20px;
 }
 
 .sidebar {
@@ -377,6 +375,12 @@ main {
     border: 2px solid var(--accent-color)
 }
 
+.text-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #new-meal-btns {
     background-color: var(--transparent);
     display: flex;
@@ -489,6 +493,7 @@ main {
 }
 
 .rotate {
+    display: inline-block;
     transition: transform 0.3s ease-in;
 }
 

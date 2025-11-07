@@ -57,7 +57,6 @@ let meals =  [
     }
 ]
 
-let mealInput = document.getElementById("mealInput");
 let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 const homepageBody = document.querySelector("#index-main-content");
 const homepageHeader = document.querySelector("header");

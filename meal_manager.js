@@ -67,8 +67,6 @@ let meals =  [
 ]
 
 let mainContainer = document.querySelector("main");
-let mealInput = document.getElementById("meal-input");
-let ingredientsInput = document.getElementById("ingredients-input");
 let mealList = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 
 const mealManagerBody = document.querySelector("body");
@@ -99,7 +97,7 @@ function paintUI() {
                         </td>
                         <td class="meal-details">
                             <form>
-                                <input class="input__meal-title" id="meal-item-name-${i}" type="submit" value="${meal}">
+                                <input class="input__meal-title meal-input" id="meal-item-name-${i}" type="submit" value="${meal}">
                             </form>
                             <form>
                                 <input class="input__meal-ingredients" id="meal-item-ingredients-${i}" type="submit" value="${ingredients}">
@@ -168,9 +166,9 @@ function openNav() {
     sidebar.style.width = "250px";
     mealManagerMain.style.opacity = "0.3";
     mealManagerHeader.style.opacity = "0.3";
-    if ($("#input-container").is(":visible")) {
-    $("#input-container").slideToggle(300);
-    addIconSpin(); }
+    if ($("#meal-manager__button-tray").is(":visible")) {
+        $("#meal-manager__button-tray").slideToggle(300);
+    }
   };
 
 function closeNav() {
@@ -196,10 +194,27 @@ function addMeal() {
     // location.reload();
 }
 
-document.getElementById("add-icon").addEventListener("click",() => {
-    addMeal();
-    addIconSpin();
-    $("#input-container").slideToggle(300);
+const addIcon = document.getElementById("add-icon");
+const rotator = document.querySelector(".rotate");
+const mealManagerButtonTray = $("#meal-manager__button-tray");
+const mealInput = document.getElementById("meal-input");
+let ingredientsInput = document.getElementById("ingredients-input");
+let currentRotation = 0;
+let isMenuOpen = false;
+
+addIcon.addEventListener("click", () => {
+    currentRotation = currentRotation === 0 ? 135 : 0;
+    rotator.style.transform = `rotate(${currentRotation}deg)`;
+
+    document.getElementById("open-meal-adder").style.backgroundColor =
+        currentRotation === 0 ? "var(--accent-color)" : "gray";
+
+    if (currentRotation === 0) {
+        mealInput.value = "";
+        ingredientsInput.value = "";
+    }
+
+    mealManagerButtonTray.slideToggle(300);
 });
 
 function deleteMeal(index) {
@@ -220,7 +235,7 @@ function editMeal(index) {
     let currentMeal = meals[index];
     mealInput.value = currentMeal.mealName;
     ingredientsInput.value = currentMeal.ingredients;
-    $("#input-container").slideToggle(300);
+    $("#meal-manager__button-tray").slideToggle(300);
     deleteMeal(index);
     }
 };
@@ -275,32 +290,6 @@ let mealIngredients = [
     document.getElementById("seventh-ingredients")
 ];
 
-
-// Open input panel for user to enter new meals
-const addIcon = document.getElementById("add-icon");
-
-let rotator = document.querySelector(".rotate");
-rotator.addEventListener("click", addIconSpin);
-let current_rotation = 0;
-
-function addIconSpin()
-{
-    if (current_rotation == 0)
-    {
-        current_rotation += 135;
-        rotator.style.transform = 'rotate(' + current_rotation + 'deg)';
-        document.getElementById("open-meal-adder").style.backgroundColor = "gray";
-    }
-    else
-    {
-        current_rotation -= 135;
-        rotator.style.transform = 'rotate(' + current_rotation + 'deg)';
-        document.getElementById("open-meal-adder").style.backgroundColor = "var(--accent-color)";
-        mealInput.value = "";
-        ingredientsInput.value = "";
-    }
-};
-
 $(document).ready(function() {
     if (sidebar.style.width !== "0")
     {
@@ -312,12 +301,6 @@ $(document).ready(function() {
             }
         });
     }
-});
-
-$(document).ready(function inputContainerToggle() {
-    $("#add-icon").click(function() {
-        $("#input-container").slideToggle(300);
-    })
 });
 
 
