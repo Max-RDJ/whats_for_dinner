@@ -88,22 +88,14 @@ h1 {
     color: rgb(214, 214, 214);
 }
 
-#navbar {
+.sidebar-hamburger {
     position: absolute;
-    transition: margin-left .5s;
-    height: 100%;
-    left: 15px;
-    margin-left: 15px;
-    padding-top: 30px;
-    box-sizing: border-box;
-  }
-
-.hamburger {
     font-size: 2em;
     cursor: pointer;
     color: var(--accent-color);
     border: none;
     background-color: var(--transparent);
+    left: 0;
 }
 
 #index-main-content {

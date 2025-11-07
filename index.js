@@ -192,7 +192,7 @@ function closeNav() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".hamburger")?.addEventListener("click", openNav);
+  document.querySelector(".sidebar-hamburger")?.addEventListener("click", openNav);
   document.querySelector(".closebtn")?.addEventListener("click", closeNav);
 });
 
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         $('body').click((event) =>
         {
-            if (!event.target.closest(".sidebar") && !event.target.closest('.hamburger'))
+            if (!event.target.closest(".sidebar") && !event.target.closest('.sidebar-hamburger'))
             {
                 closeNav();
             }
