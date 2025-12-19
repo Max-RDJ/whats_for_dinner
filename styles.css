@@ -309,6 +309,7 @@ main {
 }
 
 .meal-details {
+    display: inline-block;
     width: 100%;
 }
 
@@ -407,7 +408,7 @@ main {
 
 .fa-solid {
     background-color: var(--transparent);
-    color: var(--light-grey);
+    color: var(--accent-color);
     font-size: 1.1em;
 }
 

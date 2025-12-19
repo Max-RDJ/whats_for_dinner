@@ -96,16 +96,16 @@ function paintUI() {
                             <button class="drag-handle">&#9776;</button>
                         </td>
                         <td class="meal-details">
-                            <form>
+                            <form class="meal-row">
                                 <input class="input__meal-title meal-input" id="meal-item-name-${i}" type="text" value="${meal}" readonly>
                                 <button type="button" onclick="makeMealEditable(${i}, 'mealName')" class="action-icon">
-                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <i class="fa-solid fa-pen-to-square edit-icon"></i>
                                 </button>
                             </form>
-                            <form>
+                            <form class="meal-row">
                                 <input class="input__meal-ingredients" id="meal-item-ingredients-${i}" type="text" value="${ingredients}" readonly>
                                 <button type="button" onclick="makeMealEditable(${i}, 'ingredients')" class="action-icon">
-                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <i class="fa-solid fa-pen-to-square edit-icon"></i>
                                 </button>
                             </form>
                         </td>
@@ -248,20 +248,39 @@ function makeMealEditable(index, type) {
 
     inputToEdit.removeAttribute("readonly");
     inputToEdit.focus();
-
     inputToEdit.select();
 
-    inputToEdit.addEventListener("keydown", function handler(e) {
+    function keyHandler(e) {
         if (e.key === "Enter") {
             e.preventDefault();
-            if (type === "mealName") meals[index].mealName = inputToEdit.value;
-            else meals[index].ingredients = inputToEdit.value.split(",").map(i => i.trim());
-            saveData();
-            inputToEdit.setAttribute("readonly", true);
-            inputToEdit.removeEventListener("keydown", handler);
+            saveEditedMeal(inputToEdit, index, type, keyHandler);
         }
-    });
+    }
+
+    function blurHandler() {
+        saveEditedMeal(inputToEdit, index, type, keyHandler);
+    }
+
+    inputToEdit.addEventListener("keydown", keyHandler);
+    inputToEdit.addEventListener("blur", blurHandler);
 }
+
+function saveEditedMeal(inputToEdit, index, type, handler) {
+    if (type === "mealName") {
+        meals[index].mealName = inputToEdit.value;
+    } else {
+        meals[index].ingredients = inputToEdit.value
+            .split(",")
+            .map(i => i.trim());
+    }
+
+    saveData();
+    inputToEdit.setAttribute("readonly", true);
+
+    inputToEdit.removeEventListener("keydown", handler);
+    inputToEdit.removeEventListener("blur", blurHandler);
+}
+
 
 function saveData() {
     meals.forEach((meal, index) => {
