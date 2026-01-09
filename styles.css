@@ -62,9 +62,18 @@ h1 {
     text-align: center;
 }
 
-.day-item {
+.day-card {
+    opacity: 0;
     display: flex;
     flex-direction: column;
+    gap: 16px;
+    background: var(--accent-translucent);
+    gap: 14px;
+    justify-content: center;
+    margin: 0 auto 14px auto;
+    padding: 15px 30px 45px 30px;
+    border-radius: 14px;
+    width: 75%;
 }
 
 .button-neutral {
@@ -78,20 +87,15 @@ h1 {
     line-height: 3em;
     height: auto;
     opacity: 1;
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    &:active {
-        color: var(--button-active);
-        background-color: var(--primary-color);
-    }
 }
 
-#indexH2 {
-    opacity: 0;
-    color: rgb(214, 214, 214);
+.button-neutral:hover {
+    cursor: pointer;
+}
+
+.button-neutral:active {
+    color: var(--button-active);
+    background-color: var(--primary-color);
 }
 
 .sidebar-hamburger {
@@ -104,12 +108,13 @@ h1 {
     left: 0;
 }
 
-#index-main-content {
+.generated-meals {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-inline: 2rem;
+    
 }
 
 .button-tray {
@@ -192,13 +197,6 @@ legend {
     width: 30%;
 }
 
-#meals-number {
-    width: 170px;
-    height: 40px;
-    text-align: center;
-    padding: 10px;
-}
-
 footer {
     position: absolute;
     bottom: 0;
@@ -209,9 +207,9 @@ legend {
     color: var(--accent-color);
 }
 
-
-.dayOfWeek {
-    font-size: 2em;
+.day-of-week {
+    font-size: 1.5em;
+    font-weight: 400;
     color: var(--accent-color);
     text-align: center;
 }
@@ -219,22 +217,19 @@ legend {
 .meal-text {
     align-items: center;
     justify-content: center;
-    text-wrap: nowrap;
-    color: var(--light-grey);
+    text-align: center;
+    color: var(--primary-text-color);
     font-weight: 700;
     padding-bottom: 8px;
-    opacity: 0;
     font-size: 1.5em;
-    letter-spacing: 2.5px;
+    letter-spacing: 2px;
 }
 
 .ingredients-text {
     align-items: center;
     text-align: center;
     justify-content: center;
-    padding-bottom: 30px;
-    opacity: 0;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .sidebar {
@@ -282,12 +277,7 @@ legend {
 
 main {
     display: flex;
-    display: none;
     flex-direction: column;
-}
-
-.dayOfWeek {
-    display: none;
 }
 
 .meal-item {
@@ -354,7 +344,8 @@ main {
 }
 
 .input__meal-title,
-.input__meal-ingredients {
+.input__meal-ingredients
+{
     border: none;
     text-align: left;
     background-color: var(--transparent);
@@ -365,6 +356,12 @@ main {
     font-size: 1.1em;
     text-wrap: none;
     text-overflow: ellipsis;
+}
+
+.input__meal-title:hover,
+.input__meal-ingredients:hover
+{
+    cursor: pointer;
 }
 
 .input__meal-title {
@@ -505,9 +502,6 @@ main {
     transition: transform 0.3s ease-in;
 }
 
-#about-title {
-    opacity: 0;
-}
 
 @media (width <= 1280px) {
     #meals-table {

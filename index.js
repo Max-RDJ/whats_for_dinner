@@ -58,11 +58,11 @@ let meals =  [
 ]
 
 let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
-const homepageBody = document.querySelector("#index-main-content");
+const generatedMeals = document.querySelector(".generated-meals");
 const homepageHeader = document.querySelector("header");
 const sidebar = document.querySelector(".sidebar");
 let storedData = localStorage.getItem("meals");
-const sidebarLinks = document.getElementById("sidebar-links")
+const dayCards = document.querySelectorAll(".day-card");
 
 if (storedData) {
     console.log("Found data")
@@ -70,15 +70,12 @@ if (storedData) {
     console.log("Parsed meals data:", meals)
 }
 
-// Event listeners for buttons
 document.getElementById('generate-button').addEventListener('click', () => {
     dailyMeals.forEach(mealElement => {
         mealElement.innerHTML = '';
-        mealElement.style.opacity = 0;
     });
     mealIngredients.forEach(ingrElement => {
         ingrElement.innerHTML = '';
-        ingrElement.style.opacity = 0;
     });
     generateMeals(7);
 });
@@ -144,7 +141,7 @@ function generateMeals(mealsNumber) {
 
     console.log("Available meals:", availableMeals)
 
-    document.querySelectorAll(".dayOfWeek").forEach(el => {
+    document.querySelectorAll(".day-of-week").forEach(el => {
         el.style.display = "block";
     });
 
@@ -158,35 +155,32 @@ function generateMeals(mealsNumber) {
                 if (dailyMeals[i] && mealIngredients[i]) {
                     dailyMeals[i].innerHTML = selectedMeal.mealName;
                     mealIngredients[i].innerHTML = formatIngredients(selectedMeal.ingredients);
-                    console.log("Meal assigned:", selectedMeal.mealName);
             }
         }
     }
 
     if (selectedMealsArr.length > 0) {
         selectedMealsArr.forEach((selectedMeal, index) => {
-            console.log("Displaying meal: ", dailyMeals[index]);
-                    setTimeout(() => {
-                        fadeIn(dailyMeals[index]);
-                        fadeIn(mealIngredients[index]);
-                    }, index * 100);             
-                });
-            } else {
-                console.error("No elements to fade in found.");
-            } 
+            setTimeout(() => {
+                fadeIn(dayCards[index]);
+            }, index * 100);
+        });
+        } else {
+            console.error("No elements to fade in found.");
         }
     }
+}
 
 
 function openNav() {
     sidebar.style.width = "250px";
-    homepageBody.style.opacity = "0.3";
+    generatedMeals.style.opacity = "0.3";
     homepageHeader.style.opacity = "0.3";
 }
 
 function closeNav() {
     sidebar.style.width = "0px";
-    homepageBody.style.opacity = "1";
+    generatedMeals.style.opacity = "1";
     homepageHeader.style.opacity = "1";
 }
 

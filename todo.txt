@@ -1,9 +1,11 @@
 TODO:
+- Add import/export feature
 - Add alphabetical sort option to Meal Manager
 - Produce shopping list
 - Create a 'tutorial' if no content is displayed on page or if no saved data
 - Add 'click off' function to close meal input container
 - Turn meals on index into cards to make more distinguishable from each other
+- Fix flicker on Meal Manager load
 
 MAYBE:
 - Webscrape ingredients prices

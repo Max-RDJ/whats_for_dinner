@@ -25,63 +25,67 @@
 
 <header>
   <button class="sidebar-hamburger">&#9776;</button>
-  <h1 class="unselectable" id="index-page-title">What's for Dinner?</h1>
+  <h1 class="unselectable" id="index-page-title">What's for dinner?</h1>
 </header>
 
 <body id="body">
-  <div id="index-main-content">
-    <table id="meals-table">
-      <tr class="day-item">
-        <td class="dayOfWeek">Mon</td>
-        <td>
-          <div class="meal-text" id="first-meal"></div>
-          <div class="ingredients-text" id="first-ingredients"></div>
-        </td>
-      </tr>
-      <tr class="day-item">
-        <td class="dayOfWeek">Tue</td>
-        <td>
-          <div class="meal-text" id="second-meal"></div>
-          <div class="ingredients-text" id="second-ingredients"></div>
-        </td>
-      </tr>
-      <tr class="day-item">
-        <td class="dayOfWeek">Wed</td>
-        <td>
-          <div class="meal-text" id="third-meal"></div>
-          <div class="ingredients-text" id="third-ingredients"></div>
-        </td>
-      </tr>
-      <tr class="day-item">
-        <td class="dayOfWeek">Thu</td>
-        <td>
-          <div class="meal-text" id="fourth-meal"></div>
-          <div class="ingredients-text" id="fourth-ingredients"></div>
-        </td>
-      </tr>
-      <tr class="day-item">
-        <td class="dayOfWeek">Fri</td>
-        <td>
-          <div class="meal-text" id="fifth-meal"></div>
-          <div class="ingredients-text" id="fifth-ingredients"></div>
-        </td>
-      </tr>
-      <tr class="day-item">
-        <td class="dayOfWeek">Sat</td>
-        <td>
-          <div class="meal-text" id="sixth-meal"></div>
-          <div class="ingredients-text" id="sixth-ingredients"></div>
-        </td>
-      </tr>
-      <tr class="day-item">
-        <td class="dayOfWeek">Sun</td>
-        <td>
-          <div class="meal-text" id="seventh-meal"></div>
-          <div class="ingredients-text" id="seventh-ingredients"></div>
-        </td>
-      </tr>
-    </table>
+  <div class="generated-meals">
+    <div class="day-card" id="day-mon">
+      <div class="day-of-week">Mon</div>
+      <div class="meal-info">
+        <div class="meal-text" id="first-meal"></div>
+        <div class="ingredients-text" id="first-ingredients"></div>
+      </div>
     </div>
+
+    <div class="day-card" id="day-tue">
+      <div class="day-of-week">Tue</div>
+      <div class="meal-info">
+        <div class="meal-text" id="second-meal"></div>
+        <div class="ingredients-text" id="second-ingredients"></div>
+      </div>
+    </div>
+
+    <div class="day-card" id="day-wed">
+      <div class="day-of-week">Wed</div>
+      <div class="meal-info">
+        <div class="meal-text" id="third-meal"></div>
+        <div class="ingredients-text" id="third-ingredients"></div>
+      </div>
+    </div>
+
+    <div class="day-card" id="day-thu">
+      <div class="day-of-week">Thu</div>
+      <div class="meal-info">
+        <div class="meal-text" id="fourth-meal"></div>
+        <div class="ingredients-text" id="fourth-ingredients"></div>
+      </div>
+    </div>
+
+    <div class="day-card" id="day-fri">
+      <div class="day-of-week">Fri</div>
+      <div class="meal-info">
+        <div class="meal-text" id="fifth-meal"></div>
+        <div class="ingredients-text" id="fifth-ingredients"></div>
+      </div>
+    </div>
+
+    <div class="day-card" id="day-sat">
+      <div class="day-of-week">Sat</div>
+      <div class="meal-info">
+        <div class="meal-text" id="sixth-meal"></div>
+        <div class="ingredients-text" id="sixth-ingredients"></div>
+      </div>
+    </div>
+
+    <div class="day-card" id="day-sun">
+      <div class="day-of-week">Sun</div>
+      <div class="meal-info">
+        <div class="meal-text" id="seventh-meal"></div>
+        <div class="ingredients-text" id="seventh-ingredients"></div>
+      </div>
+    </div>
+  </div>
 
   <div class="button-tray tray-hidden" id="index__button-tray">
     <button class="button-neutral" id="generate-button">Generate new meal plan</button>
@@ -91,6 +95,6 @@
   </div>
 
 <script type="module" src="./index.js"></script>
-</body>
+
 
 </html>

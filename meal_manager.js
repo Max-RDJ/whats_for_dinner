@@ -293,8 +293,6 @@ function updateMealsOrder() {
     saveData();
 }
 
-
-
 function loadData() {
     const storedData = localStorage.getItem("meals");
     if (storedData) {
@@ -303,9 +301,6 @@ function loadData() {
     }
     paintUI();
 }
-
-
-let mealsNumber = document.getElementById("meals-number");
 
 let dailyMeals = [
     document.getElementById("first-meal"),

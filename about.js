@@ -1,35 +1,37 @@
-// Open and close sidebar
 const aboutBody = document.querySelector("main");
 const aboutHeader = document.querySelector("header");
-const sidebar = document.getElementById("mySidebar");
+const sidebar = document.querySelector(".sidebar");
 
 function openNav() {
     sidebar.style.width = "250px";
-    aboutBody.style.opacity = "0.3";
-    aboutHeader.style.opacity = "0.3";
-    // generateBtnContainer.style.opacity = "0.3";
-  }
+    homepageBody.style.opacity = "0.3";
+    homepageHeader.style.opacity = "0.3";
+}
 
 function closeNav() {
     sidebar.style.width = "0px";
-    aboutBody.style.opacity = "1";
-    aboutHeader.style.opacity = "1";
-    // generateBtnContainer.style.opacity = "1";
-  }
+    homepageBody.style.opacity = "1";
+    homepageHeader.style.opacity = "1";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".sidebar-hamburger")?.addEventListener("click", openNav);
+  document.querySelector(".closebtn")?.addEventListener("click", closeNav);
+});
 
   $(document).ready(function() {
     if (sidebar.style.width !== "0")
     {
         $('body').click((event) =>
         {
-            if (!event.target.closest("#mySidebar") && event.target.id !== "hamburger")
+            if (!event.target.closest(".sidebar") && !event.target.closest('.sidebar-hamburger'))
             {
                 closeNav();
             }
         });
     }
 });
-    
+
 
 function fadeIn(element, delay) {
     let opacity = 0;
@@ -48,7 +50,7 @@ function fadeIn(element, delay) {
 }
 
 window.onload = function fadeInText() {
-    const aboutTitle = document.getElementById("about-title");
+    const aboutTitle = document.getElementById("about-page-title");
     const mainText = document.querySelectorAll(".main-text");
     fadeIn(aboutTitle);
 
