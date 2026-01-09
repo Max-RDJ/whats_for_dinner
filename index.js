@@ -161,9 +161,10 @@ function generateMeals(mealsNumber) {
 
     if (selectedMealsArr.length > 0) {
         selectedMealsArr.forEach((selectedMeal, index) => {
+            dayCards[index].style.opacity = "0";
             setTimeout(() => {
                 fadeIn(dayCards[index]);
-            }, index * 100);
+            }, index * 75);
         });
         } else {
             console.error("No elements to fade in found.");

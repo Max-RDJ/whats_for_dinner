@@ -105,7 +105,7 @@ h1 {
     color: var(--accent-color);
     border: none;
     background-color: var(--transparent);
-    left: 0;
+    left: 2rem;
 }
 
 .generated-meals {
