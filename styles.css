@@ -363,7 +363,8 @@ main {
     font-size: 1.5em;
     flex: 1;
     font-size: 1.1em;
-    text-wrap: wrap;
+    text-wrap: none;
+    text-overflow: ellipsis;
 }
 
 .input__meal-title {
