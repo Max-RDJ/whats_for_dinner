@@ -96,18 +96,18 @@ function paintUI() {
                             <button class="drag-handle">&#9776;</button>
                         </td>
                         <td class="meal-details">
-                            <form class="meal-row">
-                                <input class="input__meal-title meal-input" id="meal-item-name-${i}" type="text" value="${meal}" readonly>
+                            <div class="meal-row">
+                                <input onclick="makeMealEditable(${i}, 'mealName')"class="input__meal-title meal-input" id="meal-item-name-${i}" type="text" value="${meal}">
                                 <button type="button" onclick="makeMealEditable(${i}, 'mealName')" class="action-icon">
                                     <i class="fa-solid fa-pen-to-square edit-icon"></i>
                                 </button>
-                            </form>
-                            <form class="meal-row">
-                                <input class="input__meal-ingredients" id="meal-item-ingredients-${i}" type="text" value="${ingredients}" readonly>
+                            </div>
+                            <div class="meal-row">
+                                <input onclick="makeMealEditable(${i}, 'ingredients')"class="input__meal-ingredients" id="meal-item-ingredients-${i}" type="text" value="${ingredients}">
                                 <button type="button" onclick="makeMealEditable(${i}, 'ingredients')" class="action-icon">
                                     <i class="fa-solid fa-pen-to-square edit-icon"></i>
                                 </button>
-                            </form>
+                            </div>
                         </td>
                         <td>
                             <div class="actions-container">
@@ -121,20 +121,8 @@ function paintUI() {
         `;
     }
     mainContainer.innerHTML = new_inner_html;
-    saveData();
     attachDragAndDropHandlers()
 }
-
-paintUI();
-
-
-const f = document.querySelector('form');
-f.addEventListener('submit', (ev) => {
-  let but = f.querySelector('input');
-  but.type = (but.type === 'search') ? 'submit' : 'search';
-  ev.preventDefault();
-  saveData();
-});
 
 function fadeIn(element, delay) {
     let opacity = 0;
@@ -186,17 +174,22 @@ function closeNav() {
 
 function addMeal() {
     let currentMealName = mealInput.value;
-    if (!currentMealName) {return};
-    let newMealIngredients = ingredientsInput.value.split(',').map(ingredient => ingredient.trim());
-    let newMeal = {
+    if (!currentMealName) return;
+
+    let newMealIngredients = ingredientsInput.value
+        .split(',')
+        .map(i => i.trim());
+
+    meals.unshift({
         mealName: currentMealName,
         ingredients: newMealIngredients
-    };
-    meals.unshift(newMeal);
+    });
+
+    saveData();
+    paintUI();
+
     mealInput.value = "";
     ingredientsInput.value = "";
-    paintUI();
-    // location.reload();
 }
 
 const addIcon = document.getElementById("add-icon");
@@ -233,7 +226,6 @@ function deleteMeal(index) {
             meals.splice(index, 1);
             saveData();
             paintUI();
-            // location.reload();
         }
     }
 };
@@ -254,6 +246,7 @@ function makeMealEditable(index, type) {
         if (e.key === "Enter") {
             e.preventDefault();
             saveEditedMeal(inputToEdit, index, type, keyHandler);
+            inputToEdit.blur();
         }
     }
 
@@ -276,37 +269,23 @@ function saveEditedMeal(inputToEdit, index, type, handler) {
 
     saveData();
     inputToEdit.setAttribute("readonly", true);
-
     inputToEdit.removeEventListener("keydown", handler);
-    inputToEdit.removeEventListener("blur", blurHandler);
 }
 
 
 function saveData() {
-    meals.forEach((meal, index) => {
-        let mealNameField = document.getElementById(`meal-item-name-${index}`);
-        let ingredientsField = document.getElementById(`meal-item-ingredients-${index}`);
-
-        if (mealNameField && ingredientsField) {
-            meal.mealName = mealNameField.value; 
-            meal.ingredients = ingredientsField.value.split(",").map(ingredient => ingredient.trim());
-        }
-    });
     localStorage.setItem("meals", JSON.stringify(meals));
-    console.log("Data saved: ", meals);
+    console.log("Saved:", meals);
 }
 
+
 function loadData() {
-    let storedData = localStorage.getItem("meals");
+    const storedData = localStorage.getItem("meals");
     if (storedData) {
-        console.log("Found data")
         meals = JSON.parse(storedData);
-        console.log("Parsed meals data:", meals)
-        paintUI();
+
     }
-    else {
-        console.log("No data found in localStorage, using default meals.");
-    }
+    paintUI();
 }
 
 

@@ -1,11 +1,10 @@
 TODO:
-- Make meal text editable in place on MM
-    - Manual save needs to work by index; first meal data is being saved in every case
 - Make page remember re-arranged order of meal items
 - Produce shopping list
 - Create a 'tutorial' if no content is displayed on page or if no saved data
 - Add 'click off' function to close meal input container
 - Order meals in Meal Manager alphabetically
+- Turn meals on index into cards to make more distinguishable from each other
 
 MAYBE:
 - Webscrape ingredients prices
