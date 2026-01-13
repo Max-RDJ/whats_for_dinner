@@ -63,6 +63,8 @@ const homepageHeader = document.querySelector("header");
 const sidebar = document.querySelector(".sidebar");
 let storedData = localStorage.getItem("meals");
 const dayCards = document.querySelectorAll(".day-card");
+const indexPageTitle = document.getElementById("index-page-title");
+window.onload = fadeIn(indexPageTitle);
 
 if (storedData) {
     console.log("Found data")
@@ -203,26 +205,75 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// EXPORT
+document.querySelector(".export-button").addEventListener("click", () => {
+    const map = [
+        ["mon", "first"],
+        ["tue", "second"],
+        ["wed", "third"],
+        ["thu", "fourth"],
+        ["fri", "fifth"],
+        ["sat", "sixth"],
+        ["sun", "seventh"]
+      ];
+      
+    const meals = Object.fromEntries(
+        map.map(([day, id]) => [
+            day,
+            {
+            name: document.getElementById(`${id}-meal`).textContent,
+            ingredients: document.getElementById(`${id}-ingredients`).textContent
+            }
+        ])
+    );
+  
+    const blob = new Blob(
+      [JSON.stringify(meals, null, 2)],
+      { type: "application/json" }
+    );
+  
+    const url = URL.createObjectURL(blob);
+  
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "meal-plan.json";
+    a.click();
+  
+    URL.revokeObjectURL(url);
+});
+  
+// IMPORT
+const importBtn = document.querySelector(".import-button");
+const fileInput = document.getElementById("import-file");
 
+importBtn.addEventListener("click", () => fileInput.click());
 
+fileInput.addEventListener("change", () => {
+  const file = fileInput.files[0];
+  if (!file) return;
 
-/* 
-function fadeIn(element) {
-    if (!element) {
-        console.error("fadeIn called on an undefined element");
-        return;
+  const reader = new FileReader();
+
+  reader.onload = e => {
+    const meals = JSON.parse(e.target.result);
+
+    const map = [
+        ["mon", "first"],
+        ["tue", "second"],
+        ["wed", "third"],
+        ["thu", "fourth"],
+        ["fri", "fifth"],
+        ["sat", "sixth"],
+        ["sun", "seventh"]
+    ];
+      
+    map.forEach(([day, id]) => {
+        document.getElementById(`${id}-meal`).textContent =
+            meals[day]?.name ?? "";
+        document.getElementById(`${id}-ingredients`).textContent =
+            meals[day]?.ingredients ?? "";
+        });
     }
-    let opacity = 0;
-    element.style.opacity = opacity;
-    const intervalID = setInterval(() => {
-        if (opacity < 1) {
-            opacity += 0.1;
-            element.style.opacity = opacity;
-        } else {
-            clearInterval(intervalID);
-        }
-    }, 50);
-}
- */
-const indexPageTitle = document.getElementById("index-page-title");
-window.onload = fadeIn(indexPageTitle);
+
+  reader.readAsText(file);
+});

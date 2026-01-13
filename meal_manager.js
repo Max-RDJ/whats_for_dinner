@@ -289,7 +289,6 @@ function updateMealsOrder() {
             ingredients: ingredientsInput.value.split(",").map(i => i.trim())
         };
     });
-
     saveData();
 }
 

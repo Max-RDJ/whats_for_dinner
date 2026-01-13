@@ -26,6 +26,11 @@
 <header>
   <button class="sidebar-hamburger">&#9776;</button>
   <h1 class="unselectable" id="index-page-title">What's for dinner?</h1>
+  <div class="import-export-buttons">
+    <input type="file" id="import-file" accept=".json" hidden>
+    <button class="button-neutral button-small import-button">Import</button>
+    <button class="button-neutral button-small export-button">Export</button>
+  </div>
 </header>
 
 <body id="body">
@@ -88,7 +93,7 @@
   </div>
 
   <div class="button-tray tray-hidden" id="index__button-tray">
-    <button class="button-neutral" id="generate-button">Generate new meal plan</button>
+    <button class="button-neutral button-large" id="generate-button">Generate new meal plan</button>
     <div class="tray-toggle">
       <i class="fa-solid fa-chevron-down" id="toggle-chevron"></i>
     </div>
