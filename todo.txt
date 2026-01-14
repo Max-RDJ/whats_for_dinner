@@ -1,5 +1,4 @@
 TODO:
-- Add import/export feature
 - Add alphabetical sort option to Meal Manager
 - Produce shopping list
 - Create a 'tutorial' if no content is displayed on page or if no saved data
