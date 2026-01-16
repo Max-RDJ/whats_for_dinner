@@ -123,7 +123,7 @@ h1 {
     top: 45.5%;
     left: 2rem;
     transform: translateY(-50%);
-    font-size: 3em;
+    font-size: 2.5em;
     cursor: pointer;
     color: var(--accent-color);
     border: none;
@@ -344,10 +344,21 @@ main {
 }
 
 .action-icon {
+    opacity: 0;
     transition-duration: 200ms;
     border: none;
     background: transparent;
     cursor: pointer;
+}
+
+.meal-row:hover .action-edit {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.meal-item:hover .action-delete {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #input-container {

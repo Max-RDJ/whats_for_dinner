@@ -98,20 +98,20 @@ function paintUI() {
                         <td class="meal-details">
                             <div class="meal-row">
                                 <input onclick="makeMealEditable(${i}, 'mealName')"class="input__meal-title meal-input" id="meal-item-name-${i}" type="text" value="${meal}">
-                                <button type="button" onclick="makeMealEditable(${i}, 'mealName')" class="action-icon">
+                                <button type="button" onclick="makeMealEditable(${i}, 'mealName')" class="action-icon action-edit">
                                     <i class="fa-solid fa-pen-to-square edit-icon"></i>
                                 </button>
                             </div>
                             <div class="meal-row">
                                 <input onclick="makeMealEditable(${i}, 'ingredients')"class="input__meal-ingredients" id="meal-item-ingredients-${i}" type="text" value="${ingredients}">
-                                <button type="button" onclick="makeMealEditable(${i}, 'ingredients')" class="action-icon">
+                                <button type="button" onclick="makeMealEditable(${i}, 'ingredients')" class="action-icon action-edit">
                                     <i class="fa-solid fa-pen-to-square edit-icon"></i>
                                 </button>
                             </div>
                         </td>
                         <td>
                             <div class="actions-container">
-                                <button onclick="deleteMeal(${i})" class="action-icon"><i class="fa-solid fa-trash"></i></button>
+                                <button onclick="deleteMeal(${i})" class="action-icon action-delete"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>
