@@ -1,63 +1,7 @@
 import './utils/toggleTray.js';
+import { defaultMeals } from './default_meals.js';
 
-let meals =  [
-    {
-    mealName: "Thai Green Curry",
-    ingredients: [
-        "thai green paste",
-        "chickpeas",
-        "coconut milk",
-        "tenderstem broccoli",
-        "rice"
-    ]
-    },
-    {
-    mealName: `Chickpea Coconut Curry`,
-    ingredients: [
-        "chickpeas",
-        "coconut milk",
-        "passata",
-        "bell pepper"
-    ]
-    },
-    {
-    mealName: "Spaghetti and Meatballs",
-    ingredients: [
-        "spaghetti",
-        "bolognese sauce",
-        "meatballs"
-    ]
-    },
-    {
-    mealName: "Stir Fry",
-    ingredients: [
-        "fake chicken",
-        "bell pepper",
-        "noodles",
-        "teryaki sauce"
-    ]
-    },
-    {
-    mealName: "Test",
-    ingredients: [
-        "test"
-    ]
-    },
-    {
-    mealName: "Test2",
-    ingredients: [
-    "test2"
-    ]
-    },
-    {
-    mealName: "Test3",
-    ingredients: [
-    "test3"
-    ]
-    }
-]
-
-let meal_list = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
+let meals = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : defaultMeals;
 const generatedMeals = document.querySelector(".generated-meals");
 const homepageHeader = document.querySelector("header");
 const sidebar = document.querySelector(".sidebar");

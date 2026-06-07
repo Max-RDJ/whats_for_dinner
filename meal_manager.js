@@ -1,74 +1,8 @@
-let meals =  [
-    {
-    mealName: "Thai Green Curry",
-    ingredients: [
-        "Thai green paste",
-        "chickpeas",
-        "coconut milk",
-        "tenderstem broccoli",
-        "rice"
-    ]
-    },
-    {
-    mealName: "Chickpea Coconut Curry",
-    ingredients: [
-        "chickpeas",
-        "coconut milk",
-        "passata",
-        "bell pepper"
-    ]
-    },
-    {
-    mealName: "Spaghetti and Meatballs",
-    ingredients: [
-        "spaghetti",
-        "bolognese sauce",
-        "meatballs"
-    ]
-    },
-    {
-    mealName: "Stir Fry",
-    ingredients: [
-        "fake chicken",
-        "bell pepper",
-        "noodles",
-        "teryaki sauce"
-    ]
-    },
-    {
-    mealName: "Spanish Chickpeas and Potato",
-    ingredients: [
-        "potato",
-        "bell pepper",
-        "chickpeas",
-        "tinned tomato",
-        "carrot",
-        "olive oil"
-    ]
-    },
-    {
-    mealName: "Sausage & Mash",
-    ingredients: [
-        "sausage",
-        "potato",
-        "peas",
-        "butter",
-        "milk"
-    ]
-    },
-    {
-    mealName: "Beans on Toast",
-    ingredients: [
-        "baked beans",
-        "bread",
-        "butter"
-    ]
-    }
-]
+import { defaultMeals } from "./meals.js";
 
-let mainContainer = document.querySelector("main");
-let mealList = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
+let meals = [...defaultMeals];
 
+const mealList = localStorage.getItem("meals") ? JSON.parse(localStorage.getItem("meals")).meals : ["sd"];
 const mealManagerBody = document.querySelector("body");
 const mealManagerMain = document.querySelector("main");
 const mealManagerHeader = document.querySelector("header");
@@ -82,6 +16,8 @@ function capitaliseFirstLetter(string) {
 }
 
 function paintUI() {
+    console.log("mealManagerMain:", mealManagerMain);
+console.log("Current page:", location.pathname);
     let new_inner_html = "";
     for (let i = 0; i < meals.length; i++) {
         let meal = meals[i].mealName;
@@ -120,7 +56,7 @@ function paintUI() {
         </div>
         `;
     }
-    mainContainer.innerHTML = new_inner_html;
+    mealManagerMain.innerHTML = new_inner_html;
     attachDragAndDropHandlers()
 }
 
@@ -191,6 +127,9 @@ function addMeal() {
     mealInput.value = "";
     ingredientsInput.value = "";
 }
+
+const addMealButton = document.getElementById("add-meal-button");
+addMealButton.addEventListener("click", addMeal);
 
 const addIcon = document.getElementById("add-icon");
 const rotator = document.querySelector(".rotate");
