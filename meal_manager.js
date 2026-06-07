@@ -1,4 +1,4 @@
-import { defaultMeals } from "./meals.js";
+import { defaultMeals } from "./default_meals.js";
 
 let meals = [...defaultMeals];
 
@@ -16,8 +16,6 @@ function capitaliseFirstLetter(string) {
 }
 
 function paintUI() {
-    console.log("mealManagerMain:", mealManagerMain);
-console.log("Current page:", location.pathname);
     let new_inner_html = "";
     for (let i = 0; i < meals.length; i++) {
         let meal = meals[i].mealName;
@@ -33,21 +31,48 @@ console.log("Current page:", location.pathname);
                         </td>
                         <td class="meal-details">
                             <div class="meal-row">
-                                <input onclick="makeMealEditable(${i}, 'mealName')"class="input__meal-title meal-input" id="meal-item-name-${i}" type="text" value="${meal}">
-                                <button type="button" onclick="makeMealEditable(${i}, 'mealName')" class="action-icon action-edit">
-                                    <i class="fa-solid fa-pen-to-square edit-icon"></i>
-                                </button>
-                            </div>
-                            <div class="meal-row">
-                                <input onclick="makeMealEditable(${i}, 'ingredients')"class="input__meal-ingredients" id="meal-item-ingredients-${i}" type="text" value="${ingredients}">
-                                <button type="button" onclick="makeMealEditable(${i}, 'ingredients')" class="action-icon action-edit">
-                                    <i class="fa-solid fa-pen-to-square edit-icon"></i>
-                                </button>
-                            </div>
+                            <input
+                                class="input__meal-title meal-input editable-field"
+                                data-index="${i}"
+                                data-type="mealName"
+                                id="meal-item-name-${i}"
+                                type="text"
+                                value="${meal}"
+                                readonly
+                            >
+
+                            <button
+                                type="button"
+                                class="action-icon action-edit editable-button"
+                                data-index="${i}"
+                                data-type="mealName">
+                                <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                            </button>
+                        </div>
+
+                        <div class="meal-row">
+                            <input
+                                class="input__meal-ingredients editable-field"
+                                data-index="${i}"
+                                data-type="ingredients"
+                                id="meal-item-ingredients-${i}"
+                                type="text"
+                                value="${ingredients}"
+                                readonly
+                            >
+
+                            <button
+                                type="button"
+                                class="action-icon action-edit editable-button"
+                                data-index="${i}"
+                                data-type="ingredients">
+                                <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                            </button>
+                        </div>
                         </td>
                         <td>
                             <div class="actions-container">
-                                <button onclick="deleteMeal(${i})" class="action-icon action-delete"><i class="fa-solid fa-trash"></i></button>
+                                <button class="action-icon action-delete delete-button"    data-index="${i}" class="action-icon action-delete"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -57,7 +82,40 @@ console.log("Current page:", location.pathname);
         `;
     }
     mealManagerMain.innerHTML = new_inner_html;
+    attachEditHandlers();
     attachDragAndDropHandlers()
+}
+
+document.querySelector(".sidebar-hamburger")
+    ?.addEventListener("click", openNav);
+
+document.querySelector(".closebtn")
+    ?.addEventListener("click", closeNav);
+
+function attachEditHandlers() {
+    document.querySelectorAll(".editable-field").forEach(input => {
+        input.addEventListener("click", () => {
+            makeMealEditable(
+                Number(input.dataset.index),
+                input.dataset.type
+            );
+        });
+    });
+
+    document.querySelectorAll(".editable-button").forEach(button => {
+        button.addEventListener("click", () => {
+            makeMealEditable(
+                Number(button.dataset.index),
+                button.dataset.type
+            );
+        });
+    });
+
+    document.querySelectorAll(".delete-button").forEach(button => {
+        button.addEventListener("click", () => {
+            deleteMeal(Number(button.dataset.index));
+        });
+    });
 }
 
 function fadeIn(element, delay) {
