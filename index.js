@@ -187,37 +187,65 @@ document.querySelector(".export-button").addEventListener("click", () => {
 });
   
 // IMPORT
+// IMPORT
 const importBtn = document.querySelector(".import-button");
 const fileInput = document.getElementById("import-file");
 
-importBtn.addEventListener("click", () => fileInput.click());
+importBtn.addEventListener("click", () => {
+    console.log("Import clicked");
+    fileInput.click();
+});
 
 fileInput.addEventListener("change", () => {
-  const file = fileInput.files[0];
-  if (!file) return;
+    const file = fileInput.files[0];
+    if (!file) return;
 
-  const reader = new FileReader();
+    console.log("File selected:", file.name);
 
-  reader.onload = e => {
-    const meals = JSON.parse(e.target.result);
+    const reader = new FileReader();
 
-    const map = [
-        ["mon", "first"],
-        ["tue", "second"],
-        ["wed", "third"],
-        ["thu", "fourth"],
-        ["fri", "fifth"],
-        ["sat", "sixth"],
-        ["sun", "seventh"]
-    ];
-      
-    map.forEach(([day, id]) => {
-        document.getElementById(`${id}-meal`).textContent =
-            meals[day]?.name ?? "";
-        document.getElementById(`${id}-ingredients`).textContent =
-            meals[day]?.ingredients ?? "";
-        });
-    }
+    reader.onload = (e) => {
+        console.log("File loaded");
 
-  reader.readAsText(file);
+        try {
+            const importedMeals = JSON.parse(e.target.result);
+
+            console.log("Parsed JSON:", importedMeals);
+
+            const map = [
+                ["mon", "first"],
+                ["tue", "second"],
+                ["wed", "third"],
+                ["thu", "fourth"],
+                ["fri", "fifth"],
+                ["sat", "sixth"],
+                ["sun", "seventh"]
+            ];
+
+            map.forEach(([day, id], index) => {
+                const mealEl = document.getElementById(`${id}-meal`);
+                const ingredientsEl = document.getElementById(`${id}-ingredients`);
+
+                if (mealEl) {
+                    mealEl.textContent = importedMeals[day]?.name ?? "";
+                }
+
+                if (ingredientsEl) {
+                    ingredientsEl.textContent = importedMeals[day]?.ingredients ?? "";
+                }
+
+                if (dayCards[index]) {
+                    dayCards[index].style.opacity = "0";
+                    fadeIn(dayCards[index], index * 75);
+                }
+            });
+
+            console.log("Import complete");
+
+        } catch (error) {
+            console.error("Failed to parse JSON:", error);
+        }
+    };
+
+    reader.readAsText(file);
 });
