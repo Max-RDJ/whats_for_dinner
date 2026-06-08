@@ -29,6 +29,13 @@ The following documentation is available:
 - View and manage planned meals
 - Import and export generated meal plans
 
+## Quick Access
+
+You can either run the project locally or use the deployed version:
+
+- Live site: https://wfd-planner.netlify.app/
+- Local development: see instructions below
+
 ## Quick Start
 
 ### Prerequisites
@@ -48,7 +55,3 @@ npm run dev
 
 Open your browser and navigate to:
 Http://localhost:3000
-
-### Or simply use online
-
-Go to https://wfd-planner.netlify.app/
