@@ -54,4 +54,4 @@ npm run dev
 ### Running the Application Locally
 
 Open your browser and navigate to:
-Http://localhost:3000
+http://localhost:3000
