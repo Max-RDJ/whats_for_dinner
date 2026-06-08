@@ -14,7 +14,7 @@ By the end of this guide, you will have:
 
 Open the application in your browser.
 
-The home page page will be displayed by default.
+The home page will be displayed by default.
 
 ---
 
@@ -26,7 +26,7 @@ Create a new meal entry.
 2. Select the option to add a new meal.
 3. Enter a meal name (for example: "Spaghetti Bolognese").
 4. Add a list of ingredients.
-5. Click 'Add meal'.
+5. Add the meal.
 
 The meal will now appear in your meal collection.
 
@@ -64,6 +64,16 @@ The generated plan will be displayed on the home page.
 The application will display meals assigned to each day of the week.
 
 You can review the generated plan directly on the home page.
+
+---
+
+## Step 6: Import and Export Meal Plans
+
+Generated meal plans can be exported in order to be saved on a local device.
+
+The 'Import' button opens a dialog where you can select
+
+You can import the saved file and load its data into the app. The home page will then display the saved plan.
 
 ---
 

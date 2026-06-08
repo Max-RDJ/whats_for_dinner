@@ -2,7 +2,7 @@
 
 ## Overview
 
-The meal generation feature populates the home page with a selection of meals chosen at random from the user's saved meal collection.
+The meal plan generation feature generates a meal plan that is displayed on the home page and consists of a selection of meals chosen at random from the user's saved meal collection.
 
 The feature is designed to reduce decision fatigue by presenting meal suggestions without requiring manual selection.
 
@@ -30,7 +30,7 @@ The feature uses meal entries stored in the application's meal collection.
 
 When the 'Generate new meal plan' button is clicked, the application:
 
-1. Retrieves the list of saved meals.
+1. Retrieves meal collection.
 2. Randomly selects meals from the available collection.
 3. Displays the selected meals on the home page.
 
@@ -54,7 +54,7 @@ Each displayed day includes:
 
 The feature retrieves data from the application's stored meal collection.
 
-Changes made to the meal collection are saved in local browser storage and are reflected in future meal generations.
+Changes made to the meal collection are saved in local browser storage and are reflected in future meal plan generations.
 
 ---
 

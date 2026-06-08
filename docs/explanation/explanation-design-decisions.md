@@ -16,7 +16,7 @@ The focus is on reducing cognitive load rather than providing a fully featured n
 
 ---
 
-## Meal Generation Approach
+## Meal Plan Generation Approach
 
 Meal plans are generated using a random selection process from the user's saved meal list.
 

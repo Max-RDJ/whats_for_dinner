@@ -1,29 +1,29 @@
 # Planned Features
 
-This document outlines potential future improvements to the application. Items are grouped by priority and feature area.
+This document outlines potential future directions for the application.
 
 ---
 
 ## High Priority
 
-### Meal Management Improvements
+### Meal Management
 
-- Add alphabetical sorting option to Meal Manager
-- Improve accessibility of meal input components and how the generated meal plan is displayed
+- Support alphabetical sorting of meals within the Meal Manager
+- Enhance accessibility of meal input and meal plan presentation to improve usability for assistive technologies
 
 ---
 
 ## Medium Priority
 
-### Meal Planning Enhancements
+### Meal Planning
 
-- Generate shopping list from selected weekly meal plan
-- Save exported meal plans with timestamp in file name
-- Add ability to persist and retrieve previous meal plans
+- Generate a shopping list based on a selected weekly meal plan
+- Persist generated meal plans with timestamped identifiers for future retrieval
+- Export generated meal plans with timestamp
 
 ---
 
 ## Low Priority / Exploratory
 
-- Implement dark mode theme support
-- Investigate pricing data integration for ingredients via web sources
+- Support dark mode theme configuration
+- Explore integration of external pricing data for ingredients from third-party sources

@@ -50,7 +50,6 @@ The import functionality loads a previously exported meal plan file and renders 
 
 ### Behaviour
 
-- The 'Import' button opens a file explorer dialog where the user selects an appropriate file.
 - Imported data replaces the currently displayed meal plan.
 - The application renders meals according to the imported structure.
 - Imported files must match the expected format of exported plans.

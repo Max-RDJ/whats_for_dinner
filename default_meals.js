@@ -32,7 +32,7 @@
         "fake chicken",
         "bell pepper",
         "noodles",
-        "teryaki sauce"
+        "teriyaki sauce"
     ]
     },
     {
