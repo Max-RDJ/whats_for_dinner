@@ -11,9 +11,6 @@ The following documentation is available:
 ### Meal Management
 - [Reference: Meal Management](reference/reference-meal-management.md)
 
-### Meal Planning
-- [Reference: Meal Planning](reference/reference-meal-planning.md)
-
 ### Plan Generation
 - [Reference: Plan Generation](reference/reference-plan-generation.md)
 
