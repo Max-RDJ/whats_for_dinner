@@ -9,16 +9,16 @@ The application is designed to simplify meal planning by reducing the time spent
 The following documentation is available:
 
 ### Meal Management
-- [Reference: Meal Management](docs/reference-meal-management.md)
+- [Reference: Meal Management](reference/reference-meal-management.md)
 
 ### Meal Planning
-- [Reference: Meal Planning](docs/reference-meal-planning.md)
+- [Reference: Meal Planning](reference/reference-meal-planning.md)
 
 ### Plan Generation
-- [Reference: Plan Generation](docs/reference-plan-generation.md)
+- [Reference: Plan Generation](reference/reference-plan-generation.md)
 
 ### Import / Export
-- [Reference: Import / Export](docs/reference-import-export.md)
+- [Reference: Import / Export](reference/reference-import-export.md)
 
 ## Features
 
